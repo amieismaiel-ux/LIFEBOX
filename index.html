@@ -2,39 +2,32 @@
 <html lang="ms">
 <head>
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width,initial-scale=1,viewport-fit=cover">
-
-<meta name="theme-color" content="#090d0d">
-
-<meta name="description"
-content="LIFEBOX — Your Life. One Place.">
-
-<link rel="manifest" href="manifest.json">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#07100e">
+<meta name="apple-mobile-web-app-capable" content="yes">
 <title>LIFEBOX — Your Life. One Place.</title>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap');
 
 :root{
-  --black:#070a0a;
-  --black2:#0d1212;
-  --panel:#111818;
-  --panel2:#151d1c;
-  --teal:#0d8f82;
-  --teal2:#16b6a5;
-  --gold:#d6a94b;
-  --gold2:#f2cc75;
-  --white:#f8faf9;
-  --muted:#9ba9a7;
+  --bg:#050908;
+  --bg2:#09120f;
+  --card:#0d1714;
+  --card2:#111d19;
+  --emerald:#0e7768;
+  --emerald2:#19a58f;
+  --gold:#d7ad57;
+  --gold2:#f1d48a;
+  --white:#f5f7f5;
+  --muted:#8e9b96;
   --line:rgba(255,255,255,.09);
-  --glass:rgba(255,255,255,.075);
-  --shadow:0 20px 55px rgba(0,0,0,.32);
 }
 
 *{
   box-sizing:border-box;
+  margin:0;
+  padding:0;
   -webkit-tap-highlight-color:transparent;
 }
 
@@ -43,42 +36,14 @@ html{
 }
 
 body{
-  margin:0;
+  font-family:'DM Sans',sans-serif;
   background:
-    radial-gradient(
-      circle at 80% 0%,
-      rgba(13,143,130,.15),
-      transparent 35%
-    ),
-    var(--black);
+    radial-gradient(circle at 80% 10%,rgba(15,110,94,.16),transparent 30%),
+    radial-gradient(circle at 10% 55%,rgba(215,173,87,.05),transparent 25%),
+    var(--bg);
   color:var(--white);
-  font-family:
-    Inter,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    Roboto,
-    Arial,
-    sans-serif;
-}
-
-button,
-input,
-select,
-textarea{
-  font:inherit;
-}
-
-button{
-  cursor:pointer;
-}
-
-.app{
-  width:100%;
-  max-width:560px;
-  margin:auto;
   min-height:100vh;
-  padding-bottom:110px;
+  padding-bottom:100px;
 }
 
 /* =========================
@@ -86,86 +51,112 @@ button{
 ========================= */
 
 .topbar{
-  position:sticky;
-  top:0;
-  z-index:50;
-
+  height:82px;
+  padding:14px 22px;
   display:flex;
   align-items:center;
   justify-content:space-between;
-
-  padding:
-    14px
-    18px
-    12px;
-
-  background:
-    rgba(7,10,10,.82);
-
-  backdrop-filter:blur(22px);
-  -webkit-backdrop-filter:blur(22px);
-
-  border-bottom:
-    1px solid rgba(255,255,255,.06);
+  background:rgba(5,9,8,.88);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(255,255,255,.07);
+  position:sticky;
+  top:0;
+  z-index:50;
 }
 
 .brand{
   display:flex;
   align-items:center;
-  gap:11px;
+  gap:13px;
 }
+
+/* PREMIUM LIFEBOX LOGO */
 
 .logo{
-  width:43px;
-  height:43px;
-
-  display:grid;
-  place-items:center;
-
-  border-radius:14px;
-
+  width:54px;
+  height:54px;
+  border-radius:17px;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   background:
-    linear-gradient(
-      145deg,
-      #ffffff,
-      #dce9e6
-    );
-
-  color:#087b70;
-
-  font-size:15px;
-  font-weight:950;
-
+    linear-gradient(145deg,#f5f7f4 0%,#dfe8e3 100%);
   box-shadow:
-    0 8px 25px rgba(0,0,0,.25);
+    0 8px 30px rgba(0,0,0,.35),
+    inset 0 1px 0 rgba(255,255,255,.9);
+  overflow:hidden;
 }
 
-.brand-title{
-  font-size:18px;
-  font-weight:900;
-  letter-spacing:.8px;
+.logo:before{
+  content:"";
+  position:absolute;
+  width:42px;
+  height:42px;
+  border:1px solid rgba(14,119,104,.25);
+  border-radius:14px;
 }
 
-.brand-sub{
-  color:#82918f;
+.logo:after{
+  content:"";
+  position:absolute;
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:var(--gold);
+  top:9px;
+  right:10px;
+  box-shadow:0 0 12px rgba(215,173,87,.55);
+}
+
+.logo-mark{
+  font-family:'Manrope',sans-serif;
+  font-size:19px;
+  font-weight:800;
+  letter-spacing:-1.5px;
+  color:#096e62;
+  position:relative;
+  z-index:2;
+}
+
+.logo-mark span{
+  color:#163b35;
+}
+
+.brand-text h1{
+  font-family:'Manrope',sans-serif;
+  font-size:22px;
+  font-weight:800;
+  letter-spacing:-.8px;
+}
+
+.brand-text p{
+  margin-top:1px;
+  color:#778580;
   font-size:9px;
-  letter-spacing:1px;
+  letter-spacing:3px;
   text-transform:uppercase;
 }
 
-.menu-btn{
-  width:45px;
-  height:45px;
-
+.menu{
+  width:50px;
+  height:50px;
   border-radius:50%;
-
   border:1px solid var(--line);
+  background:rgba(255,255,255,.035);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:5px;
+}
 
-  background:rgba(255,255,255,.06);
-
-  color:white;
-
-  font-size:24px;
+.menu span{
+  width:21px;
+  height:2px;
+  border-radius:3px;
+  background:#dfe7e4;
 }
 
 /* =========================
@@ -174,2575 +165,607 @@ button{
 
 .hero{
   position:relative;
-
-  min-height:570px;
-
-  margin:0 12px;
-
+  min-height:560px;
+  padding:45px 34px 50px;
   overflow:hidden;
-
-  border-radius:
-    0 0
-    32px
-    32px;
-
+  isolation:isolate;
   background:
     linear-gradient(
       180deg,
-      rgba(0,0,0,.05),
-      rgba(0,0,0,.88)
+      rgba(2,8,5,.15) 0%,
+      rgba(2,8,5,.52) 48%,
+      #050908 100%
     ),
-    url("https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=1200&q=90")
-    center/cover;
-
-  box-shadow:
-    var(--shadow);
+    url("https://images.unsplash.com/photo-1527061011665-3652c757a4d4?auto=format&fit=crop&w=1200&q=85")
+    center/cover no-repeat;
 }
 
-.hero:after{
+.hero:before{
   content:"";
-
   position:absolute;
   inset:0;
-
   background:
-    linear-gradient(
-      180deg,
-      rgba(4,10,9,.12) 0%,
-      rgba(4,10,9,.25) 35%,
-      rgba(4,10,9,.95) 100%
-    );
+    radial-gradient(circle at 80% 25%,rgba(14,119,104,.28),transparent 30%),
+    linear-gradient(90deg,rgba(0,0,0,.58),transparent 70%);
+  z-index:-1;
 }
 
 .hero-content{
-  position:absolute;
+  max-width:500px;
+  position:relative;
   z-index:2;
-
-  left:25px;
-  right:25px;
-  bottom:28px;
 }
 
-.hero-kicker{
+.eyebrow{
   display:inline-flex;
   align-items:center;
-  gap:7px;
-
-  padding:8px 13px;
-
+  gap:8px;
+  border:1px solid rgba(215,173,87,.4);
+  background:rgba(8,15,12,.68);
+  padding:9px 15px;
   border-radius:30px;
-
   color:var(--gold2);
-
-  background:
-    rgba(8,20,18,.65);
-
-  border:
-    1px solid
-    rgba(214,169,75,.4);
-
-  backdrop-filter:blur(12px);
-
-  font-size:11px;
-  font-weight:800;
-  letter-spacing:.8px;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:1.5px;
   text-transform:uppercase;
+  backdrop-filter:blur(10px);
 }
 
-.hero h1{
-  margin:17px 0 5px;
-
-  font-size:
-    clamp(39px,11vw,62px);
-
-  line-height:.95;
-
-  letter-spacing:-2.5px;
-
-  font-weight:950;
+.eyebrow i{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:var(--gold);
+  box-shadow:0 0 10px var(--gold);
 }
 
-.hero h1 span{
-  display:block;
-
-  background:
-    linear-gradient(
-      90deg,
-      #fff,
-      #d7ece7 45%,
-      #e8bd62
-    );
-
-  -webkit-background-clip:text;
-  background-clip:text;
-
-  color:transparent;
+.hero h2{
+  margin-top:34px;
+  font-family:'Manrope',sans-serif;
+  font-size:52px;
+  line-height:.98;
+  letter-spacing:-2.8px;
+  font-weight:800;
 }
 
-.hero p{
-  max-width:390px;
+.hero h2 span{
+  color:var(--gold2);
+}
 
-  color:#b7c1bf;
-
-  font-size:14px;
-
+.hero-description{
+  margin-top:24px;
+  max-width:440px;
+  color:#c1cbc7;
+  font-size:17px;
   line-height:1.65;
-
-  margin:16px 0 0;
 }
 
-.hero-user{
-  margin-top:20px;
-
+.welcome{
   display:flex;
   align-items:center;
-  gap:10px;
+  gap:13px;
+  margin-top:32px;
 }
 
 .avatar{
-  width:43px;
-  height:43px;
-
+  width:54px;
+  height:54px;
   border-radius:50%;
-
+  border:2px solid rgba(255,255,255,.8);
   background:
-    url("https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=90")
-    center/cover;
-
-  border:
-    2px solid
-    rgba(255,255,255,.7);
-
-  box-shadow:
-    0 6px 18px #0008;
+    linear-gradient(145deg,#284d43,#101816);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:17px;
+  font-weight:800;
+  color:white;
+  box-shadow:0 5px 20px rgba(0,0,0,.35);
 }
 
-.hero-user small{
-  color:#889593;
+.welcome small{
   display:block;
+  color:#889691;
+  font-size:12px;
 }
 
-.hero-user b{
-  font-size:15px;
+.welcome strong{
+  display:block;
+  font-family:'Manrope',sans-serif;
+  font-size:19px;
+  margin-top:2px;
 }
 
 /* =========================
    CONTENT
 ========================= */
 
-.content{
-  padding:0 18px;
+.container{
+  padding:0 24px;
+  max-width:700px;
+  margin:auto;
 }
 
 .section{
-  margin-top:34px;
+  margin-top:42px;
 }
 
 .section-head{
   display:flex;
   align-items:end;
   justify-content:space-between;
-
-  margin-bottom:14px;
+  margin-bottom:17px;
 }
 
-.eyebrow{
-  color:var(--gold2);
-
-  font-size:9px;
-
-  letter-spacing:1.7px;
-
-  font-weight:900;
-
+.section-label{
+  color:var(--gold);
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:2.5px;
   text-transform:uppercase;
-
-  margin-bottom:4px;
+  margin-bottom:7px;
 }
 
 .section-title{
-  font-size:25px;
-
-  font-weight:900;
-
-  letter-spacing:-.8px;
-
-  margin:0;
-}
-
-.section-link{
-  color:var(--teal2);
-
-  border:0;
-  background:none;
-
-  font-size:11px;
+  font-family:'Manrope',sans-serif;
+  font-size:28px;
+  letter-spacing:-1.2px;
   font-weight:800;
 }
 
-/* =========================
-   FEATURE CARDS
-========================= */
-
-.cards{
-  display:grid;
-
-  grid-template-columns:
-    repeat(2,1fr);
-
-  gap:12px;
-}
-
-.photo-card{
-  position:relative;
-
-  min-height:225px;
-
-  overflow:hidden;
-
-  border-radius:24px;
-
-  border:
-    1px solid
-    rgba(255,255,255,.08);
-
-  background:#151b1b;
-
-  box-shadow:
-    0 15px 35px rgba(0,0,0,.24);
-
-  transition:
-    transform .2s ease,
-    border .2s ease;
-}
-
-.photo-card:active{
-  transform:scale(.975);
-}
-
-.photo-card:hover{
-  border-color:
-    rgba(22,182,165,.45);
-}
-
-.photo-image{
-  position:absolute;
-  inset:0;
-
-  background-size:cover;
-  background-position:center;
-
-  transition:
-    transform .5s ease;
-}
-
-.photo-card:hover
-.photo-image{
-  transform:scale(1.05);
-}
-
-.money-image{
-  background-image:
-    linear-gradient(
-      180deg,
-      rgba(0,0,0,.05),
-      rgba(0,0,0,.92)
-    ),
-    url("https://images.unsplash.com/photo-1554224154-22dec7ec8818?auto=format&fit=crop&w=900&q=90");
-}
-
-.family-image{
-  background-image:
-    linear-gradient(
-      180deg,
-      rgba(0,0,0,.02),
-      rgba(0,0,0,.94)
-    ),
-    url("https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=900&q=90");
-}
-
-.car-image{
-  background-image:
-    linear-gradient(
-      180deg,
-      rgba(0,0,0,.03),
-      rgba(0,0,0,.94)
-    ),
-    url("https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=900&q=90");
-}
-
-.doc-image{
-  background-image:
-    linear-gradient(
-      180deg,
-      rgba(0,0,0,.04),
-      rgba(0,0,0,.94)
-    ),
-    url("https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=900&q=90");
-}
-
-.photo-info{
-  position:absolute;
-
-  left:17px;
-  right:17px;
-  bottom:16px;
-
-  z-index:2;
-}
-
-.photo-label{
-  color:#b8c5c2;
-
-  font-size:9px;
-
-  letter-spacing:1.4px;
-
-  text-transform:uppercase;
-
-  font-weight:800;
-}
-
-.photo-title{
-  font-size:20px;
-
-  font-weight:900;
-
-  margin-top:4px;
-}
-
-.photo-value{
-  font-size:16px;
-
-  font-weight:800;
-
-  color:var(--gold2);
-
-  margin-top:3px;
-}
-
-/* =========================
-   ATTENTION
-========================= */
-
-.attention{
-  position:relative;
-
-  padding:18px;
-
-  border-radius:22px;
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(214,169,75,.12),
-      rgba(255,255,255,.045)
-    );
-
-  border:
-    1px solid
-    rgba(214,169,75,.22);
-}
-
-.attention-row{
-  display:flex;
-
-  align-items:center;
-
-  gap:14px;
-}
-
-.attention-icon{
-  width:48px;
-  height:48px;
-
-  display:grid;
-  place-items:center;
-
-  border-radius:16px;
-
-  background:
-    linear-gradient(
-      145deg,
-      #d6a94b,
-      #806022
-    );
-
-  color:#fff;
-
-  font-size:21px;
-}
-
-.attention b{
-  font-size:15px;
-}
-
-.attention p{
-  margin:3px 0 0;
-
-  color:var(--muted);
-
-  font-size:11px;
-}
-
-/* =========================
-   QUICK ACTION
-========================= */
-
-.quick{
-  display:grid;
-
-  grid-template-columns:
-    repeat(4,1fr);
-
-  gap:9px;
-}
-
-.quick button{
-  min-height:92px;
-
-  border:
-    1px solid
-    var(--line);
-
-  border-radius:20px;
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(255,255,255,.075),
-      rgba(255,255,255,.025)
-    );
-
-  color:white;
-
-  padding:12px 5px;
-
-  transition:.2s;
-}
-
-.quick button:active{
-  transform:scale(.95);
-}
-
-.quick-icon{
-  width:39px;
-  height:39px;
-
-  margin:0 auto 8px;
-
-  display:grid;
-  place-items:center;
-
-  border-radius:13px;
-
-  background:
-    rgba(13,143,130,.16);
-
-  color:var(--teal2);
-
-  font-size:19px;
-}
-
-.quick label{
-  display:block;
-
-  color:#a9b4b2;
-
-  font-size:9px;
-
-  font-weight:800;
-}
-
-/* =========================
-   AI
-========================= */
-
-.ai{
-  position:relative;
-
-  overflow:hidden;
-
-  padding:21px;
-
-  border-radius:25px;
-
-  background:
-    radial-gradient(
-      circle at 100% 0%,
-      rgba(13,143,130,.25),
-      transparent 45%
-    ),
-    #111918;
-
-  border:
-    1px solid
-    rgba(22,182,165,.2);
-
-  box-shadow:var(--shadow);
-}
-
-.ai-badge{
-  display:inline-flex;
-
-  padding:7px 11px;
-
-  border-radius:20px;
-
-  background:
-    rgba(22,182,165,.1);
-
-  color:#5de1d2;
-
-  font-size:9px;
-
-  font-weight:900;
-
-  letter-spacing:1px;
-
-  text-transform:uppercase;
-}
-
-.ai h3{
-  margin:13px 0 5px;
-
-  font-size:22px;
-}
-
-.ai p{
-  color:var(--muted);
-
-  font-size:12px;
-
-  line-height:1.55;
-}
-
-.ai textarea{
-  width:100%;
-
-  margin-top:9px;
-
-  padding:13px;
-
-  min-height:80px;
-
-  resize:none;
-
-  outline:none;
-
-  border-radius:15px;
-
-  border:
-    1px solid
-    rgba(255,255,255,.09);
-
-  background:
-    rgba(0,0,0,.25);
-
-  color:white;
-}
-
-.ai textarea::placeholder{
-  color:#687774;
-}
-
-.ai button{
-  margin-top:9px;
-
-  width:100%;
-
-  border:0;
-
-  padding:13px;
-
-  border-radius:15px;
-
-  background:
-    linear-gradient(
-      90deg,
-      var(--teal),
-      var(--teal2)
-    );
-
-  color:white;
-
-  font-weight:900;
-}
-
-.answer{
-  margin-top:12px;
-
-  color:#b8c7c4;
-
-  font-size:12px;
-
-  line-height:1.6;
-}
-
-/* =========================
-   PAGES
-========================= */
-
-.page{
-  display:none;
-}
-
-.page.active{
-  display:block;
-}
-
-.list{
-  display:grid;
-  gap:10px;
-}
-
-.dark-card{
-  padding:17px;
-
-  border-radius:21px;
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(255,255,255,.07),
-      rgba(255,255,255,.025)
-    );
-
-  border:
-    1px solid
-    var(--line);
-}
-
-.row{
-  display:flex;
-
-  align-items:center;
-
-  justify-content:space-between;
-
-  gap:12px;
-}
-
-.dark-card b{
+.add{
+  color:var(--emerald2);
+  font-weight:700;
   font-size:14px;
 }
 
-.dark-card small{
-  display:block;
+/* ATTENTION */
 
-  color:var(--muted);
+.attention{
+  border:1px solid rgba(215,173,87,.25);
+  background:
+    linear-gradient(120deg,rgba(215,173,87,.07),rgba(255,255,255,.025));
+  border-radius:26px;
+  padding:25px;
+  display:flex;
+  align-items:center;
+  gap:18px;
+  box-shadow:0 20px 50px rgba(0,0,0,.22);
+}
 
+.check{
+  width:60px;
+  height:60px;
+  border-radius:18px;
+  flex:none;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:27px;
+  background:
+    linear-gradient(145deg,#e0b75d,#a77928);
+  color:white;
+  box-shadow:
+    0 8px 25px rgba(215,173,87,.18),
+    inset 0 1px 0 rgba(255,255,255,.3);
+}
+
+.attention h3{
+  font-family:'Manrope',sans-serif;
+  font-size:18px;
+}
+
+.attention p{
+  color:#899590;
+  font-size:14px;
+  margin-top:5px;
+}
+
+/* OVERVIEW */
+
+.overview{
+  margin-top:48px;
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+
+.card{
+  min-height:175px;
+  padding:21px;
+  position:relative;
+  overflow:hidden;
+  border:1px solid var(--line);
+  border-radius:25px;
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018));
+  box-shadow:0 15px 40px rgba(0,0,0,.20);
+  transition:.25s ease;
+}
+
+.card:after{
+  content:"";
+  position:absolute;
+  width:100px;
+  height:100px;
+  right:-35px;
+  bottom:-35px;
+  border-radius:50%;
+  background:rgba(25,165,143,.09);
+}
+
+.card:active{
+  transform:scale(.97);
+}
+
+.card-icon{
+  width:47px;
+  height:47px;
+  border-radius:15px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--gold2);
+  border:1px solid rgba(215,173,87,.22);
+  background:rgba(215,173,87,.07);
+  font-size:22px;
+}
+
+.card-label{
+  color:#899691;
+  font-size:13px;
+  margin-top:17px;
+}
+
+.card-value{
+  font-family:'Manrope',sans-serif;
+  font-size:25px;
+  font-weight:800;
+  letter-spacing:-1px;
   margin-top:4px;
 }
 
-/* =========================
-   MODAL
-========================= */
-
-.modal{
-  position:fixed;
-
-  inset:0;
-
-  z-index:100;
-
-  display:none;
-
-  align-items:flex-end;
-
-  background:
-    rgba(0,0,0,.75);
-
-  backdrop-filter:blur(8px);
-}
-
-.modal.show{
-  display:flex;
-}
-
-.sheet{
-  width:100%;
-
-  max-width:560px;
-
-  margin:auto;
-
-  padding:23px;
-
-  border-radius:
-    28px
-    28px
-    0
-    0;
-
-  background:
-    #111818;
-
-  border-top:
-    1px solid
-    rgba(255,255,255,.1);
-
-  box-shadow:
-    0 -20px 60px #000;
-}
-
-.sheet h3{
-  margin:0 0 15px;
-
-  font-size:20px;
-}
-
-.field{
-  margin:11px 0;
-}
-
-.field label{
-  display:block;
-
-  color:var(--muted);
-
+.card-link{
+  position:absolute;
+  bottom:20px;
+  left:21px;
+  color:#64736e;
   font-size:11px;
-
-  margin-bottom:6px;
-}
-
-.field input,
-.field select{
-  width:100%;
-
-  padding:13px;
-
-  border-radius:14px;
-
-  border:
-    1px solid
-    rgba(255,255,255,.1);
-
-  background:
-    #0b1010;
-
-  color:white;
-
-  outline:none;
-}
-
-.actions{
-  display:flex;
-
-  gap:8px;
-
-  margin-top:18px;
-}
-
-.actions button{
-  flex:1;
 }
 
 /* =========================
    BOTTOM NAV
 ========================= */
 
-.nav{
+.bottom-nav{
   position:fixed;
-
-  left:50%;
+  left:0;
+  right:0;
   bottom:0;
-
-  transform:translateX(-50%);
-
-  width:min(560px,100%);
-
-  z-index:60;
-
+  height:82px;
+  z-index:100;
   display:grid;
-
-  grid-template-columns:
-    repeat(5,1fr);
-
-  padding:
-    9px
-    7px
-    calc(
-      9px +
-      env(safe-area-inset-bottom)
-    );
-
-  background:
-    rgba(8,12,12,.91);
-
-  backdrop-filter:
-    blur(25px);
-
-  border-top:
-    1px solid
-    rgba(255,255,255,.08);
+  grid-template-columns:repeat(5,1fr);
+  padding:8px 10px calc(8px + env(safe-area-inset-bottom));
+  background:rgba(5,9,8,.91);
+  border-top:1px solid rgba(255,255,255,.07);
+  backdrop-filter:blur(24px);
+  -webkit-backdrop-filter:blur(24px);
 }
 
-.nav button{
+.nav-item{
   border:0;
-
   background:none;
-
-  color:#697775;
-
-  padding:7px 2px;
-
-  border-radius:15px;
-
-  font-size:9px;
-
-  font-weight:700;
-}
-
-.nav button.active{
-  color:white;
-
-  background:
-    rgba(13,143,130,.17);
+  color:#697772;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:5px;
+  border-radius:19px;
+  font-family:'DM Sans',sans-serif;
 }
 
 .nav-icon{
-  display:block;
-
-  font-size:19px;
-
-  margin-bottom:3px;
+  font-size:22px;
+  line-height:1;
 }
 
-/* =========================
-   TOAST
-========================= */
+.nav-item span:last-child{
+  font-size:10px;
+  font-weight:600;
+}
 
-.toast{
-  position:fixed;
-
-  left:50%;
-  bottom:95px;
-
-  transform:translateX(-50%);
-
-  z-index:200;
-
-  display:none;
-
-  padding:11px 17px;
-
-  border-radius:30px;
-
-  background:#f7faf9;
-
-  color:#10201e;
-
-  font-size:12px;
-
-  font-weight:800;
-
+.nav-item.active{
+  color:#dff5ee;
+  background:linear-gradient(
+    145deg,
+    rgba(14,119,104,.38),
+    rgba(14,119,104,.12)
+  );
   box-shadow:
-    0 10px 30px #0008;
+    inset 0 1px 0 rgba(255,255,255,.05),
+    0 5px 20px rgba(14,119,104,.12);
+}
+
+.nav-item.active .nav-icon{
+  color:#b9eadf;
 }
 
 /* =========================
-   MOBILE
+   RESPONSIVE
 ========================= */
 
-@media(max-width:390px){
+@media(max-width:380px){
 
   .hero{
-    min-height:520px;
+    padding-left:25px;
+    padding-right:25px;
   }
 
-  .hero h1{
-    font-size:38px;
+  .hero h2{
+    font-size:45px;
   }
 
-  .photo-card{
-    min-height:205px;
+  .container{
+    padding:0 18px;
   }
 
-  .section-title{
+  .card{
+    padding:17px;
+  }
+
+  .card-value{
     font-size:22px;
   }
-
 }
-
 </style>
 </head>
 
 <body>
 
-<div class="app">
-
-<!-- ================= TOP ================= -->
-
+<!-- TOP BAR -->
 <header class="topbar">
 
-<div class="brand">
+  <div class="brand">
 
-<div class="logo">
-LB
-</div>
+    <div class="logo">
+      <div class="logo-mark">LI<span>FE</span></div>
+    </div>
 
-<div>
+    <div class="brand-text">
+      <h1>LIFEBOX</h1>
+      <p>YOUR LIFE. ONE PLACE.</p>
+    </div>
 
-<div class="brand-title">
-LIFEBOX
-</div>
+  </div>
 
-<div class="brand-sub">
-YOUR LIFE. ONE PLACE.
-</div>
-
-</div>
-
-</div>
-
-<button
-class="menu-btn"
-onclick="showPage('more',document.querySelectorAll('.nav button')[4])">
-
-☰
-
-</button>
+  <div class="menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
 
 </header>
 
 
-<!-- ================= HERO ================= -->
-
+<!-- HERO -->
 <section class="hero">
 
-<div class="hero-content">
+  <div class="hero-content">
 
-<div class="hero-kicker">
-✦ LIFE MANAGEMENT
-</div>
+    <div class="eyebrow">
+      <i></i>
+      LIFE MANAGEMENT
+    </div>
 
-<h1>
-Your Life.
-<span>One Place.</span>
-</h1>
+    <h2>
+      Your Life.<br>
+      <span>One Place.</span>
+    </h2>
 
-<p>
-Semua perkara penting dalam hidup anda,
-disusun dengan lebih mudah, kemas dan
-cantik dalam satu aplikasi.
-</p>
+    <p class="hero-description">
+      Semua perkara penting dalam hidup anda,
+      disusun dengan lebih mudah, kemas dan cantik
+      dalam satu aplikasi.
+    </p>
 
-<div class="hero-user">
+    <div class="welcome">
 
-<div class="avatar"></div>
+      <div class="avatar">
+        H
+      </div>
 
-<div>
+      <div>
+        <small>Selamat datang kembali</small>
+        <strong>Helmi</strong>
+      </div>
 
-<small>
-Selamat datang kembali
-</small>
+    </div>
 
-<b>
-Helmi
-</b>
-
-</div>
-
-</div>
-
-</div>
+  </div>
 
 </section>
 
 
-<main class="content">
+<main class="container">
 
-<!-- ================= HOME ================= -->
+  <!-- ATTENTION -->
 
-<section
-id="home"
-class="page active"
->
+  <section class="section">
 
+    <div class="section-head">
 
-<!-- ATTENTION -->
+      <div>
+        <div class="section-label">TODAY</div>
+        <div class="section-title">Perlu perhatian</div>
+      </div>
 
-<div class="section">
+      <div class="add">+ Tambah</div>
 
-<div class="section-head">
+    </div>
 
-<div>
+    <div class="attention">
 
-<div class="eyebrow">
-TODAY
-</div>
+      <div class="check">✓</div>
 
-<h2 class="section-title">
-Perlu perhatian
-</h2>
+      <div>
+        <h3>Tiada tugasan.</h3>
+        <p>Bagus! Semua nampak terkawal.</p>
+      </div>
 
-</div>
+    </div>
 
-<button
-class="section-link"
-onclick="openModal('task')">
+  </section>
 
-+ Tambah
 
-</button>
+  <!-- OVERVIEW -->
 
-</div>
+  <section class="overview">
 
+    <div class="section-label">OVERVIEW</div>
 
-<div
-id="tasks"
-class="list">
-</div>
+    <div class="section-title" style="margin-bottom:18px;">
+      Kehidupan anda
+    </div>
 
-</div>
+    <div class="cards">
 
+      <div class="card">
 
-<!-- LIFE AT A GLANCE -->
+        <div class="card-icon">RM</div>
 
-<div class="section">
+        <div class="card-label">
+          Baki kewangan
+        </div>
 
-<div class="section-head">
+        <div class="card-value">
+          RM 0.00
+        </div>
 
-<div>
+        <div class="card-link">
+          Lihat kewangan →
+        </div>
 
-<div class="eyebrow">
-OVERVIEW
-</div>
+      </div>
 
-<h2 class="section-title">
-Life at a glance
-</h2>
 
-</div>
+      <div class="card">
 
-</div>
+        <div class="card-icon">♧</div>
 
+        <div class="card-label">
+          Keluarga
+        </div>
 
-<div class="cards">
+        <div class="card-value">
+          0
+        </div>
 
+        <div class="card-link">
+          Lihat keluarga →
+        </div>
 
-<!-- MONEY -->
+      </div>
 
-<div
-class="photo-card"
-onclick="showPage('money',document.querySelectorAll('.nav button')[1])">
 
-<div
-class="photo-image money-image">
-</div>
+      <div class="card">
 
-<div class="photo-info">
+        <div class="card-icon">▱</div>
 
-<div class="photo-label">
-FINANCE
-</div>
+        <div class="card-label">
+          Kenderaan
+        </div>
 
-<div class="photo-title">
-Kewangan
-</div>
+        <div class="card-value">
+          0
+        </div>
 
-<div
-class="photo-value"
-id="balance">
-RM 0.00
-</div>
+        <div class="card-link">
+          Lihat kenderaan →
+        </div>
 
-</div>
+      </div>
 
-</div>
 
+      <div class="card">
 
-<!-- FAMILY -->
+        <div class="card-icon">▤</div>
 
-<div
-class="photo-card"
-onclick="showPage('family',document.querySelectorAll('.nav button')[2])">
+        <div class="card-label">
+          Dokumen
+        </div>
 
-<div
-class="photo-image family-image">
-</div>
+        <div class="card-value">
+          0
+        </div>
 
-<div class="photo-info">
+        <div class="card-link">
+          Lihat dokumen →
+        </div>
 
-<div class="photo-label">
-PEOPLE
-</div>
+      </div>
 
-<div class="photo-title">
-Keluarga
-</div>
+    </div>
 
-<div
-class="photo-value">
-
-<span id="familyCount">
-0
-</span>
- ahli
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- CAR -->
-
-<div
-class="photo-card"
-onclick="openModal('vehicle')">
-
-<div
-class="photo-image car-image">
-</div>
-
-<div class="photo-info">
-
-<div class="photo-label">
-MOBILITY
-</div>
-
-<div class="photo-title">
-Kenderaan
-</div>
-
-<div
-class="photo-value">
-
-<span id="vehicleCount">
-0
-</span>
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- DOCUMENT -->
-
-<div
-class="photo-card"
-onclick="showPage('docs',document.querySelectorAll('.nav button')[3])">
-
-<div
-class="photo-image doc-image">
-</div>
-
-<div class="photo-info">
-
-<div class="photo-label">
-IMPORTANT
-</div>
-
-<div class="photo-title">
-Dokumen
-</div>
-
-<div
-class="photo-value">
-
-<span id="docCount">
-0
-</span>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- QUICK -->
-
-<div class="section">
-
-<div class="section-head">
-
-<div>
-
-<div class="eyebrow">
-SHORTCUTS
-</div>
-
-<h2 class="section-title">
-Akses pantas
-</h2>
-
-</div>
-
-</div>
-
-
-<div class="quick">
-
-
-<button onclick="openModal('money')">
-
-<div class="quick-icon">
-RM
-</div>
-
-<label>
-Duit
-</label>
-
-</button>
-
-
-<button onclick="openModal('family')">
-
-<div class="quick-icon">
-♧
-</div>
-
-<label>
-Keluarga
-</label>
-
-</button>
-
-
-<button onclick="openModal('vehicle')">
-
-<div class="quick-icon">
-🚘
-</div>
-
-<label>
-Kenderaan
-</label>
-
-</button>
-
-
-<button onclick="openModal('doc')">
-
-<div class="quick-icon">
-▤
-</div>
-
-<label>
-Dokumen
-</label>
-
-</button>
-
-</div>
-
-</div>
-
-
-<!-- AI -->
-
-<div class="section">
-
-<div class="ai">
-
-<div class="ai-badge">
-LIFE AI
-</div>
-
-<h3>
-Your personal life assistant.
-</h3>
-
-<p>
-Tanya sesuatu dan dapatkan cadangan
-untuk mengurus kehidupan harian anda.
-</p>
-
-<textarea
-id="aiQuestion"
-placeholder="Contoh: Apa yang perlu saya buat sebelum bercuti?"
-></textarea>
-
-<button onclick="askAI()">
-Tanya LIFE AI
-</button>
-
-<div
-id="aiAnswer"
-class="answer">
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- ================= MONEY PAGE ================= -->
-
-<section
-id="money"
-class="page">
-
-<div class="section">
-
-<div class="section-head">
-
-<div>
-
-<div class="eyebrow">
-FINANCE
-</div>
-
-<h2 class="section-title">
-Kewangan
-</h2>
-
-</div>
-
-<button
-class="section-link"
-onclick="openModal('money')">
-
-+ Tambah
-
-</button>
-
-</div>
-
-
-<div class="dark-card">
-
-<small>
-BAKI SEMASA
-</small>
-
-<div
-class="photo-value"
-id="balance2"
-style="font-size:30px;margin-top:5px">
-
-RM 0.00
-
-</div>
-
-</div>
-
-
-<div
-class="section-title"
-style="margin-top:22px">
-
-Transaksi
-
-</div>
-
-<div
-id="moneyList"
-class="list">
-</div>
-
-</div>
-
-</section>
-
-
-<!-- ================= FAMILY PAGE ================= -->
-
-<section
-id="family"
-class="page">
-
-<div class="section">
-
-<div class="section-head">
-
-<div>
-
-<div class="eyebrow">
-PEOPLE
-</div>
-
-<h2 class="section-title">
-Keluarga
-</h2>
-
-</div>
-
-<button
-class="section-link"
-onclick="openModal('family')">
-
-+ Tambah
-
-</button>
-
-</div>
-
-
-<div
-id="familyList"
-class="list">
-</div>
-
-</div>
-
-</section>
-
-
-<!-- ================= DOCUMENT PAGE ================= -->
-
-<section
-id="docs"
-class="page">
-
-<div class="section">
-
-<div class="section-head">
-
-<div>
-
-<div class="eyebrow">
-IMPORTANT
-</div>
-
-<h2 class="section-title">
-Dokumen
-</h2>
-
-</div>
-
-<button
-class="section-link"
-onclick="openModal('doc')">
-
-+ Tambah
-
-</button>
-
-</div>
-
-
-<div
-id="docList"
-class="list">
-</div>
-
-</div>
-
-</section>
-
-
-<!-- ================= MORE ================= -->
-
-<section
-id="more"
-class="page">
-
-<div class="section">
-
-<div class="eyebrow">
-LIFEBOX
-</div>
-
-<h2 class="section-title">
-More
-</h2>
-
-
-<div class="list">
-
-
-<div
-class="dark-card row"
-onclick="openModal('vehicle')">
-
-<div>
-
-<b>
-🚘 Kenderaan
-</b>
-
-<small>
-Roadtax, servis dan maklumat kenderaan
-</small>
-
-</div>
-
-<span>
-›
-</span>
-
-</div>
-
-
-<div
-class="dark-card row"
-onclick="openModal('task')">
-
-<div>
-
-<b>
-🔔 Reminder
-</b>
-
-<small>
-Perkara penting yang perlu dibuat
-</small>
-
-</div>
-
-<span>
-›
-</span>
-
-</div>
-
-
-<div
-class="dark-card row"
-onclick="emergency()">
-
-<div>
-
-<b>
-🆘 Kecemasan
-</b>
-
-<small>
-Akses maklumat kecemasan
-</small>
-
-</div>
-
-<span>
-›
-</span>
-
-</div>
-
-
-<div
-class="dark-card row"
-onclick="exportData()">
-
-<div>
-
-<b>
-💾 Backup data
-</b>
-
-<small>
-Simpan salinan data LIFEBOX
-</small>
-
-</div>
-
-<span>
-›
-</span>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
+  </section>
 
 </main>
 
 
-<!-- ================= NAV ================= -->
+<!-- BOTTOM NAV -->
 
-<nav class="nav">
+<nav class="bottom-nav">
 
-<button
-class="active"
-onclick="showPage('home',this)">
+  <button class="nav-item active">
+    <div class="nav-icon">⌂</div>
+    <span>Home</span>
+  </button>
 
-<span class="nav-icon">
-⌂
-</span>
+  <button class="nav-item">
+    <div class="nav-icon">RM</div>
+    <span>Duit</span>
+  </button>
 
-Home
+  <button class="nav-item">
+    <div class="nav-icon">♧</div>
+    <span>Keluarga</span>
+  </button>
 
-</button>
+  <button class="nav-item">
+    <div class="nav-icon">▤</div>
+    <span>Dokumen</span>
+  </button>
 
-
-<button
-onclick="showPage('money',this)">
-
-<span class="nav-icon">
-RM
-</span>
-
-Duit
-
-</button>
-
-
-<button
-onclick="showPage('family',this)">
-
-<span class="nav-icon">
-♧
-</span>
-
-Keluarga
-
-</button>
-
-
-<button
-onclick="showPage('docs',this)">
-
-<span class="nav-icon">
-▤
-</span>
-
-Dokumen
-
-</button>
-
-
-<button
-onclick="showPage('more',this)">
-
-<span class="nav-icon">
-☰
-</span>
-
-More
-
-</button>
+  <button class="nav-item">
+    <div class="nav-icon">☰</div>
+    <span>More</span>
+  </button>
 
 </nav>
-
-</div>
-
-
-<!-- ================= MODAL ================= -->
-
-<div
-class="modal"
-id="modal">
-
-<div
-class="sheet"
-id="sheet">
-</div>
-
-</div>
-
-
-<div
-id="toast"
-class="toast">
-</div>
 
 
 <script>
 
-const KEY="lifebox_v1";
+const navItems = document.querySelectorAll('.nav-item');
 
-let db=JSON.parse(
-localStorage.getItem(KEY)
-||
-'{"tasks":[],"money":[],"family":[],"docs":[],"vehicles":[]}'
-);
+navItems.forEach(item => {
 
+  item.addEventListener('click', () => {
 
-function save(){
+    navItems.forEach(n => n.classList.remove('active'));
 
-localStorage.setItem(
-KEY,
-JSON.stringify(db)
-);
+    item.classList.add('active');
 
-render();
+  });
 
-}
-
-
-function moneyRM(n){
-
-return new Intl.NumberFormat(
-"ms-MY",
-{
-style:"currency",
-currency:"MYR"
-}
-).format(
-Number(n)||0
-);
-
-}
-
-
-function showPage(id,btn){
-
-document
-.querySelectorAll(".page")
-.forEach(
-page=>
-page.classList.remove("active")
-);
-
-
-document
-.getElementById(id)
-.classList.add("active");
-
-
-document
-.querySelectorAll(".nav button")
-.forEach(
-button=>
-button.classList.remove("active")
-);
-
-
-if(btn){
-btn.classList.add("active");
-}
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
 });
-
-render();
-
-}
-
-
-function toast(text){
-
-const el=
-document.getElementById("toast");
-
-el.textContent=text;
-
-el.style.display="block";
-
-setTimeout(
-()=>{
-el.style.display="none";
-},
-1800
-);
-
-}
-
-
-/* ================= RENDER ================= */
-
-function render(){
-
-const balance=
-db.money.reduce(
-(total,item)=>
-total+
-(
-item.type==="in"
-?Number(item.amount)
-:-Number(item.amount)
-),
-0
-);
-
-
-document.getElementById(
-"balance"
-).textContent=
-moneyRM(balance);
-
-
-document.getElementById(
-"balance2"
-).textContent=
-moneyRM(balance);
-
-
-document.getElementById(
-"familyCount"
-).textContent=
-db.family.length;
-
-
-document.getElementById(
-"vehicleCount"
-).textContent=
-db.vehicles.length;
-
-
-document.getElementById(
-"docCount"
-).textContent=
-db.docs.length;
-
-
-/* TASKS */
-
-document.getElementById(
-"tasks"
-).innerHTML=
-
-db.tasks.length
-
-?
-
-db.tasks.map(
-(item,index)=>`
-
-<div class="attention">
-
-<div class="attention-row">
-
-<div class="attention-icon">
-!
-</div>
-
-<div style="flex:1">
-
-<b>
-${item.title}
-</b>
-
-<p>
-${item.date||"Tiada tarikh"}
-</p>
-
-</div>
-
-<button
-class="section-link"
-onclick="del('tasks',${index})">
-
-Selesai
-
-</button>
-
-</div>
-
-</div>
-
-`
-).join("")
-
-:
-
-`
-<div class="attention">
-
-<div class="attention-row">
-
-<div class="attention-icon">
-✓
-</div>
-
-<div>
-
-<b>
-Tiada tugasan.
-</b>
-
-<p>
-Bagus! Semua nampak terkawal.
-</p>
-
-</div>
-
-</div>
-
-</div>
-`;
-
-
-/* MONEY */
-
-document.getElementById(
-"moneyList"
-).innerHTML=
-
-db.money.length
-
-?
-
-db.money.map(
-(item,index)=>`
-
-<div class="dark-card row">
-
-<div>
-
-<b>
-${item.note}
-</b>
-
-<small>
-${item.type==="in"
-?"Pendapatan"
-:"Perbelanjaan"}
-</small>
-
-</div>
-
-<strong
-style="
-color:
-${item.type==="in"
-?"#5dd5aa"
-:"#ef8585"};
-">
-
-${moneyRM(item.amount)}
-
-</strong>
-
-</div>
-
-`
-).join("")
-
-:
-
-`<div class="dark-card">
-<small>Belum ada transaksi.</small>
-</div>`;
-
-
-/* FAMILY */
-
-document.getElementById(
-"familyList"
-).innerHTML=
-
-db.family.length
-
-?
-
-db.family.map(
-(item,index)=>`
-
-<div class="dark-card row">
-
-<div>
-
-<b>
-${item.name}
-</b>
-
-<small>
-${item.relation||"Ahli keluarga"}
-</small>
-
-</div>
-
-<button
-class="section-link"
-onclick="del('family',${index})">
-
-Buang
-
-</button>
-
-</div>
-
-`
-).join("")
-
-:
-
-`<div class="dark-card">
-<small>Belum ada ahli keluarga.</small>
-</div>`;
-
-
-/* DOCUMENTS */
-
-document.getElementById(
-"docList"
-).innerHTML=
-
-db.docs.length+db.vehicles.length
-
-?
-
-[
-...db.docs.map(
-(item,index)=>`
-
-<div class="dark-card row">
-
-<div>
-
-<b>
-📄 ${item.name}
-</b>
-
-<small>
-Tamat:
-${item.expiry||"Tiada tarikh"}
-</small>
-
-</div>
-
-<button
-class="section-link"
-onclick="del('docs',${index})">
-
-Buang
-
-</button>
-
-</div>
-
-`),
-
-...db.vehicles.map(
-(item,index)=>`
-
-<div class="dark-card row">
-
-<div>
-
-<b>
-🚘 ${item.name}
-</b>
-
-<small>
-Roadtax:
-${item.roadtax||"Tiada tarikh"}
-</small>
-
-</div>
-
-<button
-class="section-link"
-onclick="del('vehicles',${index})">
-
-Buang
-
-</button>
-
-</div>
-
-`)
-].join("")
-
-:
-
-`<div class="dark-card">
-<small>Belum ada dokumen.</small>
-</div>`;
-
-}
-
-
-/* DELETE */
-
-function del(type,index){
-
-db[type].splice(
-index,
-1
-);
-
-save();
-
-toast(
-"Berjaya dibuang"
-);
-
-}
-
-
-/* ================= MODALS ================= */
-
-function openModal(type){
-
-const forms={
-
-task:[
-"🔔 Tambah Reminder",
-
-`
-<div class="field">
-
-<label>
-Perkara
-</label>
-
-<input
-id="f1"
-placeholder="Contoh: Bayar bil elektrik">
-
-</div>
-
-<div class="field">
-
-<label>
-Tarikh
-</label>
-
-<input
-id="f2"
-type="date">
-
-</div>
-
-<div class="field">
-
-<label>
-Keutamaan
-</label>
-
-<select id="f3">
-
-<option value="high">
-Tinggi
-</option>
-
-<option value="mid">
-Sederhana
-</option>
-
-<option value="low">
-Rendah
-</option>
-
-</select>
-
-</div>
-`
-],
-
-
-money:[
-"💰 Tambah Transaksi",
-
-`
-<div class="field">
-
-<label>
-Catatan
-</label>
-
-<input
-id="f1"
-placeholder="Contoh: Gaji / Belanja">
-
-</div>
-
-<div class="field">
-
-<label>
-Amaun RM
-</label>
-
-<input
-id="f2"
-type="number"
-step="0.01">
-
-</div>
-
-<div class="field">
-
-<label>
-Jenis
-</label>
-
-<select id="f3">
-
-<option value="in">
-Pendapatan
-</option>
-
-<option value="out">
-Perbelanjaan
-</option>
-
-</select>
-
-</div>
-`
-],
-
-
-family:[
-"👨‍👩‍👧 Tambah Keluarga",
-
-`
-<div class="field">
-
-<label>
-Nama
-</label>
-
-<input id="f1">
-
-</div>
-
-<div class="field">
-
-<label>
-Hubungan
-</label>
-
-<input
-id="f2"
-placeholder="Contoh: Isteri">
-
-</div>
-`
-],
-
-
-doc:[
-"📄 Tambah Dokumen",
-
-`
-<div class="field">
-
-<label>
-Nama dokumen
-</label>
-
-<input
-id="f1"
-placeholder="Contoh: Geran / Warranty">
-
-</div>
-
-<div class="field">
-
-<label>
-Tarikh tamat
-</label>
-
-<input
-id="f2"
-type="date">
-
-</div>
-`
-],
-
-
-vehicle:[
-"🚘 Tambah Kenderaan",
-
-`
-<div class="field">
-
-<label>
-Nama kenderaan
-</label>
-
-<input
-id="f1"
-placeholder="Contoh: Myvi">
-
-</div>
-
-<div class="field">
-
-<label>
-Roadtax tamat
-</label>
-
-<input
-id="f2"
-type="date">
-
-</div>
-`
-]
-
-};
-
-
-const form=forms[type];
-
-
-document.getElementById(
-"sheet"
-).innerHTML=
-
-`
-
-<h3>
-${form[0]}
-</h3>
-
-${form[1]}
-
-<div class="actions">
-
-<button
-class="btn ghost"
-onclick="closeModal()">
-
-Batal
-
-</button>
-
-<button
-class="btn primary"
-onclick="submitForm('${type}')">
-
-Simpan
-
-</button>
-
-</div>
-
-`;
-
-
-document
-.getElementById("modal")
-.classList.add("show");
-
-}
-
-
-function closeModal(){
-
-document
-.getElementById("modal")
-.classList.remove("show");
-
-}
-
-
-/* ================= SAVE FORM ================= */
-
-function submitForm(type){
-
-const a=
-document
-.getElementById("f1")
-.value
-.trim();
-
-const b=
-document
-.getElementById("f2")
-.value;
-
-const c=
-document
-.getElementById("f3")
-?.value;
-
-
-if(!a){
-
-toast(
-"Sila isi maklumat"
-);
-
-return;
-
-}
-
-
-if(type==="task"){
-
-db.tasks.unshift({
-title:a,
-date:b,
-priority:c
-});
-
-}
-
-
-if(type==="money"){
-
-db.money.unshift({
-note:a,
-amount:Number(b),
-type:c
-});
-
-}
-
-
-if(type==="family"){
-
-db.family.unshift({
-name:a,
-relation:b
-});
-
-}
-
-
-if(type==="doc"){
-
-db.docs.unshift({
-name:a,
-expiry:b
-});
-
-}
-
-
-if(type==="vehicle"){
-
-db.vehicles.unshift({
-name:a,
-roadtax:b
-});
-
-}
-
-
-closeModal();
-
-save();
-
-toast(
-"Berjaya disimpan"
-);
-
-}
-
-
-/* ================= LIFE AI ================= */
-
-function askAI(){
-
-const q=
-document
-.getElementById("aiQuestion")
-.value
-.trim();
-
-const output=
-document
-.getElementById("aiAnswer");
-
-
-if(!q){
-
-output.textContent=
-"Taip soalan dahulu.";
-
-return;
-
-}
-
-
-let answer=
-"Cadangan LIFE AI: pecahkan perkara itu kepada beberapa langkah kecil, tentukan keutamaan dan masukkan perkara penting ke dalam Reminder LIFEBOX.";
-
-
-if(
-/cuti|bercuti|travel|percutian/i
-.test(q)
-){
-
-answer=
-"Untuk bercuti, semak bajet, pengangkutan, tempat tinggal, dokumen, barang penting, cuaca dan jadual perjalanan. Simpan semua tarikh penting dalam LIFEBOX.";
-
-}
-
-
-else if(
-/duit|bajet|belanja|gaji|kewangan/i
-.test(q)
-){
-
-answer=
-"Mulakan dengan pendapatan, komitmen tetap dan perbelanjaan harian. Kemudian tetapkan had belanja dan asingkan simpanan kecemasan.";
-
-}
-
-
-else if(
-/kereta|motor|servis|roadtax/i
-.test(q)
-){
-
-answer=
-"Semak servis, minyak, tayar, brek, bateri, insurans dan roadtax. Masukkan tarikh penting ke LIFEBOX supaya tidak terlepas.";
-
-}
-
-
-output.textContent=
-answer;
-
-}
-
-
-/* ================= EMERGENCY ================= */
-
-function emergency(){
-
-alert(
-`KAD KECEMASAN
-
-Untuk kecemasan sebenar di Malaysia,
-hubungi 999.
-
-Versi seterusnya LIFEBOX boleh
-menambah kontak kecemasan keluarga.`
-);
-
-}
-
-
-/* ================= BACKUP ================= */
-
-function exportData(){
-
-const blob=
-new Blob(
-[
-JSON.stringify(
-db,
-null,
-2
-)
-],
-{
-type:"application/json"
-}
-);
-
-
-const a=
-document.createElement("a");
-
-a.href=
-URL.createObjectURL(blob);
-
-a.download=
-"lifebox-backup.json";
-
-a.click();
-
-toast(
-"Backup berjaya dibuat"
-);
-
-}
-
-
-/* ================= START ================= */
-
-render();
 
 </script>
 
 </body>
-  </html>
+</html>
