@@ -1354,27 +1354,40 @@ function saveFinanceData(data) {
 
 }
 function addIncome() {
-  const amount = prompt('Masukkan jumlah pendapatan (RM):');
+    const amount = prompt('Masukkan jumlah pendapatan:');
 
-  if (!amount) return;
+    if (!amount) return;
 
-  const value = parseFloat(amount);
+    const value = parseFloat(amount);
 
-  if (isNaN(value) || value <= 0) {
-    alert('Masukkan jumlah yang betul.');
-    return;
-  }
+    if (isNaN(value) || value <= 0) {
+        alert('Masukkan jumlah yang betul.');
+        return;
+    }
 
-  const data = getFinanceData();
+    const category = prompt(
+        'Kategori pendapatan:\n\n' +
+        '1. Gaji\n' +
+        '2. Bisnes\n' +
+        '3. Bonus\n' +
+        '4. Pelaburan\n' +
+        '5. Lain-lain\n\n' +
+        'Masukkan kategori:'
+    );
 
-  data.push({
-    type: 'income',
-    amount: value,
-    date: new Date().toLocaleDateString('ms-MY')
-  });
+    if (!category) return;
 
-  saveFinanceData(data);
-  updateFinance();
+    const data = getFinanceData();
+
+    data.push({
+        type: 'income',
+        amount: value,
+        category: category,
+        date: new Date().toLocaleDateString('ms-MY')
+    });
+
+    saveFinanceData(data);
+    updateFinance();
 }
 
 
