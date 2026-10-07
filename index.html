@@ -1401,7 +1401,35 @@ function addExpense() {
   saveFinanceData(data);
   updateFinance();
   }
-  
+  function editFinance(index) {
+    const data = getFinanceData();
+    const item = data[index];
+
+    if (!item) return;
+
+    const currentAmount = item.amount;
+
+    const newAmount = prompt(
+        item.type === 'income'
+            ? 'Edit jumlah pendapatan:'
+            : 'Edit jumlah perbelanjaan:',
+        currentAmount
+    );
+
+    if (newAmount === null) return;
+
+    const value = parseFloat(newAmount);
+
+    if (isNaN(value) || value <= 0) {
+        alert('Masukkan jumlah yang betul.');
+        return;
+    }
+
+    data[index].amount = value;
+
+    saveFinanceData(data);
+    updateFinance();
+  }
 
 
 
