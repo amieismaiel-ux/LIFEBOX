@@ -1461,30 +1461,69 @@ function updateFinance() {
     }
 
     transactionsEl.innerHTML =
-        data.slice().reverse().map(item => `
+    data.slice().reverse().map((item, index) => `
+        <div class="finance-transaction">
 
-            <div class="finance-transaction">
+            <div>
+                <b>
+                    ${item.type === 'income'
+                        ? 'Pendapatan'
+                        : 'Perbelanjaan'}
+                </b>
 
-                <div>
-                    <b>
-                        ${item.type === 'income'
-                            ? 'Pendapatan'
-                            : 'Perbelanjaan'}
-                    </b>
+                <small>${item.date}</small>
+            </div>
 
-                    <small>${item.date}</small>
-                </div>
+            <div style="display:flex;align-items:center;gap:12px;">
 
                 <strong class="${item.type}">
-                    ${item.type === 'income' ? '+' : '-'}
+                    ${item.type === 'income'
+                        ? '+'
+                        : '-'}
                     RM ${item.amount.toFixed(2)}
                 </strong>
 
+                <button
+                    type="button"
+                    onclick="deleteFinanceTransaction(${data.length - 1 - index})"
+                    style="
+                        border:none;
+                        background:rgba(255,80,80,.15);
+                        color:#ff9b9b;
+                        padding:8px 12px;
+                        border-radius:10px;
+                        font-weight:700;
+                        cursor:pointer;
+                    "
+                >
+                    Padam
+                </button>
+
             </div>
 
-        `).join('');
+        </div>
+    `).join('');
 
 }
+
+function deleteFinanceTransaction(index) {
+
+    const data = getFinanceData();
+
+    if (!data[index]) return;
+
+    const confirmDelete = confirm(
+        'Padam transaksi ini?'
+    );
+
+    if (!confirmDelete) return;
+
+    data.splice(index, 1);
+
+    saveFinanceData(data);
+
+    updateFinance();
+  }
 </script>
 </body>
 </html>
