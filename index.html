@@ -1458,7 +1458,30 @@ if (!category) return;
 
 
 
-function updateFinance() {
+function getFinanceCategory(type, category) {
+  const incomeCategories = {
+    '1': 'Gaji',
+    '2': 'Bisnes',
+    '3': 'Bonus',
+    '4': 'Pelaburan',
+    '5': 'Lain-lain'
+  };
+
+  const expenseCategories = {
+    '1': 'Makanan',
+    '2': 'Bil',
+    '3': 'Minyak',
+    '4': 'Rumah',
+    '5': 'Lain-lain'
+  };
+
+  const categories = type === 'income'
+    ? incomeCategories
+    : expenseCategories;
+
+  return categories[String(category)] || 'Lain-lain';
+}
+  function updateFinance() {
 
     const data = getFinanceData();
 
@@ -1526,8 +1549,8 @@ function updateFinance() {
 
                 <small>${item.date}</small>
                 <small style="display:block;color:#d8b45a;margin-top:4px;">
-             Kategori: ${item.category || 
-             'Lain-lain'}
+             Kategori: $
+               {getFinanceCategory(item.type, item.category)}
             </small>
             </div>
 
