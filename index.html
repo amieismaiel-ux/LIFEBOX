@@ -1510,7 +1510,21 @@ function updateFinance() {
                         : '-'}
                     RM ${item.amount.toFixed(2)}
                 </strong>
-
+<button
+    type="button"
+    onclick="editFinance(data.indexOf(item))"
+    style="
+        border:none;
+        background:rgba(255,255,255,.08);
+        color:#7fffd4;
+        padding:8px 12px;
+        border-radius:10px;
+        font-weight:700;
+        cursor:pointer;
+    "
+>
+    Edit
+</button>
                 <button
                     type="button"
                     onclick="deleteFinanceTransaction(${data.length - 1 - index})"
