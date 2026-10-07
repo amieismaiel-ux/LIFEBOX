@@ -1403,11 +1403,23 @@ function addExpense() {
     return;
   }
 
+  const category = prompt(
+    'Kategori perbelanjaan:\n\n' +
+    '1. Makanan\n' +
+    '2. Bil\n' +
+    '3. Minyak\n' +
+    '4. Rumah\n' +
+    '5. Lain-lain\n\n' +
+    'Masukkan kategori:'
+);
+
+if (!category) return;
   const data = getFinanceData();
 
   data.push({
     type: 'expense',
     amount: value,
+    category: category,
     date: new Date().toLocaleDateString('ms-MY')
   });
 
