@@ -1016,8 +1016,13 @@ navItems.forEach(item => {
 
 <script>
 function showSection(section) {
+
+    if (section === 'duit') {
+        openFinance();
+        return;
+    }
+
     const sections = {
-        duit: 'Bahagian Kewangan',
         keluarga: 'Bahagian Keluarga',
         kenderaan: 'Bahagian Kenderaan',
         dokumen: 'Bahagian Dokumen'
@@ -1026,6 +1031,243 @@ function showSection(section) {
     if (sections[section]) {
         alert(sections[section] + ' akan dibuka.');
     }
-  }
-</script></body>
+}
+
+function openFinance() {
+
+    const existing = document.getElementById('financeModal');
+
+    if (existing) {
+        existing.remove();
+        return;
+    }
+
+    const modal = document.createElement('div');
+
+    modal.id = 'financeModal';
+
+    modal.innerHTML = `
+        <div class="finance-box">
+
+            <div class="finance-header">
+                <button onclick="closeFinance()">←</button>
+
+                <div>
+                    <small>FINANCE</small>
+                    <h2>Kewangan</h2>
+                </div>
+            </div>
+
+            <div class="finance-balance">
+                <small>BAKI SEMASA</small>
+                <div id="financeBalance">RM 0.00</div>
+            </div>
+
+            <div class="finance-actions">
+
+                <button onclick="addIncome()">
+                    <span>＋</span>
+                    <b>Pendapatan</b>
+                    <small>Tambah duit masuk</small>
+                </button>
+
+                <button onclick="addExpense()">
+                    <span>−</span>
+                    <b>Perbelanjaan</b>
+                    <small>Tambah duit keluar</small>
+                </button>
+
+            </div>
+
+            <div class="finance-section">
+                <h3>Ringkasan</h3>
+
+                <div class="finance-row">
+                    <span>Pendapatan</span>
+                    <strong id="financeIncome">RM 0.00</strong>
+                </div>
+
+                <div class="finance-row">
+                    <span>Perbelanjaan</span>
+                    <strong id="financeExpense">RM 0.00</strong>
+                </div>
+            </div>
+
+            <div class="finance-section">
+                <h3>Transaksi</h3>
+
+                <div id="financeTransactions">
+                    <p class="empty-finance">
+                        Belum ada transaksi.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    updateFinance();
+}
+
+function closeFinance() {
+    const modal = document.getElementById('financeModal');
+
+    if (modal) {
+        modal.remove();
+    }
+}
+
+function getFinanceData() {
+
+    return JSON.parse(
+        localStorage.getItem('lifeboxFinance') || '[]'
+    );
+
+}
+
+function saveFinanceData(data) {
+
+    localStorage.setItem(
+        'lifeboxFinance',
+        JSON.stringify(data)
+    );
+
+}
+
+function addIncome() {
+
+    const amount = prompt('Masukkan jumlah pendapatan (RM):');
+
+    if (!amount) return;
+
+    const value = parseFloat(amount);
+
+    if (isNaN(value) || value <= 0) {
+        alert('Masukkan jumlah yang betul.');
+        return;
+    }
+
+    const data = getFinanceData();
+
+    data.push({
+        type: 'income',
+        amount: value,
+        date: new Date().toLocaleDateString('ms-MY')
+    });
+
+    saveFinanceData(data);
+
+    updateFinance();
+}
+
+function addExpense() {
+
+    const amount = prompt('Masukkan jumlah perbelanjaan (RM):');
+
+    if (!amount) return;
+
+    const value = parseFloat(amount);
+
+    if (isNaN(value) || value <= 0) {
+        alert('Masukkan jumlah yang betul.');
+        return;
+    }
+
+    const data = getFinanceData();
+
+    data.push({
+        type: 'expense',
+        amount: value,
+        date: new Date().toLocaleDateString('ms-MY')
+    });
+
+    saveFinanceData(data);
+
+    updateFinance();
+}
+
+function updateFinance() {
+
+    const data = getFinanceData();
+
+    let income = 0;
+    let expense = 0;
+
+    data.forEach(item => {
+
+        if (item.type === 'income') {
+            income += item.amount;
+        }
+
+        if (item.type === 'expense') {
+            expense += item.amount;
+        }
+
+    });
+
+    const balance = income - expense;
+
+    const balanceEl =
+        document.getElementById('financeBalance');
+
+    const incomeEl =
+        document.getElementById('financeIncome');
+
+    const expenseEl =
+        document.getElementById('financeExpense');
+
+    const transactionsEl =
+        document.getElementById('financeTransactions');
+
+    if (!balanceEl) return;
+
+    balanceEl.textContent =
+        'RM ' + balance.toFixed(2);
+
+    incomeEl.textContent =
+        'RM ' + income.toFixed(2);
+
+    expenseEl.textContent =
+        'RM ' + expense.toFixed(2);
+
+    if (data.length === 0) {
+
+        transactionsEl.innerHTML = `
+            <p class="empty-finance">
+                Belum ada transaksi.
+            </p>
+        `;
+
+        return;
+    }
+
+    transactionsEl.innerHTML =
+        data.slice().reverse().map(item => `
+
+            <div class="finance-transaction">
+
+                <div>
+                    <b>
+                        ${item.type === 'income'
+                            ? 'Pendapatan'
+                            : 'Perbelanjaan'}
+                    </b>
+
+                    <small>${item.date}</small>
+                </div>
+
+                <strong class="${item.type}">
+                    ${item.type === 'income' ? '+' : '-'}
+                    RM ${item.amount.toFixed(2)}
+                </strong>
+
+            </div>
+
+        `).join('');
+
+}
+</script>
+</body>
 </html>
