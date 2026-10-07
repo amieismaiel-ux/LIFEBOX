@@ -870,7 +870,8 @@ body{
     <div class="cards">
 
   <!-- KEWANGAN -->
-  <div class="photo-card finance-card"onclick="showsection>
+  <div class="photo-card finance-card"
+    onclick="showSection('duit')">
     <div class="photo-overlay"></div>
 
     <div class="photo-content">
@@ -891,7 +892,8 @@ body{
 
 
   <!-- KELUARGA -->
-  <div class="photo-card family-card">
+  <div class="photo-card family-card"
+    onclick="showSection('keluarga')">
     <div class="photo-overlay"></div>
 
     <div class="photo-content">
@@ -912,7 +914,8 @@ body{
 
 
   <!-- KENDERAAN -->
-  <div class="photo-card vehicle-card">
+  <div class="photo-card vehicle-card"
+    onclick="showSection('kenderaan')">
     <div class="photo-overlay"></div>
 
     <div class="photo-content">
@@ -933,7 +936,8 @@ body{
 
 
   <!-- DOKUMEN -->
-  <div class="photo-card document-card">
+  <div class="photo-card document-card"
+    onclick="showSection('dokumen')">
     <div class="photo-overlay"></div>
 
     <div class="photo-content">
@@ -1010,5 +1014,25 @@ navItems.forEach(item => {
 
 </script>
 
-</body>
+<script>
+function showSection(section) {
+
+    if (section === 'duit') {
+        alert('Bahagian Kewangan akan dibuka di sini.');
+    }
+
+    if (section === 'keluarga') {
+        alert('Bahagian Keluarga akan dibuka di sini.');
+    }
+
+    if (section === 'kenderaan') {
+        alert('Bahagian Kenderaan akan dibuka di sini.');
+    }
+
+    if (section === 'dokumen') {
+        alert('Bahagian Dokumen akan dibuka di sini.');
+    }
+
+}
+</script></body>
 </html>
