@@ -926,7 +926,56 @@ body{
   color: #999;
   background: rgba(255,255,255,.035);
   border-radius: 16px;
-  }</style>
+  }@media (max-width: 600px) {
+    .finance-panel {
+        padding: 20px 12px 100px;
+    }
+
+    .finance-panel h1 {
+        font-size: 30px;
+    }
+
+    .finance-balance {
+        padding: 20px;
+        border-radius: 22px;
+    }
+
+    .finance-balance-amount {
+        font-size: 30px;
+    }
+
+    .finance-actions {
+        gap: 10px;
+    }
+
+    .finance-btn {
+        min-height: 60px;
+        padding: 10px 8px;
+        font-size: 14px;
+    }
+
+    .finance-summary-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .finance-summary-card {
+        padding: 14px;
+    }
+
+    .finance-summary-card strong {
+        font-size: 18px;
+    }
+
+    .finance-transaction {
+        padding: 16px;
+        border-radius: 18px;
+    }
+
+    .finance-transaction strong {
+        font-size: 16px;
+    }
+    }</style>
 </head>
 
 <body>
