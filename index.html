@@ -878,16 +878,27 @@ body{
 }
 
 .finance-transaction {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  padding: 16px;
-  margin-bottom: 10px;
-  border-radius: 16px;
-  background: rgba(255,255,255,.045);
-  border: 1px solid rgba(255,255,255,.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+    padding: 18px;
+    margin-bottom: 12px;
+    border-radius: 20px;
+    background: linear-gradient(
+        145deg,
+        rgba(255,255,255,.055),
+        rgba(255,255,255,.025)
+    );
+    border: 1px solid rgba(255,255,255,.09);
+    box-shadow: 0 8px 24px rgba(0,0,0,.18);
+    transition: transform .2s ease, border-color .2s ease;
 }
+
+.finance-transaction:hover {
+    transform: translateY(-2px);
+    border-color: rgba(214,176,82,.35);
+  }
 
 .finance-transaction small {
   display: block;
