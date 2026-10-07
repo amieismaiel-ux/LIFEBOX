@@ -3,494 +3,483 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#0f766e">
+<meta name="theme-color" content="#0b7a70">
 <meta name="description" content="LIFEBOX — satu aplikasi untuk urus kehidupan.">
 <link rel="manifest" href="manifest.json">
 <title>LIFEBOX — Life Manager</title>
 
 <style>
 :root{
-  --primary:#0b7a70;
-  --primary2:#10a394;
-  --primarySoft:#e8f7f4;
-  --bg:#f4f7f7;
-  --card:#fff;
-  --text:#142d2b;
-  --muted:#71807f;
-  --danger:#e05252;
-  --warning:#d89431;
-  --success:#16805c;
-  --line:#e7eceb;
-  --shadow:0 10px 28px rgba(17,44,42,.07)
+--primary:#08786e;
+--primary2:#14a293;
+--soft:#eaf7f4;
+--bg:#f4f7f7;
+--card:#fff;
+--text:#173331;
+--muted:#71817f;
+--line:#e4ebea;
+--red:#dc5b5b;
+--orange:#d99535;
+--green:#19845d;
+--shadow:0 10px 30px rgba(20,55,52,.07)
 }
 
 *{box-sizing:border-box}
 
 body{
-  margin:0;
-  background:var(--bg);
-  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,
-  "Segoe UI",Roboto,sans-serif;
-  color:var(--text)
+margin:0;
+background:var(--bg);
+font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,
+"Segoe UI",Roboto,sans-serif;
+color:var(--text)
 }
 
-button,input,select,textarea{
-  font:inherit
-}
-
-button{
-  cursor:pointer
-}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
 
 .app{
-  max-width:520px;
-  margin:auto;
-  min-height:100vh;
-  padding-bottom:96px;
-  background:var(--bg)
+max-width:520px;
+margin:auto;
+min-height:100vh;
+padding-bottom:96px
 }
 
-/* ================= HEADER ================= */
+/* HEADER */
 
 .top{
-  position:relative;
-  overflow:hidden;
-  color:#fff;
-  padding:20px 18px 28px;
-  border-radius:0 0 32px 32px;
-  background:linear-gradient(
-    145deg,
-    #086f67 0%,
-    #0b8277 55%,
-    #159b8e 100%
-  );
-  box-shadow:0 8px 25px rgba(7,103,95,.18)
-}
-
-.top:after{
-  content:"";
-  position:absolute;
-  width:190px;
-  height:190px;
-  border-radius:50%;
-  right:-75px;
-  top:-85px;
-  background:rgba(255,255,255,.08)
+position:relative;
+overflow:hidden;
+color:#fff;
+padding:22px 20px 30px;
+border-radius:0 0 34px 34px;
+background:
+linear-gradient(145deg,#05685f 0%,#087b71 48%,#16a092 100%);
+box-shadow:0 12px 30px rgba(5,103,94,.18)
 }
 
 .top:before{
-  content:"";
-  position:absolute;
-  width:100px;
-  height:100px;
-  border-radius:50%;
-  right:80px;
-  bottom:-65px;
-  background:rgba(255,255,255,.05)
+content:"";
+position:absolute;
+width:210px;
+height:210px;
+border-radius:50%;
+right:-80px;
+top:-90px;
+background:rgba(255,255,255,.08)
+}
+
+.top:after{
+content:"";
+position:absolute;
+width:120px;
+height:120px;
+border-radius:50%;
+right:95px;
+bottom:-75px;
+background:rgba(255,255,255,.05)
 }
 
 .brand{
-  position:relative;
-  z-index:1;
-  display:flex;
-  align-items:center;
-  gap:11px
+position:relative;
+z-index:1;
+display:flex;
+align-items:center;
+gap:12px
 }
 
 .logo{
-  width:46px;
-  height:46px;
-  border-radius:15px;
-  background:#fff;
-  color:var(--primary);
-  display:grid;
-  place-items:center;
-  font-weight:900;
-  font-size:18px;
-  box-shadow:0 6px 18px #0002
+width:50px;
+height:50px;
+border-radius:17px;
+background:#fff;
+color:var(--primary);
+display:grid;
+place-items:center;
+font-size:19px;
+font-weight:900;
+box-shadow:0 7px 20px #0002
 }
 
 .brand h1{
-  font-size:20px;
-  margin:0;
-  letter-spacing:.3px
+margin:0;
+font-size:21px;
+letter-spacing:.3px
 }
 
 .brand small{
-  opacity:.78;
-  font-size:11px
+font-size:11px;
+opacity:.78
 }
 
 .hello{
-  position:relative;
-  z-index:1;
-  margin-top:25px;
-  font-size:13px;
-  opacity:.84
+position:relative;
+z-index:1;
+margin-top:27px;
+font-size:14px;
+opacity:.85
 }
 
 .top h2{
-  position:relative;
-  z-index:1;
-  margin:3px 0 0;
-  font-size:28px;
-  letter-spacing:-.5px
+position:relative;
+z-index:1;
+font-size:30px;
+margin:3px 0 0;
+letter-spacing:-1px
 }
 
-/* ================= CONTENT ================= */
+/* CONTENT */
 
 .content{
-  padding:18px
+padding:18px
 }
 
 .section-title{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin:20px 1px 11px
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin:21px 1px 11px
 }
 
 .section-title h3{
-  margin:0;
-  font-size:17px;
-  letter-spacing:-.2px
+margin:0;
+font-size:17px;
+letter-spacing:-.2px
 }
 
 .btn{
-  border:0;
-  border-radius:13px;
-  padding:10px 14px;
-  font-weight:750;
-  transition:.15s
-}
-
-.primary{
-  background:var(--primary);
-  color:#fff;
-  box-shadow:0 6px 14px #0b7a7026
-}
-
-.ghost{
-  background:var(--primarySoft);
-  color:var(--primary)
+border:0;
+border-radius:13px;
+padding:10px 15px;
+font-weight:750;
+transition:.15s
 }
 
 .btn:active{
-  transform:scale(.97)
+transform:scale(.96)
 }
 
-/* ================= CARDS ================= */
+.primary{
+background:var(--primary);
+color:#fff;
+box-shadow:0 6px 15px #08786e30
+}
+
+.ghost{
+background:var(--soft);
+color:var(--primary)
+}
+
+/* CARDS */
 
 .grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:11px
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:11px
 }
 
 .card{
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:20px;
-  padding:16px;
-  box-shadow:var(--shadow)
+background:#fff;
+border:1px solid var(--line);
+border-radius:21px;
+padding:16px;
+box-shadow:var(--shadow)
 }
 
 .summary{
-  min-height:122px;
-  position:relative;
-  overflow:hidden
+height:126px;
+position:relative;
+overflow:hidden
 }
 
 .summary:after{
-  content:"";
-  position:absolute;
-  width:70px;
-  height:70px;
-  border-radius:50%;
-  right:-25px;
-  bottom:-30px;
-  background:var(--primarySoft)
-}
-
-.stat{
-  font-size:25px;
-  font-weight:850;
-  margin-top:6px;
-  letter-spacing:-.7px
-}
-
-.muted{
-  color:var(--muted);
-  font-size:12px
-}
-
-.icon{
-  font-size:23px;
-  display:inline-block
-}
-
-.summary .muted{
-  margin-top:5px
+content:"";
+position:absolute;
+width:72px;
+height:72px;
+border-radius:50%;
+right:-23px;
+bottom:-27px;
+background:var(--soft)
 }
 
 .summary .stat{
-  position:relative;
-  z-index:1
+position:relative;
+z-index:1
 }
 
-/* ================= REMINDER ================= */
+.stat{
+font-size:25px;
+font-weight:850;
+margin-top:6px;
+letter-spacing:-.7px
+}
+
+.muted{
+font-size:12px;
+color:var(--muted)
+}
+
+/* REALISTIC MINI VISUALS */
+
+.visual{
+width:48px;
+height:48px;
+border-radius:16px;
+overflow:hidden;
+display:grid;
+place-items:center;
+background:#eef6f4;
+flex:none
+}
+
+.visual svg{
+width:100%;
+height:100%;
+display:block
+}
+
+.visual-lg{
+width:58px;
+height:58px;
+border-radius:18px
+}
+
+/* TASK */
 
 .task{
-  display:flex;
-  gap:12px;
-  align-items:center;
-  margin-bottom:9px
+display:flex;
+align-items:center;
+gap:12px;
+margin-bottom:9px
 }
 
 .dot{
-  width:9px;
-  height:9px;
-  border-radius:50%;
-  background:var(--danger);
-  flex:none;
-  box-shadow:0 0 0 4px #e0525218
+width:10px;
+height:10px;
+border-radius:50%;
+background:var(--red);
+flex:none;
+box-shadow:0 0 0 4px #dc5b5b18
 }
 
 .dot.warn{
-  background:var(--warning);
-  box-shadow:0 0 0 4px #d8943118
+background:var(--orange);
+box-shadow:0 0 0 4px #d9953518
 }
 
 .dot.ok{
-  background:var(--success);
-  box-shadow:0 0 0 4px #16805c18
+background:var(--green);
+box-shadow:0 0 0 4px #19845d18
 }
 
 .task b{
-  display:block;
-  font-size:14px
+display:block;
+font-size:14px
 }
 
 .task span{
-  font-size:11px;
-  color:var(--muted)
+font-size:11px;
+color:var(--muted)
 }
 
 .empty{
-  text-align:center;
-  color:var(--muted);
-  padding:22px
+text-align:center;
+padding:23px;
+color:var(--muted)
 }
 
-/* ================= QUICK MENU ================= */
+/* QUICK */
 
 .quick{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:8px
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:8px
 }
 
 .quick button{
-  border:1px solid var(--line);
-  background:#fff;
-  border-radius:17px;
-  padding:12px 4px;
-  font-size:10px;
-  font-weight:750;
-  color:var(--text);
-  box-shadow:0 4px 14px #00000005
+border:1px solid var(--line);
+background:#fff;
+border-radius:18px;
+padding:9px 4px 11px;
+font-size:10px;
+font-weight:750;
+color:var(--text);
+box-shadow:0 5px 15px #00000006
 }
 
-.quick .icon{
-  display:block;
-  font-size:21px;
-  margin-bottom:5px
+.quick .visual{
+width:42px;
+height:42px;
+margin:0 auto 6px
 }
 
-/* ================= AI ================= */
+/* TODAY */
+
+.today{
+background:
+linear-gradient(135deg,#ffffff,#edf9f6);
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:12px
+}
+
+/* AI */
 
 .ai{
-  background:linear-gradient(
-    135deg,
-    #ecfffc,
-    #f7fffe
-  );
-  border-color:#c8ebe6
+background:linear-gradient(135deg,#edfffc,#f8fffe);
+border-color:#c8eae5
 }
 
 .ai textarea{
-  width:100%;
-  border:1px solid #d9e8e6;
-  background:#fff;
-  border-radius:14px;
-  padding:12px;
-  resize:none;
-  font:inherit;
-  outline:none;
-  margin-top:10px
+width:100%;
+margin-top:10px;
+padding:13px;
+border:1px solid #d7e8e5;
+border-radius:14px;
+resize:none;
+outline:none;
+background:#fff
 }
 
 .answer{
-  margin-top:10px;
-  font-size:13px;
-  line-height:1.55;
-  color:#365250
+margin-top:10px;
+font-size:13px;
+line-height:1.55;
+color:#365452
 }
 
-/* ================= BOTTOM NAV ================= */
+/* NAVIGATION */
 
 .nav{
-  position:fixed;
-  bottom:0;
-  left:50%;
-  transform:translateX(-50%);
-  width:min(520px,100%);
-  background:rgba(255,255,255,.96);
-  backdrop-filter:blur(16px);
-  border-top:1px solid var(--line);
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  padding:8px 5px calc(
-    8px + env(safe-area-inset-bottom)
-  );
-  z-index:5
+position:fixed;
+bottom:0;
+left:50%;
+transform:translateX(-50%);
+width:min(520px,100%);
+background:rgba(255,255,255,.96);
+backdrop-filter:blur(16px);
+border-top:1px solid var(--line);
+display:grid;
+grid-template-columns:repeat(5,1fr);
+padding:8px 5px calc(8px + env(safe-area-inset-bottom));
+z-index:10
 }
 
 .nav button{
-  border:0;
-  background:none;
-  color:#81908f;
-  font-size:10px;
-  padding:4px 2px;
-  border-radius:14px
+border:0;
+background:none;
+color:#81908f;
+font-size:10px;
+padding:5px 2px;
+border-radius:15px
 }
 
 .nav button.active{
-  color:var(--primary);
-  font-weight:850;
-  background:#edf9f7
+background:#eaf8f5;
+color:var(--primary);
+font-weight:850
 }
 
 .nav i{
-  display:block;
-  font-style:normal;
-  font-size:20px;
-  margin-bottom:2px
+display:block;
+font-style:normal;
+font-size:20px;
+margin-bottom:2px
 }
 
-/* ================= PAGES ================= */
+/* PAGES */
 
-.page{
-  display:none
-}
-
-.page.active{
-  display:block
-}
+.page{display:none}
+.page.active{display:block}
 
 .list{
-  display:grid;
-  gap:9px
+display:grid;
+gap:9px
 }
 
 .row{
-  display:flex;
-  justify-content:space-between;
-  gap:12px;
-  align-items:center
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:12px
 }
 
-.pill{
-  padding:5px 9px;
-  border-radius:999px;
-  background:var(--primarySoft);
-  color:var(--primary);
-  font-size:11px;
-  font-weight:750
-}
-
-/* ================= MODAL ================= */
+/* MODAL */
 
 .modal{
-  position:fixed;
-  inset:0;
-  background:#102a2a88;
-  display:none;
-  align-items:flex-end;
-  z-index:10
+position:fixed;
+inset:0;
+background:#102a2a88;
+display:none;
+align-items:flex-end;
+z-index:20
 }
 
 .modal.show{
-  display:flex
+display:flex
 }
 
 .sheet{
-  background:#fff;
-  width:100%;
-  max-width:520px;
-  margin:auto;
-  border-radius:26px 26px 0 0;
-  padding:20px;
-  box-shadow:0 -15px 40px #0002
+width:100%;
+max-width:520px;
+margin:auto;
+background:#fff;
+padding:21px;
+border-radius:27px 27px 0 0;
+box-shadow:0 -15px 40px #0003
 }
 
 .sheet h3{
-  margin:0 0 12px
+margin:0 0 14px
 }
 
 .field{
-  margin:10px 0
+margin:11px 0
 }
 
 .field label{
-  font-size:12px;
-  color:var(--muted);
-  display:block;
-  margin-bottom:5px
+display:block;
+font-size:12px;
+color:var(--muted);
+margin-bottom:5px
 }
 
 .field input,
 .field select{
-  width:100%;
-  padding:13px;
-  border:1px solid var(--line);
-  border-radius:13px;
-  font:inherit;
-  outline:none;
-  background:#fff
+width:100%;
+padding:13px;
+border:1px solid var(--line);
+border-radius:13px;
+background:#fff;
+outline:none
 }
 
 .actions{
-  display:flex;
-  gap:8px;
-  margin-top:16px
+display:flex;
+gap:8px;
+margin-top:17px
 }
 
 .actions button{
-  flex:1
+flex:1
 }
 
-/* ================= TOAST ================= */
+/* TOAST */
 
 .toast{
-  position:fixed;
-  left:50%;
-  bottom:92px;
-  transform:translateX(-50%);
-  background:#142d2b;
-  color:#fff;
-  padding:11px 16px;
-  border-radius:999px;
-  display:none;
-  z-index:20;
-  font-size:13px;
-  box-shadow:0 8px 25px #0003
-}
-
-.more-grid button{
-  text-align:center;
-  border:1px solid var(--line);
-  background:#fff
+position:fixed;
+left:50%;
+bottom:94px;
+transform:translateX(-50%);
+background:#173331;
+color:#fff;
+padding:11px 17px;
+border-radius:999px;
+display:none;
+z-index:30;
+font-size:13px;
+box-shadow:0 8px 25px #0003
 }
 </style>
 </head>
@@ -499,1410 +488,1676 @@ button{
 
 <div class="app">
 
-<!-- ================= HEADER ================= -->
-
 <header class="top">
 
-  <div class="brand">
+<div class="brand">
 
-    <div class="logo">
-      LB
-    </div>
+<div class="logo">LB</div>
 
-    <div>
-      <h1>LIFEBOX</h1>
-      <small>
-        Satu aplikasi untuk urus kehidupan
-      </small>
-    </div>
+<div>
+<h1>LIFEBOX</h1>
+<small>Satu aplikasi untuk urus kehidupan</small>
+</div>
 
-  </div>
+</div>
 
-  <div class="hello">
-    Selamat datang 👋
-  </div>
+<div class="hello">
+Selamat datang 👋
+</div>
 
-  <h2 id="userName">
-    Helmi
-  </h2>
+<h2 id="userName">
+Helmi
+</h2>
 
 </header>
 
 
 <main class="content">
 
-<!-- ================= HOME ================= -->
+<!-- HOME -->
 
 <section id="home" class="page active">
 
-  <div class="section-title">
+<div class="section-title">
+<h3>📌 Perlu perhatian</h3>
 
-    <h3>
-      📌 Perlu perhatian
-    </h3>
+<button
+class="btn ghost"
+onclick="openModal('task')">
++ Tambah
+</button>
 
-    <button
-      class="btn ghost"
-      onclick="openModal('task')"
-    >
-      + Tambah
-    </button>
+</div>
 
-  </div>
+<div id="tasks" class="list"></div>
 
-  <div
-    id="tasks"
-    class="list"
-  ></div>
 
+<div class="section-title">
+<h3>📊 Ringkasan kehidupan</h3>
+</div>
 
-  <div class="section-title">
 
-    <h3>
-      📊 Ringkasan
-    </h3>
+<div class="grid">
 
-  </div>
+<!-- MONEY -->
 
+<div class="card summary">
 
-  <div class="grid">
+<div class="visual">
 
-    <div class="card summary">
+<svg viewBox="0 0 100 100">
 
-      <span class="icon">
-        💰
-      </span>
+<rect width="100" height="100"
+rx="18" fill="#eef8f5"/>
 
-      <div class="muted">
-        Baki kewangan
-      </div>
+<circle
+cx="50"
+cy="50"
+r="28"
+fill="#d4a43d"/>
 
-      <div
-        class="stat"
-        id="balance"
-      >
-        RM 0
-      </div>
+<path
+d="M50 29v42
+M61 39c-4-6-22-6-22 3
+0 10 24 5 24 15
+0 10-20 11-25 3"
+fill="none"
+stroke="#fff"
+stroke-width="5"
+stroke-linecap="round"/>
 
-    </div>
+</svg>
 
+</div>
 
-    <div class="card summary">
+<div class="muted">
+Baki kewangan
+</div>
 
-      <span class="icon">
-        👨‍👩‍👧
-      </span>
+<div
+class="stat"
+id="balance">
+RM 0
+</div>
 
-      <div class="muted">
-        Keluarga
-      </div>
+</div>
 
-      <div
-        class="stat"
-        id="familyCount"
-      >
-        0
-      </div>
 
-    </div>
+<!-- FAMILY -->
 
+<div class="card summary">
 
-    <div class="card summary">
+<div class="visual">
 
-      <span class="icon">
-        🚗
-      </span>
+<svg viewBox="0 0 100 100">
 
-      <div class="muted">
-        Kenderaan
-      </div>
+<rect
+width="100"
+height="100"
+rx="18"
+fill="#eef7f5"/>
 
-      <div
-        class="stat"
-        id="vehicleCount"
-      >
-        0
-      </div>
+<circle
+cx="34"
+cy="31"
+r="12"
+fill="#d99a76"/>
 
-    </div>
+<circle
+cx="66"
+cy="30"
+r="12"
+fill="#e5aa82"/>
 
+<circle
+cx="50"
+cy="59"
+r="10"
+fill="#e3a27c"/>
 
-    <div class="card summary">
+<path
+d="M20 75c1-17 8-25 14-25
+s13 8 14 25
+M52 75c1-17 8-25 14-25
+s13 8 14 25
+M38 94c1-14 6-21 12-21
+s11 7 12 21"
+fill="#547d86"/>
 
-      <span class="icon">
-        📄
-      </span>
+</svg>
 
-      <div class="muted">
-        Dokumen
-      </div>
+</div>
 
-      <div
-        class="stat"
-        id="docCount"
-      >
-        0
-      </div>
+<div class="muted">
+Keluarga
+</div>
 
-    </div>
+<div
+class="stat"
+id="familyCount">
+0
+</div>
 
-  </div>
+</div>
 
 
-  <!-- QUICK ACCESS -->
+<!-- CAR -->
 
-  <div class="section-title">
+<div class="card summary">
 
-    <h3>
-      ⚡ Akses pantas
-    </h3>
+<div class="visual">
 
-  </div>
+<svg viewBox="0 0 100 100">
 
+<rect
+width="100"
+height="100"
+rx="18"
+fill="#eef6f6"/>
 
-  <div class="quick">
+<path
+d="M18 61l8-22
+c2-6 6-9 13-9h22
+c7 0 11 3 15 9l7 22v12H18Z"
+fill="#d8e5e5"
+stroke="#708686"
+stroke-width="2"/>
 
-    <button
-      onclick="openModal('money')"
-    >
-      <span class="icon">
-        💰
-      </span>
-      Duit
-    </button>
+<path
+d="M31 39h31l8 14H24Z"
+fill="#77aaa9"/>
 
+<circle
+cx="32"
+cy="74"
+r="9"
+fill="#253535"/>
 
-    <button
-      onclick="openModal('family')"
-    >
-      <span class="icon">
-        👨‍👩‍👧
-      </span>
-      Keluarga
-    </button>
+<circle
+cx="70"
+cy="74"
+r="9"
+fill="#253535"/>
 
+<circle
+cx="32"
+cy="74"
+r="4"
+fill="#cbd6d6"/>
 
-    <button
-      onclick="openModal('vehicle')"
-    >
-      <span class="icon">
-        🚗
-      </span>
-      Kereta
-    </button>
+<circle
+cx="70"
+cy="74"
+r="4"
+fill="#cbd6d6"/>
 
+</svg>
 
-    <button
-      onclick="openModal('doc')"
-    >
-      <span class="icon">
-        📄
-      </span>
-      Dokumen
-    </button>
+</div>
 
-  </div>
+<div class="muted">
+Kenderaan
+</div>
 
+<div
+class="stat"
+id="vehicleCount">
+0
+</div>
 
-  <!-- TODAY -->
+</div>
 
-  <div class="section-title">
 
-    <h3>
-      ✨ LIFEBOX hari ini
-    </h3>
+<!-- DOCUMENT -->
 
-  </div>
+<div class="card summary">
 
+<div class="visual">
 
-  <div
-    class="card"
-    style="
-      background:
-      linear-gradient(
-        135deg,
-        #ffffff,
-        #eefaf8
-      )
-    "
-  >
+<svg viewBox="0 0 100 100">
 
-    <div class="row">
+<rect
+width="100"
+height="100"
+rx="18"
+fill="#f0f5f5"/>
 
-      <div>
+<path
+d="M25 13h39l16 17v57H25z"
+fill="#fff"
+stroke="#c4cece"
+stroke-width="2"/>
 
-        <b>
-          Semua terkawal
-        </b>
+<path
+d="M64 13v18h16"
+fill="#dce7e6"/>
 
-        <div
-          class="muted"
-          style="margin-top:4px"
-        >
-          Tambah reminder dan maklumat
-          penting supaya LIFEBOX boleh
-          bantu anda.
-        </div>
+<path
+d="M36 48h33
+M36 58h33
+M36 68h24"
+stroke="#7c9090"
+stroke-width="4"
+stroke-linecap="round"/>
 
-      </div>
+<path
+d="M36 34h18"
+stroke="#08786e"
+stroke-width="5"
+stroke-linecap="round"/>
 
-      <span class="icon">
-        🌿
-      </span>
+</svg>
 
-    </div>
+</div>
 
-  </div>
+<div class="muted">
+Dokumen
+</div>
 
+<div
+class="stat"
+id="docCount">
+0
+</div>
 
-  <!-- AI -->
+</div>
 
-  <div class="section-title">
+</div>
 
-    <h3>
-      🤖 LIFE AI
-    </h3>
 
-  </div>
+<!-- QUICK -->
 
+<div class="section-title">
+<h3>⚡ Akses pantas</h3>
+</div>
 
-  <div class="card ai">
+<div class="quick">
 
-    <div class="muted">
-      Tanya apa sahaja berkaitan
-      pengurusan kehidupan
-    </div>
+<button onclick="openModal('money')">
 
+<div class="visual">
 
-    <textarea
-      id="aiQuestion"
-      rows="2"
-      placeholder="Contoh: Apa yang perlu saya siapkan sebelum bercuti?"
-    ></textarea>
+<svg viewBox="0 0 100 100">
 
+<rect width="100" height="100"
+rx="18" fill="#eef8f5"/>
 
-    <button
-      class="btn primary"
-      style="margin-top:8px"
-      onclick="askAI()"
-    >
-      Bantu saya
-    </button>
+<circle cx="50" cy="50"
+r="28" fill="#d4a43d"/>
 
+<path
+d="M50 29v42
+M61 39c-4-6-22-6-22 3
+0 10 24 5 24 15
+0 10-20 11-25 3"
+fill="none"
+stroke="#fff"
+stroke-width="5"/>
 
-    <div
-      id="aiAnswer"
-      class="answer"
-    ></div>
+</svg>
 
-  </div>
+</div>
+
+Duit
+
+</button>
+
+
+<button onclick="openModal('family')">
+
+<div class="visual">
+
+<svg viewBox="0 0 100 100">
+
+<rect width="100" height="100"
+rx="18" fill="#eef7f5"/>
+
+<circle cx="34" cy="31"
+r="12" fill="#d99a76"/>
+
+<circle cx="66" cy="30"
+r="12" fill="#e5aa82"/>
+
+<circle cx="50" cy="59"
+r="10" fill="#e3a27c"/>
+
+<path
+d="M20 75c1-17 8-25 14-25
+s13 8 14 25
+M52 75c1-17 8-25 14-25
+s13 8 14 25"
+fill="#547d86"/>
+
+</svg>
+
+</div>
+
+Keluarga
+
+</button>
+
+
+<button onclick="openModal('vehicle')">
+
+<div class="visual">
+
+<svg viewBox="0 0 100 100">
+
+<rect width="100" height="100"
+rx="18" fill="#eef6f6"/>
+
+<path
+d="M18 61l8-22c2-6 6-9 13-9h22
+c7 0 11 3 15 9l7 22v12H18Z"
+fill="#d8e5e5"
+stroke="#708686"
+stroke-width="2"/>
+
+<path
+d="M31 39h31l8 14H24Z"
+fill="#77aaa9"/>
+
+<circle cx="32" cy="74"
+r="9" fill="#253535"/>
+
+<circle cx="70" cy="74"
+r="9" fill="#253535"/>
+
+</svg>
+
+</div>
+
+Kereta
+
+</button>
+
+
+<button onclick="openModal('doc')">
+
+<div class="visual">
+
+<svg viewBox="0 0 100 100">
+
+<rect width="100" height="100"
+rx="18" fill="#f0f5f5"/>
+
+<path
+d="M25 13h39l16 17v57H25z"
+fill="#fff"
+stroke="#c4cece"
+stroke-width="2"/>
+
+<path
+d="M64 13v18h16"
+fill="#dce7e6"/>
+
+<path
+d="M36 48h33
+M36 58h33
+M36 68h24"
+stroke="#7c9090"
+stroke-width="4"
+stroke-linecap="round"/>
+
+</svg>
+
+</div>
+
+Dokumen
+
+</button>
+
+</div>
+
+
+<!-- TODAY -->
+
+<div class="section-title">
+<h3>🌿 LIFEBOX hari ini</h3>
+</div>
+
+<div class="card today">
+
+<div>
+
+<b>
+Semua terkawal
+</b>
+
+<div
+class="muted"
+style="margin-top:5px">
+
+Tambah reminder dan maklumat penting
+supaya LIFEBOX boleh bantu anda.
+
+</div>
+
+</div>
+
+
+<div class="visual visual-lg">
+
+<svg viewBox="0 0 100 100">
+
+<defs>
+
+<linearGradient
+id="leafGradient"
+x1="0"
+y1="1"
+x2="1"
+y2="0">
+
+<stop
+stop-color="#176b4f"/>
+
+<stop
+offset=".55"
+stop-color="#36a269"/>
+
+<stop
+offset="1"
+stop-color="#91d27f"/>
+
+</linearGradient>
+
+</defs>
+
+<rect
+width="100"
+height="100"
+fill="#eef7f1"/>
+
+<path
+d="M18 82C33 62 46 48 73 20"
+fill="none"
+stroke="#718d74"
+stroke-width="4"
+stroke-linecap="round"/>
+
+<path
+d="M46 55C24 50 13 34 17 15
+c20 0 37 12 29 40Z"
+fill="url(#leafGradient)"/>
+
+<path
+d="M53 47C53 24 68 10 89 12
+c1 20-9 36-36 40Z"
+fill="url(#leafGradient)"/>
+
+<path
+d="M27 22c11 7 18 16 21 29
+M84 18C72 25 63 34 57 45"
+fill="none"
+stroke="#c9edb5"
+stroke-width="2"/>
+
+</svg>
+
+</div>
+
+</div>
+
+
+<!-- AI -->
+
+<div class="section-title">
+<h3>🤖 LIFE AI</h3>
+</div>
+
+<div class="card ai">
+
+<div class="muted">
+
+Tanya apa sahaja berkaitan
+pengurusan kehidupan.
+
+</div>
+
+<textarea
+id="aiQuestion"
+rows="2"
+placeholder="Contoh: Apa yang perlu saya siapkan sebelum bercuti?"
+></textarea>
+
+<button
+class="btn primary"
+style="margin-top:9px"
+onclick="askAI()">
+
+Bantu saya
+
+</button>
+
+<div
+id="aiAnswer"
+class="answer">
+</div>
+
+</div>
 
 </section>
 
 
-<!-- ================= MONEY ================= -->
+<!-- MONEY -->
 
-<section
-  id="money"
-  class="page"
->
+<section id="money" class="page">
 
-  <div class="section-title">
+<div class="section-title">
 
-    <h3>
-      💰 Kewangan & Bil
-    </h3>
+<h3>💰 Kewangan & Bil</h3>
 
-    <button
-      class="btn primary"
-      onclick="openModal('money')"
-    >
-      + Tambah
-    </button>
+<button
+class="btn primary"
+onclick="openModal('money')">
 
-  </div>
++ Tambah
 
+</button>
 
-  <div class="card">
+</div>
 
-    <div class="muted">
-      Baki
-    </div>
+<div class="card">
 
-    <div
-      class="stat"
-      id="balance2"
-    >
-      RM 0
-    </div>
+<div class="muted">
+Baki semasa
+</div>
 
-  </div>
+<div
+class="stat"
+id="balance2">
+RM 0
+</div>
 
+</div>
 
-  <div class="section-title">
+<div class="section-title">
+<h3>Transaksi</h3>
+</div>
 
-    <h3>
-      Transaksi
-    </h3>
-
-  </div>
-
-
-  <div
-    id="moneyList"
-    class="list"
-  ></div>
+<div
+id="moneyList"
+class="list">
+</div>
 
 </section>
 
 
-<!-- ================= FAMILY ================= -->
+<!-- FAMILY -->
 
-<section
-  id="family"
-  class="page"
->
+<section id="family" class="page">
 
-  <div class="section-title">
+<div class="section-title">
 
-    <h3>
-      👨‍👩‍👧 Keluarga
-    </h3>
+<h3>👨‍👩‍👧 Keluarga</h3>
 
-    <button
-      class="btn primary"
-      onclick="openModal('family')"
-    >
-      + Tambah
-    </button>
+<button
+class="btn primary"
+onclick="openModal('family')">
 
-  </div>
++ Tambah
 
+</button>
 
-  <div
-    id="familyList"
-    class="list"
-  ></div>
+</div>
+
+<div
+id="familyList"
+class="list">
+</div>
 
 </section>
 
 
-<!-- ================= DOCUMENT ================= -->
+<!-- DOCUMENT -->
 
-<section
-  id="docs"
-  class="page"
->
+<section id="docs" class="page">
 
-  <div class="section-title">
+<div class="section-title">
 
-    <h3>
-      📄 Dokumen & Warranty
-    </h3>
+<h3>📄 Dokumen & Warranty</h3>
 
-    <button
-      class="btn primary"
-      onclick="openModal('doc')"
-    >
-      + Tambah
-    </button>
+<button
+class="btn primary"
+onclick="openModal('doc')">
 
-  </div>
++ Tambah
 
+</button>
 
-  <div
-    id="docList"
-    class="list"
-  ></div>
+</div>
+
+<div
+id="docList"
+class="list">
+</div>
 
 </section>
 
 
-<!-- ================= MORE ================= -->
+<!-- MORE -->
 
-<section
-  id="more"
-  class="page"
->
+<section id="more" class="page">
 
-  <div class="section-title">
+<div class="section-title">
+<h3>⚙️ Semua fungsi</h3>
+</div>
 
-    <h3>
-      ⚙️ Semua fungsi
-    </h3>
+<div class="grid">
 
-  </div>
+<button
+class="card"
+onclick="openModal('vehicle')">
 
+<div class="visual" style="margin:auto">
 
-  <div class="grid">
+<svg viewBox="0 0 100 100">
 
-    <button
-      class="card"
-      onclick="openModal('vehicle')"
-    >
-      🚗
-      <br>
-      <b>Kenderaan</b>
-    </button>
+<rect width="100" height="100"
+rx="18" fill="#eef6f6"/>
 
+<path
+d="M18 61l8-22c2-6 6-9 13-9h22
+c7 0 11 3 15 9l7 22v12H18Z"
+fill="#d8e5e5"
+stroke="#708686"
+stroke-width="2"/>
 
-    <button
-      class="card"
-      onclick="openModal('task')"
-    >
-      🔔
-      <br>
-      <b>Reminder</b>
-    </button>
+<path
+d="M31 39h31l8 14H24Z"
+fill="#77aaa9"/>
 
+<circle cx="32" cy="74"
+r="9" fill="#253535"/>
 
-    <button
-      class="card"
-      onclick="emergency()"
-    >
-      🆘
-      <br>
-      <b>Kecemasan</b>
-    </button>
+<circle cx="70" cy="74"
+r="9" fill="#253535"/>
 
+</svg>
 
-    <button
-      class="card"
-      onclick="exportData()"
-    >
-      💾
-      <br>
-      <b>Backup Data</b>
-    </button>
+</div>
 
-  </div>
+<b>Kenderaan</b>
+
+</button>
 
 
-  <div class="section-title">
+<button
+class="card"
+onclick="openModal('task')">
 
-    <h3>
-      🔐 Privasi
-    </h3>
+<div
+style="font-size:38px;margin-bottom:8px">
+🔔
+</div>
 
-  </div>
+<b>Reminder</b>
+
+</button>
 
 
-  <div class="card muted">
+<button
+class="card"
+onclick="emergency()">
 
-    V1 menyimpan data pada telefon ini
-    menggunakan localStorage.
+<div
+style="font-size:38px;margin-bottom:8px">
+🆘
+</div>
 
-    Jangan simpan maklumat sangat
-    sensitif sebelum sistem cloud dan
-    keselamatan tambahan dibina.
+<b>Kecemasan</b>
 
-  </div>
+</button>
+
+
+<button
+class="card"
+onclick="exportData()">
+
+<div
+style="font-size:38px;margin-bottom:8px">
+💾
+</div>
+
+<b>Backup</b>
+
+</button>
+
+</div>
+
+
+<div class="section-title">
+<h3>🔐 Privasi</h3>
+</div>
+
+<div class="card muted">
+
+V1 menyimpan data pada telefon ini
+menggunakan localStorage.
+
+Jangan simpan maklumat sangat sensitif
+sebelum sistem cloud dan keselamatan
+tambahan dibina.
+
+</div>
 
 </section>
 
 </main>
 
 
-<!-- ================= NAVIGATION ================= -->
+<!-- NAVIGATION -->
 
 <nav class="nav">
 
-  <button
-    class="active"
-    onclick="showPage('home',this)"
-  >
-    <i>🏠</i>
-    Home
-  </button>
+<button
+class="active"
+onclick="showPage('home',this)">
+
+<i>🏠</i>
+Home
+
+</button>
 
 
-  <button
-    onclick="showPage('money',this)"
-  >
-    <i>💰</i>
-    Duit
-  </button>
+<button
+onclick="showPage('money',this)">
+
+<i>💰</i>
+Duit
+
+</button>
 
 
-  <button
-    onclick="showPage('family',this)"
-  >
-    <i>👨‍👩‍👧</i>
-    Keluarga
-  </button>
+<button
+onclick="showPage('family',this)">
+
+<i>👨‍👩‍👧</i>
+Keluarga
+
+</button>
 
 
-  <button
-    onclick="showPage('docs',this)"
-  >
-    <i>📄</i>
-    Dokumen
-  </button>
+<button
+onclick="showPage('docs',this)">
+
+<i>📄</i>
+Dokumen
+
+</button>
 
 
-  <button
-    onclick="showPage('more',this)"
-  >
-    <i>☰</i>
-    More
-  </button>
+<button
+onclick="showPage('more',this)">
+
+<i>☰</i>
+More
+
+</button>
 
 </nav>
 
 </div>
 
 
-<!-- ================= MODAL ================= -->
+<!-- MODAL -->
 
 <div
-  class="modal"
-  id="modal"
->
+class="modal"
+id="modal">
 
-  <div
-    class="sheet"
-    id="sheet"
-  ></div>
+<div
+class="sheet"
+id="sheet">
+</div>
 
 </div>
 
 
 <div
-  class="toast"
-  id="toast"
-></div>
+class="toast"
+id="toast">
+</div>
 
 
 <script>
 
-const KEY = 'lifebox_v1';
+const KEY="lifebox_v1";
 
-
-let db = JSON.parse(
-  localStorage.getItem(KEY) ||
-  '{"tasks":[],"money":[],"family":[],"docs":[],"vehicles":[]}'
+let db=JSON.parse(
+localStorage.getItem(KEY) ||
+'{"tasks":[],"money":[],"family":[],"docs":[],"vehicles":[]}'
 );
 
 
-const save = () => {
-
-  localStorage.setItem(
-    KEY,
-    JSON.stringify(db)
-  );
-
-  render();
-
+const save=()=>{
+localStorage.setItem(
+KEY,
+JSON.stringify(db)
+);
+render();
 };
 
 
-const moneyRM = n =>
-  new Intl.NumberFormat(
-    'ms-MY',
-    {
-      style:'currency',
-      currency:'MYR'
-    }
-  ).format(
-    Number(n) || 0
-  );
+const moneyRM=n=>
+new Intl.NumberFormat(
+"ms-MY",
+{
+style:"currency",
+currency:"MYR"
+}
+).format(Number(n)||0);
 
 
 function showPage(id,btn){
 
-  document
-    .querySelectorAll('.page')
-    .forEach(
-      x => x.classList.remove('active')
-    );
+document
+.querySelectorAll(".page")
+.forEach(
+x=>x.classList.remove("active")
+);
 
+document
+.getElementById(id)
+.classList.add("active");
 
-  document
-    .getElementById(id)
-    .classList.add('active');
+document
+.querySelectorAll(".nav button")
+.forEach(
+x=>x.classList.remove("active")
+);
 
+btn.classList.add("active");
 
-  document
-    .querySelectorAll('.nav button')
-    .forEach(
-      x => x.classList.remove('active')
-    );
-
-
-  btn.classList.add('active');
-
-  render();
+render();
 
 }
 
 
-function toast(s){
+function toast(text){
 
-  let t =
-    document.getElementById('toast');
+const t=
+document.getElementById("toast");
 
-  t.textContent = s;
+t.textContent=text;
 
-  t.style.display = 'block';
+t.style.display="block";
 
-  setTimeout(
-    () => t.style.display = 'none',
-    1800
-  );
+setTimeout(
+()=>{
+t.style.display="none"
+},
+1800
+);
 
 }
 
 
 function card(
-  title,
-  sub,
-  icon,
-  extra=''
+title,
+sub,
+icon,
+extra=""
 ){
 
-  return `
-    <div class="card row">
+return `
 
-      <div>
+<div class="card row">
 
-        <span class="icon">
-          ${icon}
-        </span>
+<div>
 
-        <b>
-          ${title}
-        </b>
+<span
+style="font-size:22px">
+${icon}
+</span>
 
-        <div class="muted">
-          ${sub}
-        </div>
+<b>
+${title}
+</b>
 
-      </div>
+<div class="muted">
+${sub}
+</div>
 
-      ${extra}
+</div>
 
-    </div>
-  `;
+${extra}
+
+</div>
+
+`;
 
 }
 
+
+/* RENDER */
 
 function render(){
 
-  let bal =
-    db.money.reduce(
-      (a,x) =>
-        a +
-        (
-          x.type === 'in'
-            ? +x.amount
-            : -x.amount
-        ),
-      0
-    );
+let balance=
+db.money.reduce(
+(total,item)=>
+total+
+(
+item.type==="in"
+?Number(item.amount)
+:-Number(item.amount)
+),
+0
+);
 
 
-  document
-    .getElementById('balance')
-    .textContent =
-    moneyRM(bal);
+document.getElementById(
+"balance"
+).textContent=
+moneyRM(balance);
 
 
-  document
-    .getElementById('balance2')
-    .textContent =
-    moneyRM(bal);
+document.getElementById(
+"balance2"
+).textContent=
+moneyRM(balance);
 
 
-  document
-    .getElementById('familyCount')
-    .textContent =
-    db.family.length;
+document.getElementById(
+"familyCount"
+).textContent=
+db.family.length;
 
 
-  document
-    .getElementById('vehicleCount')
-    .textContent =
-    db.vehicles.length;
+document.getElementById(
+"vehicleCount"
+).textContent=
+db.vehicles.length;
 
 
-  document
-    .getElementById('docCount')
-    .textContent =
-    db.docs.length;
+document.getElementById(
+"docCount"
+).textContent=
+db.docs.length;
 
 
-  /* TASKS */
+/* REMINDER */
 
-  document
-    .getElementById('tasks')
-    .innerHTML =
-    db.tasks.length
+document.getElementById(
+"tasks"
+).innerHTML=
 
-    ?
+db.tasks.length
 
-    db.tasks.map(
-      (x,i) => `
+?
 
-        <div class="card task">
+db.tasks.map(
+(item,index)=>`
 
-          <span
-            class="dot
-              ${
-                x.priority === 'low'
-                ? 'ok'
-                : x.priority === 'mid'
-                ? 'warn'
-                : ''
-              }
-            "
-          ></span>
+<div class="card task">
 
-          <div style="flex:1">
+<span class="dot
+${
+item.priority==="low"
+?"ok"
+:
+item.priority==="mid"
+?"warn"
+:""
+}">
+</span>
 
-            <b>
-              ${x.title}
-            </b>
+<div style="flex:1">
 
-            <span>
-              ${x.date || 'Tiada tarikh'}
-            </span>
+<b>
+${item.title}
+</b>
 
-          </div>
+<span>
+${item.date||"Tiada tarikh"}
+</span>
 
-          <button
-            class="btn ghost"
-            onclick="del('tasks',${i})"
-          >
-            ✓
-          </button>
+</div>
 
-        </div>
+<button
+class="btn ghost"
+onclick="del('tasks',${index})">
 
-      `
-    ).join('')
+✓
 
-    :
+</button>
 
-    `
-      <div class="card empty">
-        Tiada tugasan. Bagus! 🎉
-      </div>
-    `;
+</div>
 
+`
+).join("")
 
-  /* MONEY */
+:
 
-  document
-    .getElementById('moneyList')
-    .innerHTML =
-
-    db.money.length
-
-    ?
-
-    db.money.map(
-      (x,i) =>
-        card(
-          x.note,
-          moneyRM(x.amount),
-          x.type === 'in'
-            ? '⬆️'
-            : '⬇️',
-          `
-            <button
-              class="btn ghost"
-              onclick="del('money',${i})"
-            >
-              ×
-            </button>
-          `
-        )
-    ).join('')
-
-    :
-
-    `
-      <div class="card empty">
-        Belum ada transaksi.
-      </div>
-    `;
+`
+<div class="card empty">
+Tiada tugasan. Bagus! 🎉
+</div>
+`;
 
 
-  /* FAMILY */
+/* MONEY */
 
-  document
-    .getElementById('familyList')
-    .innerHTML =
+document.getElementById(
+"moneyList"
+).innerHTML=
 
-    db.family.length
+db.money.length
 
-    ?
+?
 
-    db.family.map(
-      (x,i) =>
-        card(
-          x.name,
-          x.relation,
-          x.icon || '👤',
-          `
-            <button
-              class="btn ghost"
-              onclick="del('family',${i})"
-            >
-              ×
-            </button>
-          `
-        )
-    ).join('')
+db.money.map(
+(item,index)=>
 
-    :
+card(
+item.note,
+moneyRM(item.amount),
+item.type==="in"
+?"⬆️"
+:"⬇️",
 
-    `
-      <div class="card empty">
-        Tambah ahli keluarga.
-      </div>
-    `;
+`
+<button
+class="btn ghost"
+onclick="del('money',${index})">
+×
+</button>
+`
+)
+
+).join("")
+
+:
+
+`
+<div class="card empty">
+Belum ada transaksi.
+</div>
+`;
 
 
-  /* DOCUMENTS */
+/* FAMILY */
 
-  document
-    .getElementById('docList')
-    .innerHTML =
+document.getElementById(
+"familyList"
+).innerHTML=
 
-    (
-      db.docs.length +
-      db.vehicles.length
-    )
+db.family.length
 
-    ?
+?
 
-    [
-      ...db.docs.map(
-        (x,i) =>
-          card(
-            x.name,
-            x.expiry || 'Tiada tarikh',
-            '📄',
-            `
-              <button
-                class="btn ghost"
-                onclick="del('docs',${i})"
-              >
-                ×
-              </button>
-            `
-          )
-      ),
+db.family.map(
+(item,index)=>
 
-      ...db.vehicles.map(
-        (x,i) =>
-          card(
-            x.name,
-            x.roadtax || 'Kenderaan',
-            '🚗',
-            `
-              <button
-                class="btn ghost"
-                onclick="del('vehicles',${i})"
-              >
-                ×
-              </button>
-            `
-          )
-      )
+card(
+item.name,
+item.relation,
+"👤",
 
-    ].join('')
+`
+<button
+class="btn ghost"
+onclick="del('family',${index})">
+×
+</button>
+`
+)
 
-    :
+).join("")
 
-    `
-      <div class="card empty">
-        Belum ada dokumen atau kenderaan.
-      </div>
-    `;
+:
+
+`
+<div class="card empty">
+Tambah ahli keluarga.
+</div>
+`;
+
+
+/* DOCUMENT */
+
+document.getElementById(
+"docList"
+).innerHTML=
+
+(
+db.docs.length+
+db.vehicles.length
+)
+
+?
+
+[
+...db.docs.map(
+(item,index)=>
+card(
+item.name,
+item.expiry||"Tiada tarikh",
+"📄",
+`
+<button
+class="btn ghost"
+onclick="del('docs',${index})">
+×
+</button>
+`
+)
+),
+
+...db.vehicles.map(
+(item,index)=>
+card(
+item.name,
+item.roadtax||"Kenderaan",
+"🚗",
+`
+<button
+class="btn ghost"
+onclick="del('vehicles',${index})">
+×
+</button>
+`
+)
+)
+
+].join("")
+
+:
+
+`
+<div class="card empty">
+Belum ada dokumen atau kenderaan.
+</div>
+`;
+
+}
+
+
+/* DELETE */
+
+function del(type,index){
+
+db[type].splice(index,1);
+
+save();
+
+toast("Berjaya dibuang");
 
 }
 
 
-function del(k,i){
-
-  db[k].splice(i,1);
-
-  save();
-
-  toast('Dibuang');
-
-}
-
+/* MODAL */
 
 function openModal(type){
 
-  let forms = {
+const forms={
 
-    task:[
-      '🔔 Tambah Reminder',
+task:[
+"🔔 Tambah Reminder",
 
-      `
-        <div class="field">
+`
+<div class="field">
 
-          <label>
-            Perkara
-          </label>
+<label>
+Perkara
+</label>
 
-          <input
-            id="f1"
-            placeholder="Contoh: Bayar bil elektrik"
-          >
+<input
+id="f1"
+placeholder="Contoh: Bayar bil elektrik">
 
-        </div>
+</div>
 
+<div class="field">
 
-        <div class="field">
+<label>
+Tarikh
+</label>
 
-          <label>
-            Tarikh
-          </label>
+<input
+id="f2"
+type="date">
 
-          <input
-            id="f2"
-            type="date"
-          >
+</div>
 
-        </div>
+<div class="field">
 
+<label>
+Keutamaan
+</label>
 
-        <div class="field">
+<select id="f3">
 
-          <label>
-            Keutamaan
-          </label>
+<option value="high">
+Tinggi
+</option>
 
-          <select id="f3">
+<option value="mid">
+Sederhana
+</option>
 
-            <option value="high">
-              Tinggi
-            </option>
+<option value="low">
+Rendah
+</option>
 
-            <option value="mid">
-              Sederhana
-            </option>
+</select>
 
-            <option value="low">
-              Rendah
-            </option>
+</div>
+`
+],
 
-          </select>
 
-        </div>
-      `
-    ],
+money:[
+"💰 Tambah Transaksi",
 
+`
+<div class="field">
 
-    money:[
-      '💰 Tambah Transaksi',
+<label>
+Catatan
+</label>
 
-      `
-        <div class="field">
+<input
+id="f1"
+placeholder="Contoh: Gaji / Belanja dapur">
 
-          <label>
-            Catatan
-          </label>
+</div>
 
-          <input
-            id="f1"
-            placeholder="Contoh: Gaji / Belanja dapur"
-          >
+<div class="field">
 
-        </div>
+<label>
+Amaun (RM)
+</label>
 
+<input
+id="f2"
+type="number"
+step="0.01">
 
-        <div class="field">
+</div>
 
-          <label>
-            Amaun (RM)
-          </label>
+<div class="field">
 
-          <input
-            id="f2"
-            type="number"
-            step="0.01"
-          >
+<label>
+Jenis
+</label>
 
-        </div>
+<select id="f3">
 
+<option value="in">
+Pendapatan
+</option>
 
-        <div class="field">
+<option value="out">
+Perbelanjaan
+</option>
 
-          <label>
-            Jenis
-          </label>
+</select>
 
-          <select id="f3">
+</div>
+`
+],
 
-            <option value="in">
-              Masuk
-            </option>
 
-            <option value="out">
-              Keluar
-            </option>
+family:[
+"👨‍👩‍👧 Tambah Ahli Keluarga",
 
-          </select>
+`
+<div class="field">
 
-        </div>
-      `
-    ],
+<label>
+Nama
+</label>
 
+<input id="f1">
 
-    family:[
-      '👨‍👩‍👧 Tambah Ahli Keluarga',
+</div>
 
-      `
-        <div class="field">
+<div class="field">
 
-          <label>
-            Nama
-          </label>
+<label>
+Hubungan
+</label>
 
-          <input
-            id="f1"
-          >
+<input
+id="f2"
+placeholder="Contoh: Isteri">
 
-        </div>
+</div>
+`
+],
 
 
-        <div class="field">
+doc:[
+"📄 Tambah Dokumen / Warranty",
 
-          <label>
-            Hubungan
-          </label>
+`
+<div class="field">
 
-          <input
-            id="f2"
-            placeholder="Contoh: Isteri"
-          >
+<label>
+Nama dokumen / barang
+</label>
 
-        </div>
-      `
-    ],
+<input
+id="f1"
+placeholder="Contoh: Warranty mesin basuh">
 
+</div>
 
-    doc:[
-      '📄 Tambah Dokumen / Warranty',
+<div class="field">
 
-      `
-        <div class="field">
+<label>
+Tarikh tamat
+</label>
 
-          <label>
-            Nama
-          </label>
+<input
+id="f2"
+type="date">
 
-          <input
-            id="f1"
-            placeholder="Contoh: Warranty mesin basuh"
-          >
+</div>
+`
+],
 
-        </div>
 
+vehicle:[
+"🚗 Tambah Kenderaan",
 
-        <div class="field">
+`
+<div class="field">
 
-          <label>
-            Tarikh tamat
-          </label>
+<label>
+Nama kenderaan
+</label>
 
-          <input
-            id="f2"
-            type="date"
-          >
+<input
+id="f1"
+placeholder="Contoh: Myvi">
 
-        </div>
-      `
-    ],
+</div>
 
+<div class="field">
 
-    vehicle:[
-      '🚗 Tambah Kenderaan',
+<label>
+Roadtax tamat
+</label>
 
-      `
-        <div class="field">
+<input
+id="f2"
+type="date">
 
-          <label>
-            Nama kenderaan
-          </label>
+</div>
+`
+]
 
-          <input
-            id="f1"
-            placeholder="Contoh: Myvi"
-          >
+};
 
-        </div>
 
+const form=forms[type];
 
-        <div class="field">
 
-          <label>
-            Roadtax tamat
-          </label>
+document.getElementById(
+"sheet"
+).innerHTML=
 
-          <input
-            id="f2"
-            type="date"
-          >
+`
+<h3>
+${form[0]}
+</h3>
 
-        </div>
-      `
-    ]
+${form[1]}
 
-  };
+<div class="actions">
 
+<button
+class="btn ghost"
+onclick="closeModal()">
 
-  let f = forms[type];
+Batal
 
+</button>
 
-  document
-    .getElementById('sheet')
-    .innerHTML = `
+<button
+class="btn primary"
+onclick="submitForm('${type}')">
 
-      <h3>
-        ${f[0]}
-      </h3>
+Simpan
 
-      ${f[1]}
+</button>
 
-      <div class="actions">
+</div>
+`;
 
-        <button
-          class="btn ghost"
-          onclick="closeModal()"
-        >
-          Batal
-        </button>
 
-        <button
-          class="btn primary"
-          onclick="submitForm('${type}')"
-        >
-          Simpan
-        </button>
-
-      </div>
-    `;
-
-
-  document
-    .getElementById('modal')
-    .classList.add('show');
+document
+.getElementById("modal")
+.classList.add("show");
 
 }
 
 
 function closeModal(){
 
-  document
-    .getElementById('modal')
-    .classList.remove('show');
+document
+.getElementById("modal")
+.classList.remove("show");
 
 }
 
+
+/* SAVE FORM */
 
 function submitForm(type){
 
-  let a =
-    document
-      .getElementById('f1')
-      ?.value
-      .trim();
+const a=
+document
+.getElementById("f1")
+?.value.trim();
+
+const b=
+document
+.getElementById("f2")
+?.value;
+
+const c=
+document
+.getElementById("f3")
+?.value;
 
 
-  let b =
-    document
-      .getElementById('f2')
-      ?.value;
+if(!a){
 
+toast(
+"Sila isi maklumat"
+);
 
-  let c =
-    document
-      .getElementById('f3')
-      ?.value;
-
-
-  if(!a){
-
-    toast(
-      'Sila isi maklumat'
-    );
-
-    return;
-
-  }
-
-
-  if(type === 'task')
-
-    db.tasks.unshift({
-      title:a,
-      date:b,
-      priority:c
-    });
-
-
-  if(type === 'money')
-
-    db.money.unshift({
-      note:a,
-      amount:+b,
-      type:c
-    });
-
-
-  if(type === 'family')
-
-    db.family.unshift({
-      name:a,
-      relation:b,
-      icon:'👤'
-    });
-
-
-  if(type === 'doc')
-
-    db.docs.unshift({
-      name:a,
-      expiry:b
-    });
-
-
-  if(type === 'vehicle')
-
-    db.vehicles.unshift({
-      name:a,
-      roadtax:b
-    });
-
-
-  closeModal();
-
-  save();
-
-  toast(
-    'Berjaya disimpan'
-  );
+return;
 
 }
 
+
+if(type==="task"){
+
+db.tasks.unshift({
+title:a,
+date:b,
+priority:c
+});
+
+}
+
+
+if(type==="money"){
+
+db.money.unshift({
+note:a,
+amount:Number(b),
+type:c
+});
+
+}
+
+
+if(type==="family"){
+
+db.family.unshift({
+name:a,
+relation:b
+});
+
+}
+
+
+if(type==="doc"){
+
+db.docs.unshift({
+name:a,
+expiry:b
+});
+
+}
+
+
+if(type==="vehicle"){
+
+db.vehicles.unshift({
+name:a,
+roadtax:b
+});
+
+}
+
+
+closeModal();
+
+save();
+
+toast(
+"Berjaya disimpan"
+);
+
+}
+
+
+/* LIFE AI */
 
 function askAI(){
 
-  let q =
-    document
-      .getElementById('aiQuestion')
-      .value
-      .trim();
+const q=
+document
+.getElementById("aiQuestion")
+.value
+.trim();
+
+const answer=
+document
+.getElementById("aiAnswer");
 
 
-  let out =
-    document
-      .getElementById('aiAnswer');
+if(!q){
 
+answer.textContent=
+"Taip soalan dahulu.";
 
-  if(!q){
-
-    out.textContent =
-      'Taip soalan dahulu.';
-
-    return;
-
-  }
-
-
-  let tips =
-    'Cadangan LIFE AI: pecahkan perkara itu kepada langkah kecil, tentukan tarikh akhir, semak perkara penting dan letakkan reminder dalam LIFEBOX.';
-
-
-  if(
-    /cuti|bercuti|travel|pergi/i.test(q)
-  )
-
-    tips =
-      'Cadangan: semak bajet, pengangkutan, penginapan, dokumen, ubat/perkara peribadi, cuaca dan senarai barang. Masukkan tarikh penting ke Reminder LIFEBOX.';
-
-
-  else if(
-    /duit|bajet|belanja|gaji/i.test(q)
-  )
-
-    tips =
-      'Cadangan: masukkan pendapatan dan semua perbelanjaan tetap dahulu. Kemudian tetapkan had belanja mingguan dan simpan sedikit untuk kecemasan.';
-
-
-  else if(
-    /kereta|motor|servis/i.test(q)
-  )
-
-    tips =
-      'Cadangan: semak minyak, tayar, brek, bateri, servis berkala, insurans dan tarikh tamat roadtax. Masukkan tarikh penting ke LIFEBOX.';
-
-
-  out.textContent = tips;
+return;
 
 }
 
 
+let result=
+"Cadangan LIFE AI: pecahkan perkara itu kepada beberapa langkah kecil, tentukan perkara paling penting dahulu dan masukkan tarikh penting ke dalam Reminder LIFEBOX.";
+
+
+if(
+/cuti|bercuti|travel|percutian/i
+.test(q)
+){
+
+result=
+"Untuk persediaan bercuti, semak bajet, pengangkutan, tempat tinggal, dokumen, barang penting, cuaca dan jadual perjalanan. Masukkan tarikh penting ke Reminder LIFEBOX.";
+
+}
+
+
+else if(
+/duit|bajet|belanja|gaji|kewangan/i
+.test(q)
+){
+
+result=
+"Mulakan dengan pendapatan bulanan, komitmen tetap dan perbelanjaan harian. Kemudian tetapkan had belanja dan asingkan sedikit simpanan kecemasan.";
+
+}
+
+
+else if(
+/kereta|motor|servis|roadtax/i
+.test(q)
+){
+
+result=
+"Semak tarikh servis, minyak, tayar, brek, bateri, insurans dan roadtax. Simpan tarikh tamat dalam LIFEBOX supaya tidak terlupa.";
+
+}
+
+
+answer.textContent=result;
+
+}
+
+
+/* EMERGENCY */
+
 function emergency(){
 
-  alert(
+alert(
 `🚨 KAD KECEMASAN
 
 Untuk kecemasan sebenar di Malaysia,
 hubungi 999.
 
-Versi seterusnya boleh menyimpan
+Versi akan datang boleh menambah
 kontak kecemasan keluarga dan
-maklumat penting yang pengguna
-pilih untuk dikongsi.`
-  );
+maklumat penting pengguna.`
+);
 
 }
 
 
+/* BACKUP */
+
 function exportData(){
 
-  let blob =
-    new Blob(
-      [
-        JSON.stringify(
-          db,
-          null,
-          2
-        )
-      ],
-      {
-        type:'application/json'
-      }
-    );
+const blob=
+new Blob(
+[
+JSON.stringify(
+db,
+null,
+2
+)
+],
+{
+type:"application/json"
+}
+);
 
 
-  let a =
-    document.createElement('a');
+const link=
+document.createElement("a");
 
+link.href=
+URL.createObjectURL(blob);
 
-  a.href =
-    URL.createObjectURL(blob);
+link.download=
+"lifebox-backup.json";
 
+link.click();
 
-  a.download =
-    'lifebox-backup.json';
-
-
-  a.click();
-
-
-  toast(
-    'Backup dimuat turun'
-  );
+toast(
+"Backup data berjaya dibuat"
+);
 
 }
 
@@ -1912,4 +2167,4 @@ render();
 </script>
 
 </body>
-        </html>
+  </html>
