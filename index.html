@@ -1016,23 +1016,16 @@ navItems.forEach(item => {
 
 <script>
 function showSection(section) {
+    const sections = {
+        duit: 'Bahagian Kewangan',
+        keluarga: 'Bahagian Keluarga',
+        kenderaan: 'Bahagian Kenderaan',
+        dokumen: 'Bahagian Dokumen'
+    };
 
-    if (section === 'duit') {
-        alert('Bahagian Kewangan akan dibuka di sini.');
+    if (sections[section]) {
+        alert(sections[section] + ' akan dibuka.');
     }
-
-    if (section === 'keluarga') {
-        alert('Bahagian Keluarga akan dibuka di sini.');
-    }
-
-    if (section === 'kenderaan') {
-        alert('Bahagian Kenderaan akan dibuka di sini.');
-    }
-
-    if (section === 'dokumen') {
-        alert('Bahagian Dokumen akan dibuka di sini.');
-    }
-
-}
+  }
 </script></body>
 </html>
