@@ -1,0 +1,9 @@
+{
+  "name":"LIFEBOX — Life Manager",
+  "short_name":"LIFEBOX",
+  "start_url":"./",
+  "display":"standalone",
+  "background_color":"#f5f7f8",
+  "theme_color":"#0f766e",
+  "description":"Satu aplikasi untuk urus kehidupan."
+}
