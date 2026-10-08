@@ -1434,38 +1434,159 @@ function saveFamilyData(data) {
         return;
     }
 
-    list.innerHTML = data.map(member => `
-        <div style="
-            padding:16px;
-            margin-bottom:12px;
-            border:1px solid rgba(255,255,255,0.15);
-            border-radius:14px;
-            background:rgba(255,255,255,0.05);
-        ">
-            <div style="font-size:20px;font-weight:bold;">
-                ${member.name}
-            </div>
+    list.innerHTML = data.map(member => {
 
-            <div style="margin-top:6px;color:#d4af37;">
-                ${member.relation}
-            </div>
+        const phone = (member.phone || '').replace(/\D/g, '');
 
-            <div style="margin-top:8px;color:#aaa;">
-                🎂 ${member.birthDate || '-'}
-            </div>
+        let whatsappPhone = phone;
 
-            <div style="color:#aaa;">
-                📞 ${member.phone || '-'}
-            </div>
+        if (whatsappPhone.startsWith('0')) {
+            whatsappPhone = '60' + whatsappPhone.substring(1);
+        }
 
-            ${member.notes ? `
-                <div style="margin-top:8px;color:#ccc;">
-                    📝 ${member.notes}
+        let ageText = '-';
+
+        if (member.birthDate) {
+            const parts = member.birthDate.split('/');
+
+            if (parts.length === 3) {
+                const day = parseInt(parts[0]);
+                const month = parseInt(parts[1]) - 1;
+                const year = parseInt(parts[2]);
+
+                const birth = new Date(year, month, day);
+                const today = new Date();
+
+                let age = today.getFullYear() - birth.getFullYear();
+
+                const birthdayThisYear = new Date(
+                    today.getFullYear(),
+                    birth.getMonth(),
+                    birth.getDate()
+                );
+
+                if (today < birthdayThisYear) {
+                    age--;
+                }
+
+                if (age >= 0) {
+                    ageText = age + ' tahun';
+                }
+            }
+        }
+
+        return `
+            <div style="
+                padding:16px;
+                margin-bottom:14px;
+                border:1px solid rgba(255,255,255,0.15);
+                border-radius:14px;
+                background:rgba(255,255,255,0.05);
+            ">
+
+                <div style="
+                    font-size:20px;
+                    font-weight:bold;
+                ">
+                    ${member.name}
                 </div>
-            ` : ''}
-        </div>
-    `).join('');
-  }function closeFamily() {
+
+                <div style="
+                    margin-top:6px;
+                    color:#d4af37;
+                    font-weight:bold;
+                ">
+                    ${member.relation}
+                </div>
+
+                <div style="margin-top:8px;color:#aaa;">
+                    🎂 ${member.birthDate || '-'} 
+                    ${ageText !== '-' ? ' • ' + ageText : ''}
+                </div>
+
+                <div style="color:#aaa;">
+                    📞 ${member.phone || '-'}
+                </div>
+
+                ${member.notes ? `
+                    <div style="margin-top:8px;color:#ccc;">
+                        📝 ${member.notes}
+                    </div>
+                ` : ''}
+
+                <div style="
+                    display:flex;
+                    gap:8px;
+                    margin-top:14px;
+                    flex-wrap:wrap;
+                ">
+
+                    ${phone ? `
+                        <a href="tel:${phone}"
+                           style="
+                               flex:1;
+                               min-width:90px;
+                               text-align:center;
+                               padding:10px;
+                               border-radius:10px;
+                               background:#1f8f5f;
+                               color:white;
+                               text-decoration:none;
+                               font-weight:bold;
+                           ">
+                            📞 Call
+                        </a>
+
+                        <a href="https://wa.me/${whatsappPhone}"
+                           target="_blank"
+                           style="
+                               flex:1;
+                               min-width:90px;
+                               text-align:center;
+                               padding:10px;
+                               border-radius:10px;
+                               background:#25D366;
+                               color:white;
+                               text-decoration:none;
+                               font-weight:bold;
+                           ">
+                            💬 WhatsApp
+                        </a>
+                    ` : ''}
+
+                    <button onclick="editFamilyMember(${member.id})"
+                        style="
+                            flex:1;
+                            min-width:90px;
+                            padding:10px;
+                            border-radius:10px;
+                            border:0;
+                            background:#d4af37;
+                            color:#111;
+                            font-weight:bold;
+                        ">
+                        ✏️ Edit
+                    </button>
+
+                    <button onclick="deleteFamilyMember(${member.id})"
+                        style="
+                            flex:1;
+                            min-width:90px;
+                            padding:10px;
+                            border-radius:10px;
+                            border:0;
+                            background:#8b2e2e;
+                            color:white;
+                            font-weight:bold;
+                        ">
+                        🗑️ Padam
+                    </button>
+
+                </div>
+            </div>
+        `;
+    }).join('');
+          }
     const modal = document.getElementById('familyModal');
 
     if (modal) {
