@@ -1137,6 +1137,182 @@ function closeMore() {
         modal.remove();
     }
 }
+  
+function openAuth() {
+
+  const oldModal = document.getElementById('authModal');
+
+  if (oldModal) {
+    oldModal.remove();
+    return;
+  }
+
+  const modal = document.createElement('div');
+  modal.id = 'authModal';
+
+  modal.innerHTML = `
+    <div style="
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.75);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      z-index:99999;
+      padding:20px;
+    ">
+
+      <div style="
+        width:100%;
+        max-width:420px;
+        background:#0d1714;
+        border:1px solid rgba(255,255,255,.1);
+        border-radius:24px;
+        padding:24px;
+        color:#f5f7f5;
+        box-shadow:0 20px 60px rgba(0,0,0,.5);
+      ">
+
+        <div style="
+          display:flex;
+          justify-content:space-between;
+          align-items:center;
+          margin-bottom:20px;
+        ">
+
+          <div>
+            <small style="color:#8e9b96;">LIFEBOX</small>
+            <h2 style="margin:5px 0 0;">🔐 Login / Daftar</h2>
+          </div>
+
+          <button onclick="closeAuth()" style="
+            border:0;
+            background:rgba(255,255,255,.08);
+            color:white;
+            width:40px;
+            height:40px;
+            border-radius:50%;
+            font-size:20px;
+          ">×</button>
+
+        </div>
+
+        <input
+          id="authEmail"
+          type="email"
+          placeholder="Email"
+          style="
+            width:100%;
+            padding:14px;
+            margin-bottom:12px;
+            border-radius:12px;
+            border:1px solid rgba(255,255,255,.12);
+            background:#09120f;
+            color:white;
+            box-sizing:border-box;
+          "
+        >
+
+        <input
+          id="authPassword"
+          type="password"
+          placeholder="Password"
+          style="
+            width:100%;
+            padding:14px;
+            margin-bottom:16px;
+            border-radius:12px;
+            border:1px solid rgba(255,255,255,.12);
+            background:#09120f;
+            color:white;
+            box-sizing:border-box;
+          "
+        >
+
+        <button onclick="handleLogin()" style="
+          width:100%;
+          padding:14px;
+          border:0;
+          border-radius:12px;
+          background:#0e7768;
+          color:white;
+          font-weight:bold;
+          margin-bottom:10px;
+        ">
+          🔓 Login
+        </button>
+
+        <button onclick="handleSignup()" style="
+          width:100%;
+          padding:14px;
+          border:1px solid #0e7768;
+          border-radius:12px;
+          background:transparent;
+          color:white;
+          font-weight:bold;
+        ">
+          📝 Daftar Akaun
+        </button>
+
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(modal);
+}
+
+
+function closeAuth() {
+
+  const modal = document.getElementById('authModal');
+
+  if (modal) {
+    modal.remove();
+  }
+
+}
+
+
+async function handleLogin() {
+
+  const email =
+    document.getElementById('authEmail').value.trim();
+
+  const password =
+    document.getElementById('authPassword').value;
+
+  if (!email || !password) {
+    alert('⚠️ Sila masukkan email dan password.');
+    return;
+  }
+
+  await signInLifeBox(email, password);
+
+}
+
+
+async function handleSignup() {
+
+  const email =
+    document.getElementById('authEmail').value.trim();
+
+  const password =
+    document.getElementById('authPassword').value;
+
+  if (!email || !password) {
+    alert('⚠️ Sila masukkan email dan password.');
+    return;
+  }
+
+  if (password.length < 6) {
+    alert('⚠️ Password mesti sekurang-kurangnya 6 aksara.');
+    return;
+  }
+
+  await signUpLifeBox(email, password);
+
+}
+
 
 /* =========================
    NAV
