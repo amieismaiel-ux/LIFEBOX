@@ -1061,7 +1061,68 @@ body{
 </nav>
 
 
-<script>
+<script>function openMore() {
+
+    const existing = document.getElementById('moreModal');
+
+    if (existing) {
+        existing.remove();
+        return;
+    }
+
+    const modal = document.createElement('div');
+    modal.id = 'moreModal';
+
+    modal.innerHTML = `
+        <div class="finance-box">
+
+            <div class="finance-header">
+                <button onclick="closeMore()">✕</button>
+
+                <div>
+                    <small>LIFEBOX</small>
+                    <h2>More</h2>
+                </div>
+            </div>
+
+            <div style="padding:20px;">
+
+                <button onclick="alert('Tetapan LIFEBOX akan dibuka.')"
+                    style="width:100%;padding:15px;margin-bottom:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.06);color:white;text-align:left;font-size:16px;">
+                    ⚙️ &nbsp; Tetapan
+                </button>
+
+                <button onclick="alert('Profil pengguna LIFEBOX.')"
+                    style="width:100%;padding:15px;margin-bottom:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.06);color:white;text-align:left;font-size:16px;">
+                    👤 &nbsp; Profil
+                </button>
+
+                <button onclick="alert('Notifikasi LIFEBOX.')"
+                    style="width:100%;padding:15px;margin-bottom:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.06);color:white;text-align:left;font-size:16px;">
+                    🔔 &nbsp; Notifikasi
+                </button>
+
+                <button onclick="alert('LIFEBOX — Your Life. One Place.')"
+                    style="width:100%;padding:15px;border-radius:12px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.06);color:white;text-align:left;font-size:16px;">
+                    ℹ️ &nbsp; Tentang LIFEBOX
+                </button>
+
+            </div>
+
+        </div>
+    `;
+
+    document.body.appendChild(modal);
+}
+
+function closeMore() {
+
+    const modal = document.getElementById('moreModal');
+
+    if (modal) {
+        modal.remove();
+    }
+}
 
 /* =========================
    NAV
