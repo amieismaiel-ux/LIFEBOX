@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#07100e">
 <meta name="apple-mobile-web-app-capable" content="yes">
+
 <title>LIFEBOX — Your Life. One Place.</title>
 
 <style>
@@ -14,7 +15,6 @@
   --bg:#050908;
   --bg2:#09120f;
   --card:#0d1714;
-  --card2:#111d19;
   --emerald:#0e7768;
   --emerald2:#19a58f;
   --gold:#d7ad57;
@@ -22,6 +22,8 @@
   --white:#f5f7f5;
   --muted:#8e9b96;
   --line:rgba(255,255,255,.09);
+  --red:#ff9b9b;
+  --green:#7fffd4;
 }
 
 *{
@@ -46,9 +48,7 @@ body{
   padding-bottom:100px;
 }
 
-/* =========================
-   TOP BAR
-========================= */
+/* TOP BAR */
 
 .topbar{
   height:82px;
@@ -71,8 +71,6 @@ body{
   gap:13px;
 }
 
-/* PREMIUM LIFEBOX LOGO */
-
 .logo{
   width:54px;
   height:54px;
@@ -81,8 +79,7 @@ body{
   display:flex;
   align-items:center;
   justify-content:center;
-  background:
-    linear-gradient(145deg,#f5f7f4 0%,#dfe8e3 100%);
+  background:linear-gradient(145deg,#f5f7f4,#dfe8e3);
   box-shadow:
     0 8px 30px rgba(0,0,0,.35),
     inset 0 1px 0 rgba(255,255,255,.9);
@@ -107,7 +104,6 @@ body{
   background:var(--gold);
   top:9px;
   right:10px;
-  box-shadow:0 0 12px rgba(215,173,87,.55);
 }
 
 .logo-mark{
@@ -159,9 +155,7 @@ body{
   background:#dfe7e4;
 }
 
-/* =========================
-   HERO
-========================= */
+/* HERO */
 
 .hero{
   position:relative;
@@ -172,9 +166,9 @@ body{
   background:
     linear-gradient(
       180deg,
-      rgba(2,8,5,.15) 0%,
+      rgba(2,8,5,.15),
       rgba(2,8,5,.52) 48%,
-      #050908 100%
+      #050908
     ),
     url("https://images.unsplash.com/photo-1527061011665-3652c757a4d4?auto=format&fit=crop&w=1200&q=85")
     center/cover no-repeat;
@@ -209,7 +203,6 @@ body{
   font-weight:700;
   letter-spacing:1.5px;
   text-transform:uppercase;
-  backdrop-filter:blur(10px);
 }
 
 .eyebrow i{
@@ -217,7 +210,6 @@ body{
   height:7px;
   border-radius:50%;
   background:var(--gold);
-  box-shadow:0 0 10px var(--gold);
 }
 
 .hero h2{
@@ -253,15 +245,12 @@ body{
   height:54px;
   border-radius:50%;
   border:2px solid rgba(255,255,255,.8);
-  background:
-    linear-gradient(145deg,#284d43,#101816);
+  background:linear-gradient(145deg,#284d43,#101816);
   display:flex;
   align-items:center;
   justify-content:center;
   font-size:17px;
   font-weight:800;
-  color:white;
-  box-shadow:0 5px 20px rgba(0,0,0,.35);
 }
 
 .welcome small{
@@ -277,9 +266,7 @@ body{
   margin-top:2px;
 }
 
-/* =========================
-   CONTENT
-========================= */
+/* CONTENT */
 
 .container{
   padding:0 24px;
@@ -289,13 +276,6 @@ body{
 
 .section{
   margin-top:42px;
-}
-
-.section-head{
-  display:flex;
-  align-items:end;
-  justify-content:space-between;
-  margin-bottom:17px;
 }
 
 .section-label{
@@ -314,24 +294,15 @@ body{
   font-weight:800;
 }
 
-.add{
-  color:var(--emerald2);
-  font-weight:700;
-  font-size:14px;
-}
-
-/* ATTENTION */
-
 .attention{
+  margin-top:17px;
   border:1px solid rgba(215,173,87,.25);
-  background:
-    linear-gradient(120deg,rgba(215,173,87,.07),rgba(255,255,255,.025));
+  background:linear-gradient(120deg,rgba(215,173,87,.07),rgba(255,255,255,.025));
   border-radius:26px;
   padding:25px;
   display:flex;
   align-items:center;
   gap:18px;
-  box-shadow:0 20px 50px rgba(0,0,0,.22);
 }
 
 .check{
@@ -343,12 +314,7 @@ body{
   align-items:center;
   justify-content:center;
   font-size:27px;
-  background:
-    linear-gradient(145deg,#e0b75d,#a77928);
-  color:white;
-  box-shadow:
-    0 8px 25px rgba(215,173,87,.18),
-    inset 0 1px 0 rgba(255,255,255,.3);
+  background:linear-gradient(145deg,#e0b75d,#a77928);
 }
 
 .attention h3{
@@ -362,7 +328,7 @@ body{
   margin-top:5px;
 }
 
-/* OVERVIEW */
+/* CARDS */
 
 .overview{
   margin-top:48px;
@@ -371,75 +337,116 @@ body{
 .cards{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:14px;
+  gap:18px;
+  margin-top:28px;
 }
 
-.card{
-  min-height:175px;
-  padding:21px;
+.photo-card{
   position:relative;
+  min-height:245px;
+  border-radius:26px;
   overflow:hidden;
-  border:1px solid var(--line);
-  border-radius:25px;
-  background:
-    linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018));
-  box-shadow:0 15px 40px rgba(0,0,0,.20);
+  border:1px solid rgba(255,255,255,.13);
+  background:#101513;
+  box-shadow:0 18px 45px rgba(0,0,0,.35);
+  isolation:isolate;
   transition:.25s ease;
 }
 
-.card:after{
+.photo-card::before{
   content:"";
   position:absolute;
-  width:100px;
-  height:100px;
-  right:-35px;
-  bottom:-35px;
-  border-radius:50%;
-  background:rgba(25,165,143,.09);
+  inset:0;
+  z-index:-2;
+  background-size:cover;
+  background-position:center;
+  transform:scale(1.02);
 }
 
-.card:active{
-  transform:scale(.97);
+.finance-card::before{
+  background-image:url("https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1200&q=85");
 }
 
-.card-icon{
-  width:47px;
-  height:47px;
-  border-radius:15px;
+.family-card::before{
+  background-image:url("https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=1200&q=85");
+}
+
+.vehicle-card::before{
+  background-image:url("https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1200&q=85");
+}
+
+.document-card::before{
+  background-image:url("https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=85");
+}
+
+.photo-overlay{
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  background:linear-gradient(
+    180deg,
+    rgba(0,0,0,.08),
+    rgba(0,0,0,.30) 35%,
+    rgba(0,0,0,.90)
+  );
+}
+
+.photo-content{
+  min-height:245px;
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+
+.photo-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.photo-badge{
+  display:inline-flex;
+  padding:7px 11px;
+  border-radius:999px;
+  background:rgba(0,0,0,.48);
+  border:1px solid rgba(232,198,112,.45);
+  color:#e8c670;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:1.5px;
+}
+
+.photo-arrow{
+  width:34px;
+  height:34px;
   display:flex;
   align-items:center;
   justify-content:center;
-  color:var(--gold2);
-  border:1px solid rgba(215,173,87,.22);
-  background:rgba(215,173,87,.07);
-  font-size:22px;
+  border-radius:50%;
+  background:rgba(0,0,0,.45);
+  border:1px solid rgba(255,255,255,.18);
 }
 
-.card-label{
-  color:#899691;
+.photo-title{
+  font-size:24px;
+  line-height:1.1;
+  font-weight:700;
+  margin-bottom:6px;
+}
+
+.photo-value{
+  font-size:19px;
+  color:#e8c670;
+  margin-bottom:5px;
+}
+
+.photo-link{
   font-size:13px;
-  margin-top:17px;
+  color:rgba(255,255,255,.76);
 }
 
-.card-value{
-  font-family:'Manrope',sans-serif;
-  font-size:25px;
-  font-weight:800;
-  letter-spacing:-1px;
-  margin-top:4px;
-}
-
-.card-link{
-  position:absolute;
-  bottom:20px;
-  left:21px;
-  color:#64736e;
-  font-size:11px;
-}
-
-/* =========================
-   BOTTOM NAV
-========================= */
+/* BOTTOM NAV */
 
 .bottom-nav{
   position:fixed;
@@ -454,7 +461,6 @@ body{
   background:rgba(5,9,8,.91);
   border-top:1px solid rgba(255,255,255,.07);
   backdrop-filter:blur(24px);
-  -webkit-backdrop-filter:blur(24px);
 }
 
 .nav-item{
@@ -467,12 +473,10 @@ body{
   justify-content:center;
   gap:5px;
   border-radius:19px;
-  font-family:'DM Sans',sans-serif;
 }
 
 .nav-icon{
   font-size:22px;
-  line-height:1;
 }
 
 .nav-item span:last-child{
@@ -487,24 +491,246 @@ body{
     rgba(14,119,104,.38),
     rgba(14,119,104,.12)
   );
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.05),
-    0 5px 20px rgba(14,119,104,.12);
 }
 
-.nav-item.active .nav-icon{
-  color:#b9eadf;
+/* MODALS */
+
+.finance-box{
+  width:min(94%,650px);
+  max-height:88vh;
+  overflow:auto;
+  background:#0b1411;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:25px;
+  box-shadow:0 30px 80px rgba(0,0,0,.65);
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
+#financeModal,
+#familyModal,
+#vehicleModal,
+#documentModal{
+  position:fixed;
+  inset:0;
+  z-index:500;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:rgba(0,0,0,.78);
+  backdrop-filter:blur(8px);
+}
 
-@media(max-width:380px){
+.finance-header{
+  padding:20px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  border-bottom:1px solid rgba(255,255,255,.08);
+  position:sticky;
+  top:0;
+  background:#0b1411;
+  z-index:5;
+}
+
+.finance-header button{
+  width:42px;
+  height:42px;
+  border:0;
+  border-radius:50%;
+  background:rgba(255,255,255,.08);
+  color:white;
+  font-size:22px;
+}
+
+.finance-header small{
+  color:var(--gold);
+  letter-spacing:2px;
+}
+
+.finance-header h2{
+  margin-top:3px;
+  font-size:25px;
+}
+
+.finance-balance{
+  margin:20px;
+  padding:22px;
+  border-radius:22px;
+  background:linear-gradient(145deg,#123c35,#071c19);
+}
+
+.finance-balance small{
+  color:var(--gold);
+  letter-spacing:2px;
+}
+
+#financeBalance{
+  font-size:34px;
+  font-weight:800;
+  margin-top:8px;
+}
+
+.finance-actions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  padding:0 20px;
+}
+
+.finance-btn{
+  min-height:65px;
+  border:1px solid rgba(214,176,82,.35);
+  border-radius:18px;
+  font-weight:700;
+}
+
+.finance-income{
+  background:#123c35;
+  color:#d9f4e9;
+}
+
+.finance-expense{
+  background:#351b1b;
+  color:#ffd8d8;
+}
+
+.finance-section{
+  padding:0 20px;
+  margin-top:25px;
+}
+
+.finance-section h3{
+  margin-bottom:12px;
+}
+
+.finance-row{
+  display:flex;
+  justify-content:space-between;
+  padding:14px;
+  margin-bottom:8px;
+  border-radius:14px;
+  background:rgba(255,255,255,.045);
+}
+
+.finance-transaction{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  padding:15px;
+  margin-bottom:10px;
+  border-radius:17px;
+  background:rgba(255,255,255,.045);
+}
+
+.finance-transaction small{
+  display:block;
+  color:#888;
+  margin-top:4px;
+}
+
+/* MODULE LIST */
+
+.module-body{
+  padding:20px;
+}
+
+.add-main{
+  width:100%;
+  padding:15px;
+  border:0;
+  border-radius:14px;
+  background:var(--gold);
+  color:#111;
+  font-weight:800;
+  font-size:15px;
+  margin-bottom:18px;
+}
+
+.module-card{
+  padding:17px;
+  margin-bottom:12px;
+  border-radius:17px;
+  background:rgba(255,255,255,.045);
+  border:1px solid rgba(255,255,255,.10);
+}
+
+.module-card h3{
+  font-size:19px;
+  margin-bottom:5px;
+}
+
+.module-relation{
+  color:var(--gold);
+  font-weight:700;
+}
+
+.module-info{
+  color:#aaa;
+  margin-top:7px;
+  line-height:1.5;
+}
+
+.module-actions{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:14px;
+}
+
+.action-btn{
+  flex:1;
+  min-width:90px;
+  padding:10px;
+  border:0;
+  border-radius:10px;
+  font-weight:700;
+}
+
+.btn-edit{
+  background:var(--gold);
+  color:#111;
+}
+
+.btn-delete{
+  background:#692727;
+  color:white;
+}
+
+.btn-call{
+  background:#1f8f5f;
+  color:white;
+}
+
+.btn-wa{
+  background:#25D366;
+  color:white;
+}
+
+.empty-module{
+  text-align:center;
+  padding:30px;
+  color:#888;
+}
+
+/* STATUS */
+
+.status-ok{
+  color:#7fffd4;
+}
+
+.status-warning{
+  color:#f1d48a;
+}
+
+.status-danger{
+  color:#ff9b9b;
+}
+
+@media(max-width:600px){
 
   .hero{
-    padding-left:25px;
-    padding-right:25px;
+    min-height:480px;
+    padding:35px 25px;
   }
 
   .hero h2{
@@ -515,188 +741,12 @@ body{
     padding:0 18px;
   }
 
-  .card{
-    padding:17px;
-  }
-
-  .card-value{
-    font-size:22px;
-  }
-}
-/* =====================================================
-   LIFEBOX — PREMIUM REALISTIC OVERVIEW CARDS
-   ===================================================== */
-
-.cards{
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:18px;
-  margin-top:28px;
-}
-
-/* CARD UTAMA */
-.photo-card{
-  position:relative;
-  min-height:245px;
-  border-radius:26px;
-  overflow:hidden;
-  border:1px solid rgba(255,255,255,.13);
-  background:#101513;
-  box-shadow:
-    0 18px 45px rgba(0,0,0,.35),
-    inset 0 1px 0 rgba(255,255,255,.06);
-  isolation:isolate;
-  transition:
-    transform .25s ease,
-    border-color .25s ease,
-    box-shadow .25s ease;
-}
-
-/* GAMBAR LATAR */
-.photo-card::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:-2;
-  background-size:cover;
-  background-position:center;
-  transform:scale(1.02);
-}
-
-/* KEWANGAN */
-.finance-card::before{
-  background-image:url("https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1200&q=85");
-}
-
-/* KELUARGA */
-.family-card::before{
-  background-image:url("https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=1200&q=85");
-}
-
-/* KENDERAAN */
-.vehicle-card::before{
-  background-image:url("https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1200&q=85");
-}
-
-/* DOKUMEN */
-.document-card::before{
-  background-image:url("https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=85");
-}
-
-/* LAPISAN GELAP SUPAYA TEKS PREMIUM */
-.photo-overlay{
-  position:absolute;
-  inset:0;
-  z-index:-1;
-  background:
-    linear-gradient(
-      180deg,
-      rgba(0,0,0,.08) 0%,
-      rgba(0,0,0,.30) 35%,
-      rgba(0,0,0,.90) 100%
-    );
-}
-
-/* KANDUNGAN */
-.photo-content{
-  min-height:245px;
-  padding:20px;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  color:#fff;
-}
-
-/* BARIS ATAS */
-.photo-top{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-
-/* LABEL */
-.photo-badge{
-  display:inline-flex;
-  align-items:center;
-  padding:7px 11px;
-  border-radius:999px;
-  background:rgba(0,0,0,.48);
-  border:1px solid rgba(232,198,112,.45);
-  color:#e8c670;
-  font-size:10px;
-  font-weight:700;
-  letter-spacing:1.5px;
-  backdrop-filter:blur(10px);
-}
-
-/* ANAK PANAH */
-.photo-arrow{
-  width:34px;
-  height:34px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:50%;
-  background:rgba(0,0,0,.45);
-  border:1px solid rgba(255,255,255,.18);
-  color:#fff;
-  font-size:17px;
-  backdrop-filter:blur(8px);
-}
-
-/* TAJUK */
-.photo-title{
-  font-size:24px;
-  line-height:1.1;
-  font-weight:700;
-  color:#fff;
-  margin-bottom:6px;
-  text-shadow:0 2px 12px rgba(0,0,0,.5);
-}
-
-/* NILAI */
-.photo-value{
-  font-size:19px;
-  line-height:1.2;
-  font-weight:500;
-  color:#e8c670;
-  margin-bottom:5px;
-}
-
-/* LINK */
-.photo-link{
-  font-size:13px;
-  color:rgba(255,255,255,.76);
-}
-
-/* EFEK SENTUH */
-.photo-card:active{
-  transform:scale(.975);
-}
-
-/* DESKTOP / TABLET */
-@media(min-width:601px){
-
-  .photo-card:hover{
-    transform:translateY(-4px);
-    border-color:rgba(232,198,112,.45);
-    box-shadow:
-      0 24px 55px rgba(0,0,0,.45),
-      0 0 0 1px rgba(232,198,112,.08);
-  }
-}
-
-/* TELEFON */
-@media(max-width:600px){
-
   .cards{
-    grid-template-columns:1fr 1fr;
     gap:14px;
   }
 
   .photo-card{
     min-height:225px;
-    border-radius:23px;
   }
 
   .photo-content{
@@ -719,17 +769,13 @@ body{
   .photo-badge{
     padding:6px 8px;
     font-size:8px;
-    letter-spacing:1px;
   }
 
-  .photo-arrow{
-    width:29px;
-    height:29px;
-    font-size:14px;
+  .finance-actions{
+    gap:8px;
   }
 }
 
-/* TELEFON KECIL */
 @media(max-width:380px){
 
   .cards{
@@ -738,7 +784,6 @@ body{
 
   .photo-card{
     min-height:205px;
-    border-radius:20px;
   }
 
   .photo-content{
@@ -753,234 +798,12 @@ body{
   .photo-value{
     font-size:14px;
   }
-
-  .photo-link{
-    font-size:10px;
-  }
-  }/* ================================
-   LIFEBOX - FINANCE PANEL
-================================ */
-
-.finance-panel {
-  padding: 24px 18px 110px;
-  color: #f5f5f5;
 }
-
-.finance-panel h1 {
-  font-size: 32px;
-  margin: 6px 0 22px;
-  font-weight: 700;
-}
-
-.finance-balance {
-  background: linear-gradient(145deg, #123c35, #071c19);
-  border: 1px solid rgba(214, 176, 82, 0.35);
-  border-radius: 24px;
-  padding: 24px;
-  margin-bottom: 18px;
-  box-shadow: 0 12px 35px rgba(0,0,0,.25);
-}
-
-.finance-label {
-  color: #d6b052;
-  font-size: 12px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin-bottom: 8px;
-}
-
-.finance-balance-amount {
-  font-size: 34px;
-  font-weight: 700;
-  margin-bottom: 4px;
-}
-
-.finance-actions {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-bottom: 22px;
-}
-
-.finance-btn {
-    width: 100%;
-    min-height: 64px;
-    border: 1px solid rgba(214,176,82,.35);
-    border-radius: 18px;
-    padding: 12px 14px;
-    font-size: 15px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    text-align: center;
-}
-
-.finance-btn:hover {
-    transform: translateY(-2px);
-    filter: brightness(1.08);
-    box-shadow: 0 8px 24px rgba(0,0,0,.25);
-}
-
-.finance-btn:active {
-    transform: scale(.98);
-}
-
-.finance-income {
-  background: #123c35;
-  color: #d9f4e9;
-}
-
-.finance-expense {
-  background: #351b1b;
-  color: #ffd8d8;
-}
-
-.finance-summary {
-  margin-top: 10px;
-}
-
-.finance-summary-title,
-.finance-transactions-title {
-  font-size: 20px;
-  font-weight: 700;
-  margin: 20px 0 12px;
-}
-
-.finance-summary-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
-
-.finance-summary-card {
-  background: rgba(255,255,255,.045);
-  border: 1px solid rgba(255,255,255,.09);
-  border-radius: 18px;
-  padding: 18px;
-}
-
-.finance-summary-card small {
-  display: block;
-  color: #aaa;
-  margin-bottom: 7px;
-}
-
-.finance-summary-card strong {
-  font-size: 20px;
-}
-
-.finance-transactions {
-  margin-top: 10px;
-}
-
-.finance-transaction {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 14px;
-    padding: 18px;
-    margin-bottom: 12px;
-    border-radius: 20px;
-    background: linear-gradient(
-        145deg,
-        rgba(255,255,255,.055),
-        rgba(255,255,255,.025)
-    );
-    border: 1px solid rgba(255,255,255,.09);
-    box-shadow: 0 8px 24px rgba(0,0,0,.18);
-    transition: transform .2s ease, border-color .2s ease;
-}
-
-.finance-transaction:hover {
-    transform: translateY(-2px);
-    border-color: rgba(214,176,82,.35);
-  }
-
-.finance-transaction small {
-  display: block;
-  color: #888;
-  margin-top: 4px;
-}
-
-.finance-transaction strong {
-  white-space: nowrap;
-}
-.finance-transaction strong {
-    font-weight: 800;
-}
-
-.finance-transaction strong.income {
-    color: #7fffd4;
-}
-
-.finance-transaction strong.expense {
-    color: #ff9b9b;
-}
-.finance-empty {
-  padding: 22px;
-  text-align: center;
-  color: #999;
-  background: rgba(255,255,255,.035);
-  border-radius: 16px;
-  }@media (max-width: 600px) {
-    .finance-panel {
-        padding: 20px 12px 100px;
-    }
-
-    .finance-panel h1 {
-        font-size: 30px;
-    }
-
-    .finance-balance {
-        padding: 20px;
-        border-radius: 22px;
-    }
-
-    .finance-balance-amount {
-        font-size: 30px;
-    }
-
-    .finance-actions {
-        gap: 10px;
-    }
-
-    .finance-btn {
-        min-height: 60px;
-        padding: 10px 8px;
-        font-size: 14px;
-    }
-
-    .finance-summary-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-    }
-
-    .finance-summary-card {
-        padding: 14px;
-    }
-
-    .finance-summary-card strong {
-        font-size: 18px;
-    }
-
-    .finance-transaction {
-        padding: 16px;
-        border-radius: 18px;
-    }
-
-    .finance-transaction strong {
-        font-size: 16px;
-    }
-    }</style>
+</style>
 </head>
 
 <body>
 
-<!-- TOP BAR -->
 <header class="topbar">
 
   <div class="brand">
@@ -1005,7 +828,6 @@ body{
 </header>
 
 
-<!-- HERO -->
 <section class="hero">
 
   <div class="hero-content">
@@ -1027,16 +849,12 @@ body{
     </p>
 
     <div class="welcome">
-
-      <div class="avatar">
-        H
-      </div>
+      <div class="avatar">H</div>
 
       <div>
         <small>Selamat datang kembali</small>
         <strong>Helmi</strong>
       </div>
-
     </div>
 
   </div>
@@ -1046,162 +864,191 @@ body{
 
 <main class="container">
 
-  <!-- ATTENTION -->
+<section class="section">
 
-  <section class="section">
+  <div class="section-label">TODAY</div>
 
-    <div class="section-head">
-
-      <div>
-        <div class="section-label">TODAY</div>
-        <div class="section-title">Perlu perhatian</div>
-      </div>
-
-      <div class="add">+ Tambah</div>
-
-    </div>
-
-    <div class="attention">
-
-      <div class="check">✓</div>
-
-      <div>
-        <h3>Tiada tugasan.</h3>
-        <p>Bagus! Semua nampak terkawal.</p>
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- OVERVIEW -->
-
-  <section class="overview">
-
-    <div class="section-label">OVERVIEW</div>
-
-    <div class="section-title" style="margin-bottom:18px;">
-      Kehidupan anda
-    </div>
-
-    <div class="cards">
-
-  <!-- KEWANGAN -->
-  <div class="photo-card finance-card"
-    onclick="showSection('duit')">
-    <div class="photo-overlay"></div>
-
-    <div class="photo-content">
-
-      <div class="photo-top">
-        <span class="photo-badge">FINANCE</span>
-        <span class="photo-arrow">↗</span>
-      </div>
-
-      <div>
-        <div class="photo-title">Kewangan</div>
-        <div class="photo-value"id="homeFinanceBalance">RM 0.00</div>
-        <div class="photo-link">Lihat kewangan</div>
-      </div>
-
-    </div>
+  <div class="section-title">
+    Perlu perhatian
   </div>
 
+  <div class="attention">
 
-  <!-- KELUARGA -->
-  <div class="photo-card family-card"
-    onclick="showSection('keluarga')">
-    <div class="photo-overlay"></div>
+    <div class="check">✓</div>
 
-    <div class="photo-content">
+    <div>
+      <h3>Tiada tugasan.</h3>
+      <p>Bagus! Semua nampak terkawal.</p>
+    </div>
 
-      <div class="photo-top">
-        <span class="photo-badge">FAMILY</span>
-        <span class="photo-arrow">↗</span>
-      </div>
+  </div>
 
-      <div>
-        <div class="photo-title">Keluarga</div>
-        <div class="photo-value"id="homeFamilyCount">0 ahli</div>
-        <div class="photo-link">Lihat keluarga</div>
+</section>
+
+
+<section class="overview">
+
+  <div class="section-label">OVERVIEW</div>
+
+  <div class="section-title">
+    Kehidupan anda
+  </div>
+
+  <div class="cards">
+
+    <!-- KEWANGAN -->
+
+    <div class="photo-card finance-card"
+         onclick="showSection('duit')">
+
+      <div class="photo-overlay"></div>
+
+      <div class="photo-content">
+
+        <div class="photo-top">
+          <span class="photo-badge">FINANCE</span>
+          <span class="photo-arrow">↗</span>
+        </div>
+
+        <div>
+          <div class="photo-title">Kewangan</div>
+          <div class="photo-value" id="homeFinanceBalance">
+            RM 0.00
+          </div>
+          <div class="photo-link">
+            Lihat kewangan
+          </div>
+        </div>
+
       </div>
 
     </div>
-  </div>
 
 
-  <!-- KENDERAAN -->
-  <div class="photo-card vehicle-card"
-    onclick="showSection('kenderaan')">
-    <div class="photo-overlay"></div>
+    <!-- KELUARGA -->
 
-    <div class="photo-content">
+    <div class="photo-card family-card"
+         onclick="showSection('keluarga')">
 
-      <div class="photo-top">
-        <span class="photo-badge">MOBILITY</span>
-        <span class="photo-arrow">↗</span>
-      </div>
+      <div class="photo-overlay"></div>
 
-      <div>
-        <div class="photo-title">Kenderaan</div>
-        <div class="photo-value">0</div>
-        <div class="photo-link">Lihat kenderaan</div>
-      </div>
+      <div class="photo-content">
 
-    </div>
-  </div>
+        <div class="photo-top">
+          <span class="photo-badge">FAMILY</span>
+          <span class="photo-arrow">↗</span>
+        </div>
 
+        <div>
+          <div class="photo-title">Keluarga</div>
 
-  <!-- DOKUMEN -->
-  <div class="photo-card document-card"
-    onclick="showSection('dokumen')">
-    <div class="photo-overlay"></div>
+          <div class="photo-value"
+               id="homeFamilyCount">
+            0 ahli
+          </div>
 
-    <div class="photo-content">
+          <div class="photo-link">
+            Lihat keluarga
+          </div>
+        </div>
 
-      <div class="photo-top">
-        <span class="photo-badge">IMPORTANT</span>
-        <span class="photo-arrow">↗</span>
-      </div>
-
-      <div>
-        <div class="photo-title">Dokumen</div>
-        <div class="photo-value">0</div>
-        <div class="photo-link">Lihat dokumen</div>
       </div>
 
     </div>
+
+
+    <!-- KENDERAAN -->
+
+    <div class="photo-card vehicle-card"
+         onclick="showSection('kenderaan')">
+
+      <div class="photo-overlay"></div>
+
+      <div class="photo-content">
+
+        <div class="photo-top">
+          <span class="photo-badge">MOBILITY</span>
+          <span class="photo-arrow">↗</span>
+        </div>
+
+        <div>
+          <div class="photo-title">Kenderaan</div>
+
+          <div class="photo-value"
+               id="homeVehicleCount">
+            0 kenderaan
+          </div>
+
+          <div class="photo-link">
+            Lihat kenderaan
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- DOKUMEN -->
+
+    <div class="photo-card document-card"
+         onclick="showSection('dokumen')">
+
+      <div class="photo-overlay"></div>
+
+      <div class="photo-content">
+
+        <div class="photo-top">
+          <span class="photo-badge">IMPORTANT</span>
+          <span class="photo-arrow">↗</span>
+        </div>
+
+        <div>
+          <div class="photo-title">Dokumen</div>
+
+          <div class="photo-value"
+               id="homeDocumentCount">
+            0 dokumen
+          </div>
+
+          <div class="photo-link">
+            Lihat dokumen
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
   </div>
 
-                                               </div>
-
-
-  </section>
+</section>
 
 </main>
 
 
-<!-- BOTTOM NAV -->
-
 <nav class="bottom-nav">
 
-  <button class="nav-item active">
+  <button class="nav-item active"
+          onclick="scrollToHome()">
     <div class="nav-icon">⌂</div>
     <span>Home</span>
   </button>
 
-  <button class="nav-item">
+  <button class="nav-item"
+          onclick="showSection('duit')">
     <div class="nav-icon">RM</div>
     <span>Duit</span>
   </button>
 
-  <button class="nav-item">
+  <button class="nav-item"
+          onclick="showSection('keluarga')">
     <div class="nav-icon">♧</div>
     <span>Keluarga</span>
   </button>
 
-  <button class="nav-item">
+  <button class="nav-item"
+          onclick="showSection('dokumen')">
     <div class="nav-icon">▤</div>
     <span>Dokumen</span>
   </button>
@@ -1216,13 +1063,20 @@ body{
 
 <script>
 
-const navItems = document.querySelectorAll('.nav-item');
+/* =========================
+   NAV
+========================= */
+
+const navItems =
+  document.querySelectorAll('.nav-item');
 
 navItems.forEach(item => {
 
   item.addEventListener('click', () => {
 
-    navItems.forEach(n => n.classList.remove('active'));
+    navItems.forEach(n =>
+      n.classList.remove('active')
+    );
 
     item.classList.add('active');
 
@@ -1230,762 +1084,1733 @@ navItems.forEach(item => {
 
 });
 
-</script>
+function scrollToHome(){
 
-<script>
-function showSection(section) {
+  window.scrollTo({
+    top:0,
+    behavior:'smooth'
+  });
 
-    if (section === 'duit') {
-        openFinance();
-        return;
-    }
-if (section === 'keluarga') {
+}
+
+
+/* =========================
+   MAIN SECTION
+========================= */
+
+function showSection(section){
+
+  if(section === 'duit'){
+    openFinance();
+    return;
+  }
+
+  if(section === 'keluarga'){
     openFamily();
     return;
   }
-    const sections = {
-        keluarga: 'Bahagian Keluarga',
-        kenderaan: 'Bahagian Kenderaan',
-        dokumen: 'Bahagian Dokumen'
-    };
 
-    if (sections[section]) {
-        alert(sections[section] + ' akan dibuka.');
-    }
-}
-function openFamily() {
-    const existing = document.getElementById('familyModal');
-
-    if (existing) {
-        existing.remove();
-        return;
-    }
-
-    const modal = document.createElement('div');
-    modal.id = 'familyModal';
-
-    modal.innerHTML = `
-        <div class="finance-box">
-            <div class="finance-header">
-                <button onclick="closeFamily()">✕</button>
-                <div>
-                    <small>FAMILY</small>
-                    <h2>Keluarga</h2>
-                </div>
-            </div>
-
-            <div style="padding:20px;">
-                <button onclick="addFamilyMember()"
-                    style="width:100%;padding:14px;border-radius:12px;border:0;background:#d4af37;color:#111;font-weight:bold;">
-                    + Tambah Ahli Keluarga
-                </button>
-
-                <div id="familyList" style="margin-top:20px;"></div>
-            </div>
-        </div>
-    `;
-
-    document.body.appendChild(modal);
-
-    renderFamilyMembers();
-  }
-function openFinance() {
-
-    const existing = document.getElementById('financeModal');
-
-    if (existing) {
-        existing.remove();
-        return;
-    }
-
-    const modal = document.createElement('div');
-
-    modal.id = 'financeModal';
-
-    modal.innerHTML = `
-        <div class="finance-box">
-
-            <div class="finance-header">
-                <button onclick="closeFinance()">←</button>
-
-                <div>
-                    <small>FINANCE</small>
-                    <h2>Kewangan</h2>
-                </div>
-            </div>
-
-            <div class="finance-balance">
-                <small>BAKI SEMASA</small>
-                <div id="financeBalance">RM 0.00</div>
-            </div>
-
-            <div class="finance-actions">
-
-                <button class="finance-btn finance-income"onclick="addIncome()">
-                    <span>＋</span>
-                    <b>Pendapatan</b>
-                    <small>Tambah duit masuk</small>
-                </button>
-
-                <button class="finance-btn finance-expense"onclick="addExpense()">
-                    <span>−</span>
-                    <b>Perbelanjaan</b>
-                    <small>Tambah duit keluar</small>
-                </button>
-
-            </div>
-
-            <div class="finance-section">
-                <h3>Ringkasan</h3>
-
-                <div class="finance-row">
-                    <span>Pendapatan</span>
-                    <strong id="financeIncome">RM 0.00</strong>
-                </div>
-
-                <div class="finance-row">
-                    <span>Perbelanjaan</span>
-                    <strong id="financeExpense">RM 0.00</strong>
-                </div>
-            </div>
-
-            <div class="finance-section">
-                <h3>Transaksi</h3>
-
-                <div id="financeTransactions">
-                    <p class="empty-finance">
-                        Belum ada transaksi.
-                    </p>
-                </div>
-            </div>
-
-        </div>
-    `;
-
-    document.body.appendChild(modal);
-
-    updateFinance();
-}
-
-function closeFinance() {
-    const modal = document.getElementById('financeModal');
-
-    if (modal) {
-        modal.remove();
-    }
-}
-function getFamilyData() {
-    return JSON.parse(
-        localStorage.getItem('lifeboxFamily') || '[]'
-    );
-}
-
-function saveFamilyData(data) {
-    localStorage.setItem(
-        'lifeboxFamily',
-        JSON.stringify(data)
-    );
-  }function updateFamilyCount() {
-    const countEl = document.getElementById('homeFamilyCount');
-
-    if (!countEl) return;
-
-    const data = getFamilyData();
-
-    countEl.textContent = data.length + ' ahli';
-  }
-  function addFamilyMember() {
-    const name = prompt('Nama ahli keluarga:');
-    if (!name) return;
-
-    const relation = prompt('Hubungan (contoh: Isteri, Anak, Ayah):');
-    if (!relation) return;
-
-    const birthDate = prompt('Tarikh lahir (contoh: 15/08/2010):') || '';
-    const phone = prompt('Nombor telefon:') || '';
-    const notes = prompt('Catatan:') || '';
-
-    const data = getFamilyData();
-
-    data.push({
-        id: Date.now(),
-        name: name,
-        relation: relation,
-        birthDate: birthDate,
-        phone: phone,
-        notes: notes
-    });
-
-    saveFamilyData(data);
-    updateFamilyCount();
-    renderFamilyMembers();
-  }function renderFamilyMembers() {
-    const list = document.getElementById('familyList');
-    if (!list) return;
-
-    const data = getFamilyData();
-
-    if (data.length === 0) {
-        list.innerHTML = `
-            <div style="text-align:center;padding:30px;color:#aaa;">
-                Belum ada ahli keluarga.
-            </div>
-        `;
-        return;
-    }
-
-    list.innerHTML = data.map(member => {
-
-        const phone = (member.phone || '').replace(/\D/g, '');
-
-        let whatsappPhone = phone;
-
-        if (whatsappPhone.startsWith('0')) {
-            whatsappPhone = '60' + whatsappPhone.substring(1);
-        }
-
-        let ageText = '-';
-
-        if (member.birthDate) {
-            const parts = member.birthDate.split('/');
-
-            if (parts.length === 3) {
-                const day = parseInt(parts[0]);
-                const month = parseInt(parts[1]) - 1;
-                const year = parseInt(parts[2]);
-
-                const birth = new Date(year, month, day);
-                const today = new Date();
-
-                let age = today.getFullYear() - birth.getFullYear();
-
-                const birthdayThisYear = new Date(
-                    today.getFullYear(),
-                    birth.getMonth(),
-                    birth.getDate()
-                );
-
-                if (today < birthdayThisYear) {
-                    age--;
-                }
-
-                if (age >= 0) {
-                    ageText = age + ' tahun';
-                }
-            }
-        }
-
-        return `
-            <div style="
-                padding:16px;
-                margin-bottom:14px;
-                border:1px solid rgba(255,255,255,0.15);
-                border-radius:14px;
-                background:rgba(255,255,255,0.05);
-            ">
-
-                <div style="
-                    font-size:20px;
-                    font-weight:bold;
-                ">
-                    ${member.name}
-                </div>
-
-                <div style="
-                    margin-top:6px;
-                    color:#d4af37;
-                    font-weight:bold;
-                ">
-                    ${member.relation}
-                </div>
-
-                <div style="margin-top:8px;color:#aaa;">
-                    🎂 ${member.birthDate || '-'} 
-                    ${ageText !== '-' ? ' • ' + ageText : ''}
-                </div>
-
-                <div style="color:#aaa;">
-                    📞 ${member.phone || '-'}
-                </div>
-
-                ${member.notes ? `
-                    <div style="margin-top:8px;color:#ccc;">
-                        📝 ${member.notes}
-                    </div>
-                ` : ''}
-
-                <div style="
-                    display:flex;
-                    gap:8px;
-                    margin-top:14px;
-                    flex-wrap:wrap;
-                ">
-
-                    ${phone ? `
-                        <a href="tel:${phone}"
-                           style="
-                               flex:1;
-                               min-width:90px;
-                               text-align:center;
-                               padding:10px;
-                               border-radius:10px;
-                               background:#1f8f5f;
-                               color:white;
-                               text-decoration:none;
-                               font-weight:bold;
-                           ">
-                            📞 Call
-                        </a>
-
-                        <a href="https://wa.me/${whatsappPhone}"
-                           target="_blank"
-                           style="
-                               flex:1;
-                               min-width:90px;
-                               text-align:center;
-                               padding:10px;
-                               border-radius:10px;
-                               background:#25D366;
-                               color:white;
-                               text-decoration:none;
-                               font-weight:bold;
-                           ">
-                            💬 WhatsApp
-                        </a>
-                    ` : ''}
-
-                    <button onclick="editFamilyMember(${member.id})"
-                        style="
-                            flex:1;
-                            min-width:90px;
-                            padding:10px;
-                            border-radius:10px;
-                            border:0;
-                            background:#d4af37;
-                            color:#111;
-                            font-weight:bold;
-                        ">
-                        ✏️ Edit
-                    </button>
-
-                    <button onclick="deleteFamilyMember(${member.id})"
-                        style="
-                            flex:1;
-                            min-width:90px;
-                            padding:10px;
-                            border-radius:10px;
-                            border:0;
-                            background:#8b2e2e;
-                            color:white;
-                            font-weight:bold;
-                        ">
-                        🗑️ Padam
-                    </button>
-
-                </div>
-            </div>
-        `;
-    }).join('');
-          }
-    const modal = document.getElementById('familyModal');
-
-    if (modal) {
-        modal.remove();
-    }
-  }function editFamilyMember(id) {
-    const data = getFamilyData();
-    const member = data.find(item => item.id === id);
-
-    if (!member) return;
-
-    const name = prompt(
-        'Nama ahli keluarga:',
-        member.name
-    );
-
-    if (!name) return;
-
-    const relation = prompt(
-        'Hubungan (contoh: Isteri, Anak, Ayah):',
-        member.relation
-    );
-
-    if (!relation) return;
-
-    const birthDate = prompt(
-        'Tarikh lahir (contoh: 15/08/2010):',
-        member.birthDate || ''
-    );
-
-    const phone = prompt(
-        'Nombor telefon:',
-        member.phone || ''
-    );
-
-    const notes = prompt(
-        'Catatan:',
-        member.notes || ''
-    );
-
-    member.name = name;
-    member.relation = relation;
-    member.birthDate = birthDate || '';
-    member.phone = phone || '';
-    member.notes = notes || '';
-
-    saveFamilyData(data);
-    updateFamilyCount();
-    renderFamilyMembers();
-}
-
-function deleteFamilyMember(id) {
-    const data = getFamilyData();
-    const member = data.find(item => item.id === id);
-
-    if (!member) return;
-
-    const confirmDelete = confirm(
-        'Padam ahli keluarga ' + member.name + '?'
-    );
-
-    if (!confirmDelete) return;
-
-    const newData = data.filter(
-        item => item.id !== id
-    );
-
-    saveFamilyData(newData);
-    updateFamilyCount();
-    renderFamilyMembers();
-  }function closeFamily() {
-    const modal = document.getElementById('familyModal');
-
-    if (modal) {
-        modal.remove();
-    }
-  }
-function getFinanceData() {
-
-    return JSON.parse(
-        localStorage.getItem('lifeboxFinance') || '[]'
-    );
-
-}
-
-function saveFinanceData(data) {
-
-    localStorage.setItem(
-        'lifeboxFinance',
-        JSON.stringify(data)
-    );
-
-}
-function addIncome() {
-    const amount = prompt('Masukkan jumlah pendapatan:');
-
-    if (!amount) return;
-
-    const value = parseFloat(amount);
-
-    if (isNaN(value) || value <= 0) {
-        alert('Masukkan jumlah yang betul.');
-        return;
-    }
-
-    const category = prompt(
-        'Kategori pendapatan:\n\n' +
-        '1. Gaji\n' +
-        '2. Bisnes\n' +
-        '3. Bonus\n' +
-        '4. Pelaburan\n' +
-        '5. Lain-lain\n\n' +
-        'Masukkan kategori:'
-    );
-
-    if (!category) return;
-
-    const data = getFinanceData();
-
-    data.push({
-        type: 'income',
-        amount: value,
-        category: category,
-        date: new Date().toLocaleDateString('ms-MY')
-    });
-
-    saveFinanceData(data);
-    updateFinance();
-}
-
-
-function addExpense() {
-  const amount = prompt('Masukkan jumlah perbelanjaan (RM):');
-
-  if (!amount) return;
-
-  const value = parseFloat(amount);
-
-  if (isNaN(value) || value <= 0) {
-    alert('Masukkan jumlah yang betul.');
+  if(section === 'kenderaan'){
+    openVehicle();
     return;
   }
 
-  const category = prompt(
-    'Kategori perbelanjaan:\n\n' +
-    '1. Makanan\n' +
-    '2. Bil\n' +
-    '3. Minyak\n' +
-    '4. Rumah\n' +
-    '5. Lain-lain\n\n' +
-    'Masukkan kategori:'
-);
+  if(section === 'dokumen'){
+    openDocument();
+    return;
+  }
 
-if (!category) return;
-  const data = getFinanceData();
+}
+
+
+/* =====================================================
+   FAMILY
+===================================================== */
+
+function getFamilyData(){
+
+  return JSON.parse(
+    localStorage.getItem('lifeboxFamily') || '[]'
+  );
+
+}
+
+
+function saveFamilyData(data){
+
+  localStorage.setItem(
+    'lifeboxFamily',
+    JSON.stringify(data)
+  );
+
+}
+
+
+function updateFamilyCount(){
+
+  const el =
+    document.getElementById('homeFamilyCount');
+
+  if(!el) return;
+
+  const data = getFamilyData();
+
+  el.textContent =
+    data.length + ' ahli';
+
+}
+
+
+function openFamily(){
+
+  const existing =
+    document.getElementById('familyModal');
+
+  if(existing){
+    existing.remove();
+    return;
+  }
+
+  const modal =
+    document.createElement('div');
+
+  modal.id = 'familyModal';
+
+  modal.innerHTML = `
+
+    <div class="finance-box">
+
+      <div class="finance-header">
+
+        <button onclick="closeFamily()">
+          ✕
+        </button>
+
+        <div>
+          <small>FAMILY</small>
+          <h2>Keluarga</h2>
+        </div>
+
+      </div>
+
+      <div class="module-body">
+
+        <button class="add-main"
+                onclick="addFamilyMember()">
+          + Tambah Ahli Keluarga
+        </button>
+
+        <div id="familyList"></div>
+
+      </div>
+
+    </div>
+
+  `;
+
+  document.body.appendChild(modal);
+
+  renderFamilyMembers();
+
+}
+
+
+function addFamilyMember(){
+
+  const name =
+    prompt('Nama ahli keluarga:');
+
+  if(!name) return;
+
+  const relation =
+    prompt(
+      'Hubungan (contoh: Isteri, Anak, Ayah):'
+    );
+
+  if(!relation) return;
+
+  const birthDate =
+    prompt(
+      'Tarikh lahir (contoh: 15/08/2010):'
+    ) || '';
+
+  const phone =
+    prompt('Nombor telefon:') || '';
+
+  const notes =
+    prompt('Catatan:') || '';
+
+  const data =
+    getFamilyData();
 
   data.push({
-    type: 'expense',
-    amount: value,
-    category: category,
-    date: new Date().toLocaleDateString('ms-MY')
+
+    id:Date.now(),
+    name:name,
+    relation:relation,
+    birthDate:birthDate,
+    phone:phone,
+    notes:notes
+
+  });
+
+  saveFamilyData(data);
+
+  updateFamilyCount();
+
+  renderFamilyMembers();
+
+}
+
+
+function calculateAge(date){
+
+  if(!date) return '-';
+
+  const parts =
+    date.split('/');
+
+  if(parts.length !== 3)
+    return '-';
+
+  const day =
+    parseInt(parts[0]);
+
+  const month =
+    parseInt(parts[1]) - 1;
+
+  const year =
+    parseInt(parts[2]);
+
+  const birth =
+    new Date(year,month,day);
+
+  const today =
+    new Date();
+
+  let age =
+    today.getFullYear() -
+    birth.getFullYear();
+
+  const birthday =
+    new Date(
+      today.getFullYear(),
+      birth.getMonth(),
+      birth.getDate()
+    );
+
+  if(today < birthday)
+    age--;
+
+  return age >= 0
+    ? age + ' tahun'
+    : '-';
+
+}
+
+
+function renderFamilyMembers(){
+
+  const list =
+    document.getElementById('familyList');
+
+  if(!list) return;
+
+  const data =
+    getFamilyData();
+
+  if(data.length === 0){
+
+    list.innerHTML = `
+      <div class="empty-module">
+        Belum ada ahli keluarga.
+      </div>
+    `;
+
+    return;
+
+  }
+
+  list.innerHTML =
+    data.map(member => {
+
+      const phone =
+        (member.phone || '')
+        .replace(/\D/g,'');
+
+      let whatsapp =
+        phone;
+
+      if(whatsapp.startsWith('0')){
+        whatsapp =
+          '60' +
+          whatsapp.substring(1);
+      }
+
+      const age =
+        calculateAge(member.birthDate);
+
+      return `
+
+        <div class="module-card">
+
+          <h3>
+            ${member.name}
+          </h3>
+
+          <div class="module-relation">
+            ${member.relation}
+          </div>
+
+          <div class="module-info">
+            🎂 ${member.birthDate || '-'}
+            ${age !== '-' ? ' • ' + age : ''}
+          </div>
+
+          <div class="module-info">
+            📞 ${member.phone || '-'}
+          </div>
+
+          ${
+            member.notes
+            ? `
+              <div class="module-info">
+                📝 ${member.notes}
+              </div>
+            `
+            : ''
+          }
+
+          <div class="module-actions">
+
+            ${
+              phone
+              ? `
+                <a class="action-btn btn-call"
+                   href="tel:${phone}">
+                   📞 Call
+                </a>
+
+                <a class="action-btn btn-wa"
+                   href="https://wa.me/${whatsapp}"
+                   target="_blank">
+                   💬 WhatsApp
+                </a>
+              `
+              : ''
+            }
+
+            <button class="action-btn btn-edit"
+                    onclick="editFamilyMember(${member.id})">
+              ✏️ Edit
+            </button>
+
+            <button class="action-btn btn-delete"
+                    onclick="deleteFamilyMember(${member.id})">
+              🗑️ Padam
+            </button>
+
+          </div>
+
+        </div>
+
+      `;
+
+    }).join('');
+
+}
+
+
+function editFamilyMember(id){
+
+  const data =
+    getFamilyData();
+
+  const member =
+    data.find(item => item.id === id);
+
+  if(!member) return;
+
+  const name =
+    prompt(
+      'Nama ahli keluarga:',
+      member.name
+    );
+
+  if(!name) return;
+
+  const relation =
+    prompt(
+      'Hubungan:',
+      member.relation
+    );
+
+  if(!relation) return;
+
+  member.birthDate =
+    prompt(
+      'Tarikh lahir:',
+      member.birthDate || ''
+    ) || '';
+
+  member.phone =
+    prompt(
+      'Nombor telefon:',
+      member.phone || ''
+    ) || '';
+
+  member.notes =
+    prompt(
+      'Catatan:',
+      member.notes || ''
+    ) || '';
+
+  member.name =
+    name;
+
+  member.relation =
+    relation;
+
+  saveFamilyData(data);
+
+  updateFamilyCount();
+
+  renderFamilyMembers();
+
+}
+
+
+function deleteFamilyMember(id){
+
+  const data =
+    getFamilyData();
+
+  const member =
+    data.find(item => item.id === id);
+
+  if(!member) return;
+
+  if(!confirm(
+    'Padam ahli keluarga ' +
+    member.name +
+    '?'
+  )) return;
+
+  const newData =
+    data.filter(
+      item => item.id !== id
+    );
+
+  saveFamilyData(newData);
+
+  updateFamilyCount();
+
+  renderFamilyMembers();
+
+}
+
+
+function closeFamily(){
+
+  const modal =
+    document.getElementById('familyModal');
+
+  if(modal)
+    modal.remove();
+
+}
+
+
+/* =====================================================
+   VEHICLE
+===================================================== */
+
+function getVehicleData(){
+
+  return JSON.parse(
+    localStorage.getItem('lifeboxVehicles') || '[]'
+  );
+
+}
+
+
+function saveVehicleData(data){
+
+  localStorage.setItem(
+    'lifeboxVehicles',
+    JSON.stringify(data)
+  );
+
+}
+
+
+function updateVehicleCount(){
+
+  const el =
+    document.getElementById('homeVehicleCount');
+
+  if(!el) return;
+
+  const data =
+    getVehicleData();
+
+  el.textContent =
+    data.length + ' kenderaan';
+
+}
+
+
+function openVehicle(){
+
+  const existing =
+    document.getElementById('vehicleModal');
+
+  if(existing){
+    existing.remove();
+    return;
+  }
+
+  const modal =
+    document.createElement('div');
+
+  modal.id =
+    'vehicleModal';
+
+  modal.innerHTML = `
+
+    <div class="finance-box">
+
+      <div class="finance-header">
+
+        <button onclick="closeVehicle()">
+          ✕
+        </button>
+
+        <div>
+          <small>MOBILITY</small>
+          <h2>Kenderaan</h2>
+        </div>
+
+      </div>
+
+      <div class="module-body">
+
+        <button class="add-main"
+                onclick="addVehicle()">
+          + Tambah Kenderaan
+        </button>
+
+        <div id="vehicleList"></div>
+
+      </div>
+
+    </div>
+
+  `;
+
+  document.body.appendChild(modal);
+
+  renderVehicles();
+
+}
+
+
+function addVehicle(){
+
+  const name =
+    prompt(
+      'Nama kenderaan (contoh: Toyota Vios):'
+    );
+
+  if(!name) return;
+
+  const plate =
+    prompt(
+      'Nombor pendaftaran:'
+    ) || '';
+
+  const year =
+    prompt(
+      'Tahun kenderaan:'
+    ) || '';
+
+  const roadtax =
+    prompt(
+      'Tarikh tamat roadtax (contoh: 15/08/2027):'
+    ) || '';
+
+  const insurance =
+    prompt(
+      'Tarikh tamat insurans (contoh: 15/08/2027):'
+    ) || '';
+
+  const notes =
+    prompt('Catatan:') || '';
+
+  const data =
+    getVehicleData();
+
+  data.push({
+
+    id:Date.now(),
+    name:name,
+    plate:plate,
+    year:year,
+    roadtax:roadtax,
+    insurance:insurance,
+    notes:notes
+
+  });
+
+  saveVehicleData(data);
+
+  updateVehicleCount();
+
+  renderVehicles();
+
+}
+
+
+function getExpiryStatus(date){
+
+  if(!date)
+    return {
+      text:'Tiada tarikh',
+      class:''
+    };
+
+  const parts =
+    date.split('/');
+
+  if(parts.length !== 3)
+    return {
+      text:date,
+      class:''
+    };
+
+  const expiry =
+    new Date(
+      parseInt(parts[2]),
+      parseInt(parts[1])-1,
+      parseInt(parts[0])
+    );
+
+  const today =
+    new Date();
+
+  today.setHours(0,0,0,0);
+
+  const diff =
+    Math.ceil(
+      (expiry - today) /
+      (1000*60*60*24)
+    );
+
+  if(diff < 0){
+
+    return {
+      text:'❌ Tamat tempoh',
+      class:'status-danger'
+    };
+
+  }
+
+  if(diff <= 30){
+
+    return {
+      text:'⚠️ ' + diff + ' hari lagi',
+      class:'status-warning'
+    };
+
+  }
+
+  return {
+    text:'✓ Aktif',
+    class:'status-ok'
+  };
+
+}
+
+
+function renderVehicles(){
+
+  const list =
+    document.getElementById('vehicleList');
+
+  if(!list) return;
+
+  const data =
+    getVehicleData();
+
+  if(data.length === 0){
+
+    list.innerHTML = `
+      <div class="empty-module">
+        Belum ada kenderaan.
+      </div>
+    `;
+
+    return;
+
+  }
+
+  list.innerHTML =
+    data.map(vehicle => {
+
+      const roadtaxStatus =
+        getExpiryStatus(
+          vehicle.roadtax
+        );
+
+      const insuranceStatus =
+        getExpiryStatus(
+          vehicle.insurance
+        );
+
+      return `
+
+        <div class="module-card">
+
+          <h3>
+            🚗 ${vehicle.name}
+          </h3>
+
+          <div class="module-relation">
+            ${vehicle.plate || 'Tiada nombor plat'}
+          </div>
+
+          <div class="module-info">
+            📅 Tahun:
+            ${vehicle.year || '-'}
+          </div>
+
+          <div class="module-info">
+            🪪 Roadtax:
+            ${vehicle.roadtax || '-'}
+            <span class="${roadtaxStatus.class}">
+              ${roadtaxStatus.text}
+            </span>
+          </div>
+
+          <div class="module-info">
+            🛡️ Insurans:
+            ${vehicle.insurance || '-'}
+            <span class="${insuranceStatus.class}">
+              ${insuranceStatus.text}
+            </span>
+          </div>
+
+          ${
+            vehicle.notes
+            ? `
+              <div class="module-info">
+                📝 ${vehicle.notes}
+              </div>
+            `
+            : ''
+          }
+
+          <div class="module-actions">
+
+            <button class="action-btn btn-edit"
+                    onclick="editVehicle(${vehicle.id})">
+              ✏️ Edit
+            </button>
+
+            <button class="action-btn btn-delete"
+                    onclick="deleteVehicle(${vehicle.id})">
+              🗑️ Padam
+            </button>
+
+          </div>
+
+        </div>
+
+      `;
+
+    }).join('');
+
+}
+
+
+function editVehicle(id){
+
+  const data =
+    getVehicleData();
+
+  const vehicle =
+    data.find(item => item.id === id);
+
+  if(!vehicle) return;
+
+  vehicle.name =
+    prompt(
+      'Nama kenderaan:',
+      vehicle.name
+    ) || vehicle.name;
+
+  vehicle.plate =
+    prompt(
+      'Nombor pendaftaran:',
+      vehicle.plate || ''
+    ) || '';
+
+  vehicle.year =
+    prompt(
+      'Tahun kenderaan:',
+      vehicle.year || ''
+    ) || '';
+
+  vehicle.roadtax =
+    prompt(
+      'Tarikh tamat roadtax:',
+      vehicle.roadtax || ''
+    ) || '';
+
+  vehicle.insurance =
+    prompt(
+      'Tarikh tamat insurans:',
+      vehicle.insurance || ''
+    ) || '';
+
+  vehicle.notes =
+    prompt(
+      'Catatan:',
+      vehicle.notes || ''
+    ) || '';
+
+  saveVehicleData(data);
+
+  renderVehicles();
+
+}
+
+
+function deleteVehicle(id){
+
+  const data =
+    getVehicleData();
+
+  const vehicle =
+    data.find(item => item.id === id);
+
+  if(!vehicle) return;
+
+  if(!confirm(
+    'Padam kenderaan ' +
+    vehicle.name +
+    '?'
+  )) return;
+
+  const newData =
+    data.filter(
+      item => item.id !== id
+    );
+
+  saveVehicleData(newData);
+
+  updateVehicleCount();
+
+  renderVehicles();
+
+}
+
+
+function closeVehicle(){
+
+  const modal =
+    document.getElementById('vehicleModal');
+
+  if(modal)
+    modal.remove();
+
+}
+
+
+/* =====================================================
+   DOCUMENT
+===================================================== */
+
+function getDocumentData(){
+
+  return JSON.parse(
+    localStorage.getItem('lifeboxDocuments') || '[]'
+  );
+
+}
+
+
+function saveDocumentData(data){
+
+  localStorage.setItem(
+    'lifeboxDocuments',
+    JSON.stringify(data)
+  );
+
+}
+
+
+function updateDocumentCount(){
+
+  const el =
+    document.getElementById('homeDocumentCount');
+
+  if(!el) return;
+
+  const data =
+    getDocumentData();
+
+  el.textContent =
+    data.length + ' dokumen';
+
+}
+
+
+function openDocument(){
+
+  const existing =
+    document.getElementById('documentModal');
+
+  if(existing){
+    existing.remove();
+    return;
+  }
+
+  const modal =
+    document.createElement('div');
+
+  modal.id =
+    'documentModal';
+
+  modal.innerHTML = `
+
+    <div class="finance-box">
+
+      <div class="finance-header">
+
+        <button onclick="closeDocument()">
+          ✕
+        </button>
+
+        <div>
+          <small>IMPORTANT</small>
+          <h2>Dokumen</h2>
+        </div>
+
+      </div>
+
+      <div class="module-body">
+
+        <button class="add-main"
+                onclick="addDocument()">
+          + Tambah Dokumen
+        </button>
+
+        <div id="documentList"></div>
+
+      </div>
+
+    </div>
+
+  `;
+
+  document.body.appendChild(modal);
+
+  renderDocuments();
+
+}
+
+
+function addDocument(){
+
+  const name =
+    prompt(
+      'Nama dokumen (contoh: IC, Lesen, Geran):'
+    );
+
+  if(!name) return;
+
+  const type =
+    prompt(
+      'Jenis dokumen:'
+    ) || '';
+
+  const number =
+    prompt(
+      'Nombor dokumen:'
+    ) || '';
+
+  const expiry =
+    prompt(
+      'Tarikh tamat (contoh: 15/08/2027):'
+    ) || '';
+
+  const notes =
+    prompt('Catatan:') || '';
+
+  const data =
+    getDocumentData();
+
+  data.push({
+
+    id:Date.now(),
+    name:name,
+    type:type,
+    number:number,
+    expiry:expiry,
+    notes:notes
+
+  });
+
+  saveDocumentData(data);
+
+  updateDocumentCount();
+
+  renderDocuments();
+
+}
+
+
+function renderDocuments(){
+
+  const list =
+    document.getElementById('documentList');
+
+  if(!list) return;
+
+  const data =
+    getDocumentData();
+
+  if(data.length === 0){
+
+    list.innerHTML = `
+      <div class="empty-module">
+        Belum ada dokumen.
+      </div>
+    `;
+
+    return;
+
+  }
+
+  list.innerHTML =
+    data.map(doc => {
+
+      const status =
+        getExpiryStatus(
+          doc.expiry
+        );
+
+      return `
+
+        <div class="module-card">
+
+          <h3>
+            📄 ${doc.name}
+          </h3>
+
+          <div class="module-relation">
+            ${doc.type || 'Dokumen'}
+          </div>
+
+          <div class="module-info">
+            🔢 Nombor:
+            ${doc.number || '-'}
+          </div>
+
+          <div class="module-info">
+            📅 Tamat:
+            ${doc.expiry || '-'}
+          </div>
+
+          <div class="module-info ${status.class}">
+            ${status.text}
+          </div>
+
+          ${
+            doc.notes
+            ? `
+              <div class="module-info">
+                📝 ${doc.notes}
+              </div>
+            `
+            : ''
+          }
+
+          <div class="module-actions">
+
+            <button class="action-btn btn-edit"
+                    onclick="editDocument(${doc.id})">
+              ✏️ Edit
+            </button>
+
+            <button class="action-btn btn-delete"
+                    onclick="deleteDocument(${doc.id})">
+              🗑️ Padam
+            </button>
+
+          </div>
+
+        </div>
+
+      `;
+
+    }).join('');
+
+}
+
+
+function editDocument(id){
+
+  const data =
+    getDocumentData();
+
+  const doc =
+    data.find(item => item.id === id);
+
+  if(!doc) return;
+
+  doc.name =
+    prompt(
+      'Nama dokumen:',
+      doc.name
+    ) || doc.name;
+
+  doc.type =
+    prompt(
+      'Jenis dokumen:',
+      doc.type || ''
+    ) || '';
+
+  doc.number =
+    prompt(
+      'Nombor dokumen:',
+      doc.number || ''
+    ) || '';
+
+  doc.expiry =
+    prompt(
+      'Tarikh tamat:',
+      doc.expiry || ''
+    ) || '';
+
+  doc.notes =
+    prompt(
+      'Catatan:',
+      doc.notes || ''
+    ) || '';
+
+  saveDocumentData(data);
+
+  renderDocuments();
+
+}
+
+
+function deleteDocument(id){
+
+  const data =
+    getDocumentData();
+
+  const doc =
+    data.find(item => item.id === id);
+
+  if(!doc) return;
+
+  if(!confirm(
+    'Padam dokumen ' +
+    doc.name +
+    '?'
+  )) return;
+
+  const newData =
+    data.filter(
+      item => item.id !== id
+    );
+
+  saveDocumentData(newData);
+
+  updateDocumentCount();
+
+  renderDocuments();
+
+}
+
+
+function closeDocument(){
+
+  const modal =
+    document.getElementById('documentModal');
+
+  if(modal)
+    modal.remove();
+
+}
+
+
+/* =====================================================
+   FINANCE
+===================================================== */
+
+function getFinanceData(){
+
+  return JSON.parse(
+    localStorage.getItem('lifeboxFinance') || '[]'
+  );
+
+}
+
+
+function saveFinanceData(data){
+
+  localStorage.setItem(
+    'lifeboxFinance',
+    JSON.stringify(data)
+  );
+
+}
+
+
+function openFinance(){
+
+  const existing =
+    document.getElementById('financeModal');
+
+  if(existing){
+    existing.remove();
+    return;
+  }
+
+  const modal =
+    document.createElement('div');
+
+  modal.id =
+    'financeModal';
+
+  modal.innerHTML = `
+
+    <div class="finance-box">
+
+      <div class="finance-header">
+
+        <button onclick="closeFinance()">
+          ✕
+        </button>
+
+        <div>
+          <small>FINANCE</small>
+          <h2>Kewangan</h2>
+        </div>
+
+      </div>
+
+      <div class="finance-balance">
+
+        <small>BAKI SEMASA</small>
+
+        <div id="financeBalance">
+          RM 0.00
+        </div>
+
+      </div>
+
+      <div class="finance-actions">
+
+        <button class="finance-btn finance-income"
+                onclick="addIncome()">
+          ＋ Pendapatan
+        </button>
+
+        <button class="finance-btn finance-expense"
+                onclick="addExpense()">
+          − Perbelanjaan
+        </button>
+
+      </div>
+
+      <div class="finance-section">
+
+        <h3>Ringkasan</h3>
+
+        <div class="finance-row">
+          <span>Pendapatan</span>
+          <strong id="financeIncome">
+            RM 0.00
+          </strong>
+        </div>
+
+        <div class="finance-row">
+          <span>Perbelanjaan</span>
+          <strong id="financeExpense">
+            RM 0.00
+          </strong>
+        </div>
+
+      </div>
+
+      <div class="finance-section">
+
+        <h3>Transaksi</h3>
+
+        <div id="financeTransactions"></div>
+
+      </div>
+
+    </div>
+
+  `;
+
+  document.body.appendChild(modal);
+
+  updateFinance();
+
+}
+
+
+function closeFinance(){
+
+  const modal =
+    document.getElementById('financeModal');
+
+  if(modal)
+    modal.remove();
+
+}
+
+
+function addIncome(){
+
+  const amount =
+    prompt(
+      'Masukkan jumlah pendapatan:'
+    );
+
+  if(!amount) return;
+
+  const value =
+    parseFloat(amount);
+
+  if(isNaN(value) || value <= 0){
+
+    alert(
+      'Masukkan jumlah yang betul.'
+    );
+
+    return;
+
+  }
+
+  const category =
+    prompt(
+      'Kategori pendapatan:\n\n' +
+      '1. Gaji\n' +
+      '2. Bisnes\n' +
+      '3. Bonus\n' +
+      '4. Pelaburan\n' +
+      '5. Lain-lain\n\n' +
+      'Masukkan kategori:'
+    );
+
+  if(!category) return;
+
+  const data =
+    getFinanceData();
+
+  data.push({
+
+    type:'income',
+    amount:value,
+    category:category,
+    date:new Date().toLocaleDateString('ms-MY')
+
   });
 
   saveFinanceData(data);
+
   updateFinance();
-  }
-  function editFinance(index) {
-    const data = getFinanceData();
-    const item = data[index];
 
-    if (!item) return;
+}
 
-    const currentAmount = item.amount;
-    const currentCategory = item.category || '5';
 
-    let categoryText = '';
+function addExpense(){
 
-    if (item.type === 'income') {
-        categoryText =
-            '1. Gaji\n' +
-            '2. Bisnes\n' +
-            '3. Bonus\n' +
-            '4. Pelaburan\n' +
-            '5. Lain-lain';
-    } else {
-        categoryText =
-            '1. Makanan\n' +
-            '2. Bil\n' +
-            '3. Minyak\n' +
-            '4. Rumah\n' +
-            '5. Lain-lain';
-    }
-
-    const input = prompt(
-        'EDIT TRANSAKSI\n\n' +
-        'Jumlah semasa: RM ' + currentAmount.toFixed(2) + '\n\n' +
-        categoryText +
-        '\n\nMasukkan:\n' +
-        'JUMLAH,KATEGORI\n\n' +
-        'Contoh: 1500,3',
-        currentAmount + ',' + currentCategory
+  const amount =
+    prompt(
+      'Masukkan jumlah perbelanjaan:'
     );
 
-    if (input === null) return;
+  if(!amount) return;
 
-    const parts = input.split(',');
+  const value =
+    parseFloat(amount);
 
-    if (parts.length !== 2) {
-        alert('Format salah.\nContoh: 1500,3');
-        return;
-    }
+  if(isNaN(value) || value <= 0){
 
-    const value = parseFloat(parts[0].trim());
-    const newCategory = parts[1].trim();
+    alert(
+      'Masukkan jumlah yang betul.'
+    );
 
-    if (isNaN(value) || value <= 0) {
-        alert('Jumlah tidak sah.');
-        return;
-    }
+    return;
 
-    if (!['1', '2', '3', '4', '5'].includes(newCategory)) {
-        alert('Kategori mesti 1 hingga 5.');
-        return;
-    }
+  }
 
-    data[index].amount = value;
-    data[index].category = newCategory;
+  const category =
+    prompt(
+      'Kategori perbelanjaan:\n\n' +
+      '1. Makanan\n' +
+      '2. Bil\n' +
+      '3. Minyak\n' +
+      '4. Rumah\n' +
+      '5. Lain-lain\n\n' +
+      'Masukkan kategori:'
+    );
 
-    saveFinanceData(data);
-    updateFinance();
-              }
+  if(!category) return;
+
+  const data =
+    getFinanceData();
+
+  data.push({
+
+    type:'expense',
+    amount:value,
+    category:category,
+    date:new Date().toLocaleDateString('ms-MY')
+
+  });
+
+  saveFinanceData(data);
+
+  updateFinance();
+
+}
 
 
+function getFinanceCategory(type,category){
 
-function getFinanceCategory(type, category) {
-  const incomeCategories = {
-    '1': 'Gaji',
-    '2': 'Bisnes',
-    '3': 'Bonus',
-    '4': 'Pelaburan',
-    '5': 'Lain-lain'
+  const income = {
+
+    '1':'Gaji',
+    '2':'Bisnes',
+    '3':'Bonus',
+    '4':'Pelaburan',
+    '5':'Lain-lain'
+
   };
 
-  const expenseCategories = {
-    '1': 'Makanan',
-    '2': 'Bil',
-    '3': 'Minyak',
-    '4': 'Rumah',
-    '5': 'Lain-lain'
+  const expense = {
+
+    '1':'Makanan',
+    '2':'Bil',
+    '3':'Minyak',
+    '4':'Rumah',
+    '5':'Lain-lain'
+
   };
 
-  const categories = type === 'income'
-    ? incomeCategories
-    : expenseCategories;
+  const categories =
+    type === 'income'
+    ? income
+    : expense;
 
-  return categories[String(category)] || 'Lain-lain';
+  return categories[String(category)]
+    || 'Lain-lain';
+
 }
-  function updateFinance() {
 
-    const data = getFinanceData();
 
-    let income = 0;
-    let expense = 0;
+function editFinance(index){
 
-    data.forEach(item => {
+  const data =
+    getFinanceData();
 
-        if (item.type === 'income') {
-            income += item.amount;
-        }
+  const item =
+    data[index];
 
-        if (item.type === 'expense') {
-            expense += item.amount;
-        }
+  if(!item) return;
 
-    });
+  const categoryText =
+    item.type === 'income'
+    ?
+    '1. Gaji\n2. Bisnes\n3. Bonus\n4. Pelaburan\n5. Lain-lain'
+    :
+    '1. Makanan\n2. Bil\n3. Minyak\n4. Rumah\n5. Lain-lain';
 
-    const balance = income - expense;
-const homeBalanceEl = document.getElementById('homeFinanceBalance');
+  const input =
+    prompt(
+      'EDIT TRANSAKSI\n\n' +
+      'Jumlah semasa: RM ' +
+      item.amount.toFixed(2) +
+      '\n\n' +
+      categoryText +
+      '\n\nFormat: JUMLAH,KATEGORI\nContoh: 1500,3',
+      item.amount + ',' +
+      (item.category || '5')
+    );
 
-if (homeBalanceEl) {
-  homeBalanceEl.textContent = 'RM ' + balance.toFixed(2);
+  if(input === null)
+    return;
+
+  const parts =
+    input.split(',');
+
+  if(parts.length !== 2){
+
+    alert(
+      'Format salah.\nContoh: 1500,3'
+    );
+
+    return;
+
+  }
+
+  const value =
+    parseFloat(parts[0].trim());
+
+  const category =
+    parts[1].trim();
+
+  if(
+    isNaN(value) ||
+    value <= 0
+  ){
+
+    alert('Jumlah tidak sah.');
+
+    return;
+
+  }
+
+  if(
+    !['1','2','3','4','5']
+      .includes(category)
+  ){
+
+    alert(
+      'Kategori mesti 1 hingga 5.'
+    );
+
+    return;
+
+  }
+
+  item.amount =
+    value;
+
+  item.category =
+    category;
+
+  saveFinanceData(data);
+
+  updateFinance();
+
 }
-    const balanceEl =
-        document.getElementById('financeBalance');
 
-    const incomeEl =
-        document.getElementById('financeIncome');
 
-    const expenseEl =
-        document.getElementById('financeExpense');
+function deleteFinanceTransaction(index){
 
-    const transactionsEl =
-        document.getElementById('financeTransactions');
+  const data =
+    getFinanceData();
 
-    if (!balanceEl) return;
+  if(!data[index])
+    return;
 
-    balanceEl.textContent =
-        'RM ' + balance.toFixed(2);
+  if(!confirm(
+    'Padam transaksi ini?'
+  ))
+    return;
 
-    incomeEl.textContent =
-        'RM ' + income.toFixed(2);
+  data.splice(index,1);
 
-    expenseEl.textContent =
-        'RM ' + expense.toFixed(2);
+  saveFinanceData(data);
 
-    if (data.length === 0) {
+  updateFinance();
 
-        transactionsEl.innerHTML = `
-            <p class="empty-finance">
-                Belum ada transaksi.
-            </p>
-        `;
+}
 
-        return;
-    }
 
-    transactionsEl.innerHTML =
-    data.slice().reverse().map((item, index) => `
-        <div class="finance-transaction">
+function updateFinance(){
+
+  const data =
+    getFinanceData();
+
+  let income = 0;
+  let expense = 0;
+
+  data.forEach(item => {
+
+    if(item.type === 'income')
+      income += Number(item.amount);
+
+    if(item.type === 'expense')
+      expense += Number(item.amount);
+
+  });
+
+  const balance =
+    income - expense;
+
+  const home =
+    document.getElementById(
+      'homeFinanceBalance'
+    );
+
+  if(home){
+
+    home.textContent =
+      'RM ' +
+      balance.toFixed(2);
+
+  }
+
+  const balanceEl =
+    document.getElementById(
+      'financeBalance'
+    );
+
+  const incomeEl =
+    document.getElementById(
+      'financeIncome'
+    );
+
+  const expenseEl =
+    document.getElementById(
+      'financeExpense'
+    );
+
+  const transactionsEl =
+    document.getElementById(
+      'financeTransactions'
+    );
+
+  if(!balanceEl)
+    return;
+
+  balanceEl.textContent =
+    'RM ' +
+    balance.toFixed(2);
+
+  incomeEl.textContent =
+    'RM ' +
+    income.toFixed(2);
+
+  expenseEl.textContent =
+    'RM ' +
+    expense.toFixed(2);
+
+  if(data.length === 0){
+
+    transactionsEl.innerHTML = `
+      <div class="empty-module">
+        Belum ada transaksi.
+      </div>
+    `;
+
+    return;
+
+  }
+
+  transactionsEl.innerHTML =
+    data.slice().reverse().map(
+      (item,reverseIndex) => {
+
+        const realIndex =
+          data.length -
+          1 -
+          reverseIndex;
+
+        return `
+
+          <div class="finance-transaction">
 
             <div>
-                <b>
-                    ${item.type === 'income'
-                        ? 'Pendapatan'
-                        : 'Perbelanjaan'}
-                </b>
 
-                <small>${item.date}</small>
-                <small style="display:block;color:#d8b45a;margin-top:4px;">
-             Kategori: ${getFinanceCategory(item.type, item.category)}
-            </small>
-            </div>
+              <b>
+                ${
+                  item.type === 'income'
+                  ? 'Pendapatan'
+                  : 'Perbelanjaan'
+                }
+              </b>
 
-            <div style="display:flex;align-items:center;gap:12px;">
+              <small>
+                ${item.date}
+              </small>
 
-                <strong class="${item.type}">
-                    ${item.type === 'income'
-                        ? '+'
-                        : '-'}
-                    RM ${item.amount.toFixed(2)}
-                </strong>
-<button
-    type="button"
-    onclick="editFinance(${data.indexOf(item)})"
-    style="
-        border:none;
-        background:rgba(255,255,255,.08);
-        color:#7fffd4;
-        padding:8px 12px;
-        border-radius:10px;
-        font-weight:700;
-        cursor:pointer;
-    "
->
-    Edit
-</button>
-                <button
-                    type="button"
-                    onclick="deleteFinanceTransaction(${data.length - 1 - index})"
-                    style="
-                        border:none;
-                        background:rgba(255,80,80,.15);
-                        color:#ff9b9b;
-                        padding:8px 12px;
-                        border-radius:10px;
-                        font-weight:700;
-                        cursor:pointer;
-                    "
-                >
-                    Padam
-                </button>
+              <small
+                style="color:#d8b45a">
+                Kategori:
+                ${
+                  getFinanceCategory(
+                    item.type,
+                    item.category
+                  )
+                }
+              </small>
 
             </div>
 
-        </div>
-    `).join('');
+            <div>
+
+              <strong
+                class="${item.type}"
+                style="display:block">
+                ${
+                  item.type === 'income'
+                  ? '+'
+                  : '-'
+                }
+                RM ${Number(item.amount).toFixed(2)}
+              </strong>
+
+              <button
+                onclick="editFinance(${realIndex})"
+                style="
+                  margin-top:7px;
+                  border:0;
+                  padding:7px 10px;
+                  border-radius:8px;
+                  background:rgba(255,255,255,.08);
+                  color:#7fffd4;
+                ">
+                Edit
+              </button>
+
+              <button
+                onclick="deleteFinanceTransaction(${realIndex})"
+                style="
+                  margin-top:7px;
+                  border:0;
+                  padding:7px 10px;
+                  border-radius:8px;
+                  background:rgba(255,80,80,.15);
+                  color:#ff9b9b;
+                ">
+                Padam
+              </button>
+
+            </div>
+
+          </div>
+
+        `;
+
+      }
+    ).join('');
 
 }
 
-function deleteFinanceTransaction(index) {
 
-    const data = getFinanceData();
+/* =====================================================
+   STARTUP
+===================================================== */
 
-    if (!data[index]) return;
-
-    const confirmDelete = confirm(
-        'Padam transaksi ini?'
-    );
-
-    if (!confirmDelete) return;
-
-    data.splice(index, 1);
-
-    saveFinanceData(data);
-
-    updateFinance();
-  }
 updateFinance();
-  updateFamilyCount();
+updateFamilyCount();
+updateVehicleCount();
+updateDocumentCount();
+
 </script>
+
 </body>
-</html>
+  </html>
