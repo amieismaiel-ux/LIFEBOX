@@ -1435,60 +1435,62 @@ if (!category) return;
     const currentAmount = item.amount;
     const currentCategory = item.category || '5';
 
-    const newAmount = prompt(
-        'Edit jumlah (RM):',
-        currentAmount
-    );
-
-    if (newAmount === null) return;
-
-    const value = parseFloat(newAmount);
-
-    if (isNaN(value) || value <= 0) {
-        alert('Masukkan jumlah yang betul.');
-        return;
-    }
-
     let categoryText = '';
 
     if (item.type === 'income') {
         categoryText =
-            'Kategori pendapatan:\n\n' +
             '1. Gaji\n' +
             '2. Bisnes\n' +
             '3. Bonus\n' +
             '4. Pelaburan\n' +
-            '5. Lain-lain\n\n' +
-            'Masukkan kategori:';
+            '5. Lain-lain';
     } else {
         categoryText =
-            'Kategori perbelanjaan:\n\n' +
             '1. Makanan\n' +
             '2. Bil\n' +
             '3. Minyak\n' +
             '4. Rumah\n' +
-            '5. Lain-lain\n\n' +
-            'Masukkan kategori:';
+            '5. Lain-lain';
     }
 
-    const newCategory = prompt(
-        categoryText,
-        currentCategory
+    const input = prompt(
+        'EDIT TRANSAKSI\n\n' +
+        'Jumlah semasa: RM ' + currentAmount.toFixed(2) + '\n\n' +
+        categoryText +
+        '\n\nMasukkan:\n' +
+        'JUMLAH,KATEGORI\n\n' +
+        'Contoh: 1500,3',
+        currentAmount + ',' + currentCategory
     );
 
-    if (newCategory === null) return;
+    if (input === null) return;
 
-    if (!['1', '2', '3', '4', '5'].includes(newCategory.trim())) {
+    const parts = input.split(',');
+
+    if (parts.length !== 2) {
+        alert('Format salah.\nContoh: 1500,3');
+        return;
+    }
+
+    const value = parseFloat(parts[0].trim());
+    const newCategory = parts[1].trim();
+
+    if (isNaN(value) || value <= 0) {
+        alert('Jumlah tidak sah.');
+        return;
+    }
+
+    if (!['1', '2', '3', '4', '5'].includes(newCategory)) {
         alert('Kategori mesti 1 hingga 5.');
         return;
     }
 
     data[index].amount = value;
-    data[index].category = newCategory.trim();
+    data[index].category = newCategory;
 
     saveFinanceData(data);
     updateFinance();
-}
+              }
 
 
 
