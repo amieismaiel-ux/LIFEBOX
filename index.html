@@ -1123,7 +1123,7 @@ body{
 
       <div>
         <div class="photo-title">Keluarga</div>
-        <div class="photo-value">0 ahli</div>
+        <div class="photo-value"id="homeFamilyCount">0 ahli</div>
         <div class="photo-link">Lihat keluarga</div>
       </div>
 
@@ -1385,7 +1385,16 @@ function saveFamilyData(data) {
         'lifeboxFamily',
         JSON.stringify(data)
     );
-  }function addFamilyMember() {
+  }function updateFamilyCount() {
+    const countEl = document.getElementById('homeFamilyCount');
+
+    if (!countEl) return;
+
+    const data = getFamilyData();
+
+    countEl.textContent = data.length + ' ahli';
+  }
+  function addFamilyMember() {
     const name = prompt('Nama ahli keluarga:');
     if (!name) return;
 
@@ -1408,6 +1417,7 @@ function saveFamilyData(data) {
     });
 
     saveFamilyData(data);
+    updateFamilyCount();
     renderFamilyMembers();
   }function renderFamilyMembers() {
     const list = document.getElementById('familyList');
@@ -1783,6 +1793,7 @@ function deleteFinanceTransaction(index) {
     updateFinance();
   }
 updateFinance();
+  updateFamilyCount();
 </script>
 </body>
 </html>
