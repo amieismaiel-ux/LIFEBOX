@@ -1433,11 +1433,10 @@ if (!category) return;
     if (!item) return;
 
     const currentAmount = item.amount;
+    const currentCategory = item.category || '5';
 
     const newAmount = prompt(
-        item.type === 'income'
-            ? 'Edit jumlah pendapatan:'
-            : 'Edit jumlah perbelanjaan:',
+        'Edit jumlah (RM):',
         currentAmount
     );
 
@@ -1450,11 +1449,46 @@ if (!category) return;
         return;
     }
 
+    let categoryText = '';
+
+    if (item.type === 'income') {
+        categoryText =
+            'Kategori pendapatan:\n\n' +
+            '1. Gaji\n' +
+            '2. Bisnes\n' +
+            '3. Bonus\n' +
+            '4. Pelaburan\n' +
+            '5. Lain-lain\n\n' +
+            'Masukkan kategori:';
+    } else {
+        categoryText =
+            'Kategori perbelanjaan:\n\n' +
+            '1. Makanan\n' +
+            '2. Bil\n' +
+            '3. Minyak\n' +
+            '4. Rumah\n' +
+            '5. Lain-lain\n\n' +
+            'Masukkan kategori:';
+    }
+
+    const newCategory = prompt(
+        categoryText,
+        currentCategory
+    );
+
+    if (newCategory === null) return;
+
+    if (!['1', '2', '3', '4', '5'].includes(newCategory.trim())) {
+        alert('Kategori mesti 1 hingga 5.');
+        return;
+    }
+
     data[index].amount = value;
+    data[index].category = newCategory.trim();
 
     saveFinanceData(data);
     updateFinance();
-  }
+}
 
 
 
