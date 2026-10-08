@@ -872,13 +872,13 @@ body{
     Perlu perhatian
   </div>
 
-  <div class="attention">
+  <div class="attention" id="attentionBox">
 
     <div class="check">✓</div>
 
-    <div>
-      <h3>Tiada tugasan.</h3>
-      <p>Bagus! Semua nampak terkawal.</p>
+    <div id="attentionContent">
+        <h3>Tiada tugasan.</h3>
+        <p>Bagus! Semua nampak terkawal.</p>
     </div>
 
   </div>
@@ -3281,6 +3281,69 @@ updateFamilyCount();
 updateVehicleCount();
 updateDocumentCount();
 
+function updateAttention() {
+    const box = document.getElementById('attentionBox');
+    const content = document.getElementById('attentionContent');
+
+    if (!box || !content) return;
+
+    const alerts = [];
+
+    // Semak kenderaan
+    const vehicles = getVehicleData();
+
+    vehicles.forEach(vehicle => {
+
+        const roadtaxStatus = getExpiryStatus(vehicle.roadtax);
+        const insuranceStatus = getExpiryStatus(vehicle.insurance);
+
+        if (roadtaxStatus.class === 'status-danger') {
+            alerts.push(
+                '🚗 Roadtax ' + vehicle.name + ' telah tamat tempoh.'
+            );
+        } 
+        else if (roadtaxStatus.class === 'status-warning') {
+            alerts.push(
+                '⚠️ Roadtax ' + vehicle.name + ' akan tamat dalam ' +
+                roadtaxStatus.text.replace('⚠️ ', '') + '.'
+            );
+        }
+
+        if (insuranceStatus.class === 'status-danger') {
+            alerts.push(
+                '🛡️ Insurans ' + vehicle.name + ' telah tamat tempoh.'
+            );
+        } 
+        else if (insuranceStatus.class === 'status-warning') {
+            alerts.push(
+                '⚠️ Insurans ' + vehicle.name + ' akan tamat dalam ' +
+                insuranceStatus.text.replace('⚠️ ', '') + '.'
+            );
+        }
+    });
+
+    // Jika tiada perkara perlu diberi perhatian
+    if (alerts.length === 0) {
+        content.innerHTML = `
+            <h3>Tiada tugasan.</h3>
+            <p>Bagus! Semua nampak terkawal.</p>
+        `;
+
+        box.querySelector('.check').textContent = '✓';
+        return;
+    }
+
+    // Jika ada perkara perlu diberi perhatian
+    content.innerHTML = `
+        <h3>${alerts.length} perkara perlu perhatian</h3>
+        ${alerts.map(alert => `
+            <p style="margin:8px 0;">${alert}</p>
+        `).join('')}
+    `;
+
+    box.querySelector('.check').textContent = '!';
+  }
+  updateAttention();
 </script>
 
 </body>
