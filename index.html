@@ -4081,7 +4081,72 @@ function openAbout() {
     }
 }
 
-updateProfileDisplay();
+updateProfileDisplay();// ===============================
+// LIFEBOX SUPABASE AUTH
+// ===============================
+
+async function signUpLifebox(email, password) {
+  const { data, error } = await supabase.auth.signUp({
+    email: email,
+    password: password
+  });
+
+  if (error) {
+    alert('❌ Gagal daftar: ' + error.message);
+    return null;
+  }
+
+  alert('✅ Akaun berjaya didaftarkan. Sila semak email jika diminta.');
+  return data;
+}
+
+async function signInLifebox(email, password) {
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email: email,
+    password: password
+  });
+
+  if (error) {
+    alert('❌ Login gagal: ' + error.message);
+    return null;
+  }
+
+  alert('✅ Login berjaya!');
+  return data;
+}
+
+async function signOutLifebox() {
+  const { error } = await supabase.auth.signOut();
+
+  if (error) {
+    alert('❌ Gagal logout: ' + error.message);
+    return;
+  }
+
+  alert('✅ Anda telah logout.');
+}
+
+async function getLifeboxUser() {
+  const {
+    data: { user }
+  } = await supabase.auth.getUser();
+
+  return user;
+}
+
+supabase.auth.onAuthStateChange((event, session) => {
+  console.log('LIFEBOX Auth:', event);
+
+  if (session) {
+    console.log('👤 User:', session.user.email);
+  } else {
+    console.log('👤 Tiada user login');
+  }
+});
+
+// ===============================
+// END SUPABASE AUTH
+// ===============================
 </script>
 
 </body>
