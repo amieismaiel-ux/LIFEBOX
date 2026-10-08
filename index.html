@@ -1592,6 +1592,77 @@ function saveFamilyData(data) {
     if (modal) {
         modal.remove();
     }
+  }function editFamilyMember(id) {
+    const data = getFamilyData();
+    const member = data.find(item => item.id === id);
+
+    if (!member) return;
+
+    const name = prompt(
+        'Nama ahli keluarga:',
+        member.name
+    );
+
+    if (!name) return;
+
+    const relation = prompt(
+        'Hubungan (contoh: Isteri, Anak, Ayah):',
+        member.relation
+    );
+
+    if (!relation) return;
+
+    const birthDate = prompt(
+        'Tarikh lahir (contoh: 15/08/2010):',
+        member.birthDate || ''
+    );
+
+    const phone = prompt(
+        'Nombor telefon:',
+        member.phone || ''
+    );
+
+    const notes = prompt(
+        'Catatan:',
+        member.notes || ''
+    );
+
+    member.name = name;
+    member.relation = relation;
+    member.birthDate = birthDate || '';
+    member.phone = phone || '';
+    member.notes = notes || '';
+
+    saveFamilyData(data);
+    updateFamilyCount();
+    renderFamilyMembers();
+}
+
+function deleteFamilyMember(id) {
+    const data = getFamilyData();
+    const member = data.find(item => item.id === id);
+
+    if (!member) return;
+
+    const confirmDelete = confirm(
+        'Padam ahli keluarga ' + member.name + '?'
+    );
+
+    if (!confirmDelete) return;
+
+    const newData = data.filter(
+        item => item.id !== id
+    );
+
+    saveFamilyData(newData);
+    updateFamilyCount();
+    renderFamilyMembers();
+  }function closeFamily() {
+    const modal = document.getElementById('familyModal');
+
+    if (modal) {
+        modal.remove();
+    }
   }
 function getFinanceData() {
 
