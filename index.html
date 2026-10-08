@@ -1537,7 +1537,11 @@ function getFinanceCategory(type, category) {
     });
 
     const balance = income - expense;
+const homeBalanceEl = document.getElementById('homeFinanceBalance');
 
+if (homeBalanceEl) {
+  homeBalanceEl.textContent = 'RM ' + balance.toFixed(2);
+}
     const balanceEl =
         document.getElementById('financeBalance');
 
