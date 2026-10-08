@@ -3874,11 +3874,154 @@ function updateProfileName() {
 
 function openNotifications() {
 
-    alert(
-        '🔔 Notifikasi LIFEBOX\\n\\n' +
-        'Sistem notifikasi akan memaparkan peringatan penting seperti roadtax, insurans dan dokumen yang hampir tamat tempoh.'
-    );
-}
+    const oldModal = document.getElementById('notificationModal');
+
+    if (oldModal) {
+        oldModal.remove();
+    }
+
+    const vehicles = getVehicleData();
+    const notifications = [];
+
+    vehicles.forEach(vehicle => {
+
+        const roadtaxStatus = getExpiryStatus(vehicle.roadtax);
+        const insuranceStatus = getExpiryStatus(vehicle.insurance);
+
+        if (roadtaxStatus.class === 'status-danger') {
+            notifications.push(
+                '🚗 Roadtax ' + vehicle.name + ' telah tamat tempoh.'
+            );
+        }
+
+        if (roadtaxStatus.class === 'status-warning') {
+            notifications.push(
+                '⚠️ Roadtax ' + vehicle.name + ' — ' + roadtaxStatus.text
+            );
+        }
+
+        if (insuranceStatus.class === 'status-danger') {
+            notifications.push(
+                '🛡️ Insurans ' + vehicle.name + ' telah tamat tempoh.'
+            );
+        }
+
+        if (insuranceStatus.class === 'status-warning') {
+            notifications.push(
+                '⚠️ Insurans ' + vehicle.name + ' — ' + insuranceStatus.text
+            );
+        }
+    });
+
+    const modal = document.createElement('div');
+
+    modal.id = 'notificationModal';
+
+    modal.style.cssText = `
+        position:fixed;
+        inset:0;
+        background:rgba(0,0,0,.78);
+        z-index:9999;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        padding:20px;
+    `;
+
+    modal.innerHTML = `
+        <div style="
+            width:100%;
+            max-width:520px;
+            background:#0d1815;
+            border:1px solid #394842;
+            border-radius:28px;
+            padding:25px;
+            color:white;
+            box-shadow:0 20px 60px rgba(0,0,0,.5);
+        ">
+
+            <div style="
+                display:flex;
+                justify-content:space-between;
+                align-items:center;
+                margin-bottom:25px;
+            ">
+
+                <div>
+                    <small style="color:#d6b45c;">LIFEBOX</small>
+                    <h2 style="margin:5px 0 0;">
+                        🔔 Notifikasi
+                    </h2>
+                </div>
+
+                <button
+                    onclick="document.getElementById('notificationModal').remove()"
+                    style="
+                        width:48px;
+                        height:48px;
+                        border:0;
+                        border-radius:50%;
+                        background:#1b2925;
+                        color:white;
+                        font-size:24px;
+                    "
+                >
+                    ×
+                </button>
+
+            </div>
+
+            ${
+                notifications.length === 0
+                ?
+                `
+                <div style="
+                    text-align:center;
+                    padding:30px 10px;
+                ">
+                    <div style="
+                        font-size:50px;
+                        margin-bottom:15px;
+                    ">
+                        ✓
+                    </div>
+
+                    <h3 style="margin:0 0 8px;">
+                        Tiada notifikasi
+                    </h3>
+
+                    <p style="
+                        color:#aeb9b5;
+                        margin:0;
+                    ">
+                        Semua perkara nampak terkawal.
+                    </p>
+                </div>
+                `
+                :
+                `
+                <div>
+                    ${notifications.map(item => `
+                        <div style="
+                            background:#18231f;
+                            border:1px solid #33413c;
+                            border-radius:16px;
+                            padding:15px;
+                            margin-bottom:12px;
+                            line-height:1.5;
+                        ">
+                            ${item}
+                        </div>
+                    `).join('')}
+                </div>
+                `
+            }
+
+        </div>
+    `;
+
+    document.body.appendChild(modal);
+  }
 
 
 function openAbout() {
