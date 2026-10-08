@@ -2270,7 +2270,417 @@ function saveFinanceData(data){
 
 }
 
+function getVehicleData() {
+    return JSON.parse(
+        localStorage.getItem('lifeboxVehicles') || '[]'
+    );
+}
 
+function saveVehicleData(data) {
+    localStorage.setItem(
+        'lifeboxVehicles',
+        JSON.stringify(data)
+    );
+}
+
+function updateVehicleCount() {
+    const countEl =
+        document.getElementById('homeVehicleCount');
+
+    if (!countEl) return;
+
+    const data = getVehicleData();
+
+    countEl.textContent =
+        data.length + ' kenderaan';
+}
+
+function openVehicle() {
+
+    const existing =
+        document.getElementById('vehicleModal');
+
+    if (existing) {
+        existing.remove();
+        return;
+    }
+
+    const modal =
+        document.createElement('div');
+
+    modal.id = 'vehicleModal';
+
+    modal.innerHTML = `
+        <div class="finance-box">
+
+            <div class="finance-header">
+
+                <button onclick="closeVehicle()">✕</button>
+
+                <div>
+                    <small>MOBILITY</small>
+                    <h2>Kenderaan</h2>
+                </div>
+
+            </div>
+
+            <div style="padding:20px;">
+
+                <button
+                    onclick="addVehicle()"
+                    style="
+                        width:100%;
+                        padding:16px;
+                        border-radius:14px;
+                        border:0;
+                        background:#d4af37;
+                        color:#111;
+                        font-size:16px;
+                        font-weight:bold;
+                        margin-bottom:20px;
+                    "
+                >
+                    + Tambah Kenderaan
+                </button>
+
+                <div id="vehicleList"></div>
+
+            </div>
+
+        </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    renderVehicles();
+}
+
+function addVehicle() {
+
+    const name =
+        prompt('Nama kenderaan (contoh: Myvi):');
+
+    if (!name) return;
+
+    const plate =
+        prompt('Nombor pendaftaran (contoh: KDA1234):');
+
+    if (!plate) return;
+
+    const model =
+        prompt('Model / Variant (contoh: 1.5 AV):') || '';
+
+    const year =
+        prompt('Tahun kenderaan (contoh: 2022):') || '';
+
+    const mileage =
+        prompt('Mileage semasa (km):') || '';
+
+    const roadtax =
+        prompt('Tarikh tamat roadtax (contoh: 15/08/2027):') || '';
+
+    const insurance =
+        prompt('Tarikh tamat insurans (contoh: 15/08/2027):') || '';
+
+    const notes =
+        prompt('Catatan:') || '';
+
+    const data = getVehicleData();
+
+    data.push({
+
+        id: Date.now(),
+
+        name: name,
+
+        plate: plate,
+
+        model: model,
+
+        year: year,
+
+        mileage: mileage,
+
+        roadtax: roadtax,
+
+        insurance: insurance,
+
+        notes: notes
+
+    });
+
+    saveVehicleData(data);
+
+    updateVehicleCount();
+
+    renderVehicles();
+}
+
+function renderVehicles() {
+
+    const list =
+        document.getElementById('vehicleList');
+
+    if (!list) return;
+
+    const data = getVehicleData();
+
+    if (data.length === 0) {
+
+        list.innerHTML = `
+            <div style="
+                text-align:center;
+                padding:30px;
+                color:#aaa;
+            ">
+                Belum ada kenderaan.
+            </div>
+        `;
+
+        return;
+    }
+
+    list.innerHTML = data.map(vehicle => {
+
+        return `
+            <div style="
+                padding:18px;
+                margin-bottom:14px;
+                border:1px solid rgba(255,255,255,.15);
+                border-radius:16px;
+                background:rgba(255,255,255,.05);
+            ">
+
+                <div style="
+                    font-size:22px;
+                    font-weight:bold;
+                ">
+                    🚗 ${vehicle.name}
+                </div>
+
+                <div style="
+                    margin-top:6px;
+                    color:#d4af37;
+                    font-size:17px;
+                    font-weight:bold;
+                ">
+                    ${vehicle.plate}
+                </div>
+
+                ${vehicle.model ? `
+                    <div style="
+                        margin-top:10px;
+                        color:#ccc;
+                    ">
+                        🚘 Model: ${vehicle.model}
+                    </div>
+                ` : ''}
+
+                ${vehicle.year ? `
+                    <div style="color:#aaa;">
+                        📅 Tahun: ${vehicle.year}
+                    </div>
+                ` : ''}
+
+                ${vehicle.mileage ? `
+                    <div style="color:#aaa;">
+                        🛣️ Mileage: ${vehicle.mileage} km
+                    </div>
+                ` : ''}
+
+                ${vehicle.roadtax ? `
+                    <div style="color:#aaa;">
+                        🪪 Roadtax tamat: ${vehicle.roadtax}
+                    </div>
+                ` : ''}
+
+                ${vehicle.insurance ? `
+                    <div style="color:#aaa;">
+                        🛡️ Insurans tamat: ${vehicle.insurance}
+                    </div>
+                ` : ''}
+
+                ${vehicle.notes ? `
+                    <div style="
+                        margin-top:9px;
+                        color:#ccc;
+                    ">
+                        📝 ${vehicle.notes}
+                    </div>
+                ` : ''}
+
+                <div style="
+                    display:flex;
+                    gap:8px;
+                    margin-top:16px;
+                    flex-wrap:wrap;
+                ">
+
+                    <button
+                        onclick="editVehicle(${vehicle.id})"
+                        style="
+                            flex:1;
+                            min-width:100px;
+                            padding:11px;
+                            border-radius:10px;
+                            border:0;
+                            background:#d4af37;
+                            color:#111;
+                            font-weight:bold;
+                        "
+                    >
+                        ✏️ Edit
+                    </button>
+
+                    <button
+                        onclick="deleteVehicle(${vehicle.id})"
+                        style="
+                            flex:1;
+                            min-width:100px;
+                            padding:11px;
+                            border-radius:10px;
+                            border:0;
+                            background:#8b2e2e;
+                            color:white;
+                            font-weight:bold;
+                        "
+                    >
+                        🗑️ Padam
+                    </button>
+
+                </div>
+
+            </div>
+        `;
+
+    }).join('');
+}
+
+function editVehicle(id) {
+
+    const data = getVehicleData();
+
+    const vehicle =
+        data.find(item => item.id === id);
+
+    if (!vehicle) return;
+
+    const name =
+        prompt(
+            'Nama kenderaan:',
+            vehicle.name
+        );
+
+    if (!name) return;
+
+    const plate =
+        prompt(
+            'Nombor pendaftaran:',
+            vehicle.plate
+        );
+
+    if (!plate) return;
+
+    const model =
+        prompt(
+            'Model / Variant:',
+            vehicle.model || ''
+        );
+
+    const year =
+        prompt(
+            'Tahun kenderaan:',
+            vehicle.year || ''
+        );
+
+    const mileage =
+        prompt(
+            'Mileage semasa (km):',
+            vehicle.mileage || ''
+        );
+
+    const roadtax =
+        prompt(
+            'Tarikh tamat roadtax:',
+            vehicle.roadtax || ''
+        );
+
+    const insurance =
+        prompt(
+            'Tarikh tamat insurans:',
+            vehicle.insurance || ''
+        );
+
+    const notes =
+        prompt(
+            'Catatan:',
+            vehicle.notes || ''
+        );
+
+    vehicle.name = name;
+
+    vehicle.plate = plate;
+
+    vehicle.model = model || '';
+
+    vehicle.year = year || '';
+
+    vehicle.mileage = mileage || '';
+
+    vehicle.roadtax = roadtax || '';
+
+    vehicle.insurance = insurance || '';
+
+    vehicle.notes = notes || '';
+
+    saveVehicleData(data);
+
+    updateVehicleCount();
+
+    renderVehicles();
+}
+
+function deleteVehicle(id) {
+
+    const data = getVehicleData();
+
+    const vehicle =
+        data.find(item => item.id === id);
+
+    if (!vehicle) return;
+
+    const confirmDelete =
+        confirm(
+            'Padam kenderaan ' +
+            vehicle.name +
+            ' (' +
+            vehicle.plate +
+            ')?'
+        );
+
+    if (!confirmDelete) return;
+
+    const newData =
+        data.filter(
+            item => item.id !== id
+        );
+
+    saveVehicleData(newData);
+
+    updateVehicleCount();
+
+    renderVehicles();
+}
+
+function closeVehicle() {
+
+    const modal =
+        document.getElementById('vehicleModal');
+
+    if (modal) {
+        modal.remove();
+    }
+    }
 function openFinance(){
 
   const existing =
