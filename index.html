@@ -1239,7 +1239,10 @@ function showSection(section) {
         openFinance();
         return;
     }
-
+if (section === 'keluarga') {
+    openFamily();
+    return;
+  }
     const sections = {
         keluarga: 'Bahagian Keluarga',
         kenderaan: 'Bahagian Kenderaan',
@@ -1250,7 +1253,42 @@ function showSection(section) {
         alert(sections[section] + ' akan dibuka.');
     }
 }
+function openFamily() {
+    const existing = document.getElementById('familyModal');
 
+    if (existing) {
+        existing.remove();
+        return;
+    }
+
+    const modal = document.createElement('div');
+    modal.id = 'familyModal';
+
+    modal.innerHTML = `
+        <div class="finance-box">
+            <div class="finance-header">
+                <button onclick="closeFamily()">✕</button>
+                <div>
+                    <small>FAMILY</small>
+                    <h2>Keluarga</h2>
+                </div>
+            </div>
+
+            <div style="padding:20px;">
+                <button onclick="addFamilyMember()"
+                    style="width:100%;padding:14px;border-radius:12px;border:0;background:#d4af37;color:#111;font-weight:bold;">
+                    + Tambah Ahli Keluarga
+                </button>
+
+                <div id="familyList" style="margin-top:20px;"></div>
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    renderFamilyMembers();
+  }
 function openFinance() {
 
     const existing = document.getElementById('financeModal');
@@ -1336,7 +1374,94 @@ function closeFinance() {
         modal.remove();
     }
 }
+function getFamilyData() {
+    return JSON.parse(
+        localStorage.getItem('lifeboxFamily') || '[]'
+    );
+}
 
+function saveFamilyData(data) {
+    localStorage.setItem(
+        'lifeboxFamily',
+        JSON.stringify(data)
+    );
+  }function addFamilyMember() {
+    const name = prompt('Nama ahli keluarga:');
+    if (!name) return;
+
+    const relation = prompt('Hubungan (contoh: Isteri, Anak, Ayah):');
+    if (!relation) return;
+
+    const birthDate = prompt('Tarikh lahir (contoh: 15/08/2010):') || '';
+    const phone = prompt('Nombor telefon:') || '';
+    const notes = prompt('Catatan:') || '';
+
+    const data = getFamilyData();
+
+    data.push({
+        id: Date.now(),
+        name: name,
+        relation: relation,
+        birthDate: birthDate,
+        phone: phone,
+        notes: notes
+    });
+
+    saveFamilyData(data);
+    renderFamilyMembers();
+  }function renderFamilyMembers() {
+    const list = document.getElementById('familyList');
+    if (!list) return;
+
+    const data = getFamilyData();
+
+    if (data.length === 0) {
+        list.innerHTML = `
+            <div style="text-align:center;padding:30px;color:#aaa;">
+                Belum ada ahli keluarga.
+            </div>
+        `;
+        return;
+    }
+
+    list.innerHTML = data.map(member => `
+        <div style="
+            padding:16px;
+            margin-bottom:12px;
+            border:1px solid rgba(255,255,255,0.15);
+            border-radius:14px;
+            background:rgba(255,255,255,0.05);
+        ">
+            <div style="font-size:20px;font-weight:bold;">
+                ${member.name}
+            </div>
+
+            <div style="margin-top:6px;color:#d4af37;">
+                ${member.relation}
+            </div>
+
+            <div style="margin-top:8px;color:#aaa;">
+                🎂 ${member.birthDate || '-'}
+            </div>
+
+            <div style="color:#aaa;">
+                📞 ${member.phone || '-'}
+            </div>
+
+            ${member.notes ? `
+                <div style="margin-top:8px;color:#ccc;">
+                    📝 ${member.notes}
+                </div>
+            ` : ''}
+        </div>
+    `).join('');
+  }function closeFamily() {
+    const modal = document.getElementById('familyModal');
+
+    if (modal) {
+        modal.remove();
+    }
+  }
 function getFinanceData() {
 
     return JSON.parse(
