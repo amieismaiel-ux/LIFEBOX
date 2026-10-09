@@ -4376,6 +4376,75 @@ if (window.supabaseClient?.auth) {
   });
 }
 
+/* ===== LIFEBOX CLOUD DATABASE ===== */
+
+async function saveLifeboxCloud(moduleName, moduleData) {
+  const client = window.supabaseClient;
+
+  if (!client?.auth) {
+    throw new Error('Sambungan Supabase tidak tersedia.');
+  }
+
+  const { data: authData, error: authError } =
+    await client.auth.getUser();
+
+  if (authError) throw authError;
+
+  const user = authData.user;
+
+  if (!user) {
+    throw new Error('Sila login terlebih dahulu.');
+  }
+
+  const { error } = await client
+    .from('lifebox_data')
+    .upsert(
+      {
+        user_id: user.id,
+        module: moduleName,
+        data: moduleData,
+        updated_at: new Date().toISOString()
+      },
+      { onConflict: 'user_id,module' }
+    );
+
+  if (error) throw error;
+
+  return true;
+}
+
+async function loadLifeboxCloud(moduleName) {
+  const client = window.supabaseClient;
+
+  if (!client?.auth) {
+    throw new Error('Sambungan Supabase tidak tersedia.');
+  }
+
+  const { data: authData, error: authError } =
+    await client.auth.getUser();
+
+  if (authError) throw authError;
+
+  const user = authData.user;
+
+  if (!user) {
+    throw new Error('Sila login terlebih dahulu.');
+  }
+
+  const { data, error } = await client
+    .from('lifebox_data')
+    .select('data')
+    .eq('user_id', user.id)
+    .eq('module', moduleName)
+    .maybeSingle();
+
+  if (error) throw error;
+
+  return data ? data.data : null;
+}
+
+/* ===== END LIFEBOX CLOUD DATABASE ===== */
+
 // ===============================
 </script>
 
