@@ -2216,13 +2216,23 @@ function getDocumentData(){
 }
 
 
-function saveDocumentData(data){
+function saveDocumentData(data) {
+// Simpan data pada telefon
+localStorage.setItem(
+'lifeboxDocuments',
+JSON.stringify(data)
+);
 
-  localStorage.setItem(
-    'lifeboxDocuments',
-    JSON.stringify(data)
-  );
-
+// Simpan data ke Supabase
+if (typeof saveLifeboxCloud === 'function') {
+saveLifeboxCloud('documents', data)
+.catch(function(error) {
+console.error(
+'LIFEBOX Documents Cloud Error:',
+error
+);
+});
+}
 }
 
 
