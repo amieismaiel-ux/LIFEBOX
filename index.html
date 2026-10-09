@@ -803,18 +803,19 @@ body{
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
-  const SUPABASE_URL = 'https://fntcrugrmelvszssjshq.supabase.co';
-  const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_gX_bNRfkXOtlQjfv4GzPKw_ACFAzS2T';
+const SUPABASE_URL = 'https://fntcrugrmelvszssjshq.supabase.co';
+const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_gX_bNRfkXOtlQjfv4GzPKw_ACFAzS2T';
 
-  const { createClient } = window.supabase;
-
-const supabaseClient = createClient(
-  SUPABASE_URL,
-  SUPABASE_PUBLISHABLE_KEY
-);
-    </script>
+if (!window.supabase || typeof window.supabase.createClient !== 'function') {
+  console.error('Supabase SDK gagal dimuatkan.');
+} else {
+  window.supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+  );
+}
+</script>
 </head>
-
 <body>
 
 <header class="topbar">
@@ -4285,11 +4286,16 @@ function openAbout() {
 }
 
 updateProfileDisplay();// ===============================
-// LIFEBOX SUPABASE AUTH
-// ===============================
 
 async function signUpLifebox(email, password) {
-  const { data, error } = await supabase.auth.signUp({
+  const client = window.supabaseClient;
+
+  if (!client?.auth) {
+    alert('Supabase belum bersambung. Sila muat semula halaman.');
+    return null;
+  }
+
+  const { data, error } = await client.auth.signUp({
     email: email,
     password: password
   });
@@ -4299,12 +4305,19 @@ async function signUpLifebox(email, password) {
     return null;
   }
 
-  alert('✅ Akaun berjaya didaftarkan. Sila semak email jika diminta.');
+  alert('✅ Permintaan daftar berjaya. Semak email jika pengesahan diperlukan.');
   return data;
 }
 
 async function signInLifebox(email, password) {
-  const { data, error } = await supabase.auth.signInWithPassword({
+  const client = window.supabaseClient;
+
+  if (!client?.auth) {
+    alert('Supabase belum bersambung. Sila muat semula halaman.');
+    return null;
+  }
+
+  const { data, error } = await client.auth.signInWithPassword({
     email: email,
     password: password
   });
@@ -4319,7 +4332,14 @@ async function signInLifebox(email, password) {
 }
 
 async function signOutLifebox() {
-  const { error } = await supabase.auth.signOut();
+  const client = window.supabaseClient;
+
+  if (!client?.auth) {
+    alert('Supabase belum bersambung.');
+    return;
+  }
+
+  const { error } = await client.auth.signOut();
 
   if (error) {
     alert('❌ Gagal logout: ' + error.message);
@@ -4330,25 +4350,32 @@ async function signOutLifebox() {
 }
 
 async function getLifeboxUser() {
-  const {
-    data: { user }
-  } = await supabase.auth.getUser();
+  const client = window.supabaseClient;
 
-  return user;
+  if (!client?.auth) return null;
+
+  const { data, error } = await client.auth.getUser();
+
+  if (error) {
+    console.error('LIFEBOX getUser error:', error);
+    return null;
+  }
+
+  return data.user;
 }
 
-supabase.auth.onAuthStateChange((event, session) => {
-  console.log('LIFEBOX Auth:', event);
+if (window.supabaseClient?.auth) {
+  window.supabaseClient.auth.onAuthStateChange((event, session) => {
+    console.log('LIFEBOX Auth:', event);
 
-  if (session) {
-    console.log('👤 User:', session.user.email);
-  } else {
-    console.log('👤 Tiada user login');
-  }
-});
+    if (session) {
+      console.log('User login:', session.user.email);
+    } else {
+      console.log('Tiada user login');
+    }
+  });
+}
 
-// ===============================
-// END SUPABASE AUTH
 // ===============================
 </script>
 
