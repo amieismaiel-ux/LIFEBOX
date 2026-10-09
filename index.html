@@ -1274,20 +1274,42 @@ function closeAuth() {
 
 
 async function handleLogin() {
-
-  const email =
-    document.getElementById('authEmail').value.trim();
-
-  const password =
-    document.getElementById('authPassword').value;
+  const email = document.getElementById('authEmail').value.trim();
+  const password = document.getElementById('authPassword').value;
 
   if (!email || !password) {
-    alert('⚠️ Sila masukkan email dan password.');
+    alert('Sila masukkan email dan password.');
     return;
   }
 
-  await signInLifebox(email, password);
+  try {
+    await signInLifebox(email, password);
+  } catch (error) {
+    alert('Ralat login: ' + (error.message || error));
+    console.error('LIFEBOX login error:', error);
+  }
+}
 
+async function handleSignup() {
+  const email = document.getElementById('authEmail').value.trim();
+  const password = document.getElementById('authPassword').value;
+
+  if (!email || !password) {
+    alert('Sila masukkan email dan password.');
+    return;
+  }
+
+  if (password.length < 6) {
+    alert('Password mesti sekurang-kurangnya 6 aksara.');
+    return;
+  }
+
+  try {
+    await signUpLifebox(email, password);
+  } catch (error) {
+    alert('Ralat daftar: ' + (error.message || error));
+    console.error('LIFEBOX signup error:', error);
+  }
 }
 
 
