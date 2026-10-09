@@ -2552,12 +2552,26 @@ function getVehicleData() {
     );
 }
 
+
 function saveVehicleData(data) {
-    localStorage.setItem(
-        'lifeboxVehicles',
-        JSON.stringify(data)
-    );
+  // Simpan salinan dalam telefon seperti biasa
+  localStorage.setItem(
+    'lifeboxVehicles',
+    JSON.stringify(data)
+  );
+
+  // Simpan juga ke Supabase
+  if (typeof saveLifeboxCloud === 'function') {
+    saveLifeboxCloud('vehicles', data)
+      .catch(function(error) {
+        console.error(
+          'LIFEBOX Supabase Kenderaan:',
+          error
+        );
+      });
+  }
 }
+
 
 function updateVehicleCount() {
     const countEl =
