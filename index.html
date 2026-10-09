@@ -4536,6 +4536,75 @@ async function syncLifeboxData() {
   updateAttention();
 }
 
+
+/* ===== LIFEBOX AUTO SYNC REALTIME ===== */
+let lifeboxRealtimeChannel = null;
+
+function startLifeboxRealtime() {
+  const client = window.supabaseClient;
+
+  if (!client || !client.auth) {
+    console.error('Supabase belum tersedia.');
+    return;
+  }
+
+  if (lifeboxRealtimeChannel) {
+    client.removeChannel(lifeboxRealtimeChannel);
+  }
+
+  lifeboxRealtimeChannel = client
+    .channel('lifebox-auto-sync')
+    .on(
+      'postgres_changes',
+      {
+        event: '*',
+        schema: 'public',
+        table: 'lifebox_data'
+      },
+      async (payload) => {
+        try {
+          const { data: authData } =
+            await client.auth.getUser();
+
+          const user = authData.user;
+          if (!user) return;
+
+          const row = payload.new || payload.old;
+
+          if (!row || row.user_id !== user.id) return;
+
+          const moduleKeys = {
+            finance: 'lifeboxFinance',
+            family: 'lifeboxFamily',
+            vehicles: 'lifeboxVehicles',
+            documents: 'lifeboxDocuments'
+          };
+
+          const key = moduleKeys[row.module];
+          if (!key) return;
+
+          const cloudData = await loadLifeboxCloud(row.module);
+
+          if (cloudData !== null) {
+            localStorage.setItem(
+              key,
+              JSON.stringify(cloudData)
+            );
+
+            updateFinance();
+            updateFamilyCount();
+            updateVehicleCount();
+            updateDocumentCount();
+            updateAttention();
+          }
+        } catch (error) {
+          console.error('LIFEBOX Auto Sync:', error);
+        }
+      }
+    )
+    .subscribe();
+}
+/* ===== END LIFEBOX AUTO SYNC ===== */
 /* ===== END SYNC DATA LIFEBOX ===== */
 /* ===== END LIFEBOX CLOUD DATABASE ===== */
 
