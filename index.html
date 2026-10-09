@@ -815,6 +815,9 @@ if (!window.supabase || typeof window.supabase.createClient !== 'function') {
   );
 }
 </script>
+<link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#07100d">
+<meta name="mobile-web-app-capable" content="yes">
 </head>
 <body>
 
@@ -4638,6 +4641,18 @@ function startLifeboxRealtime() {
   location.reload();
   }
 </script>
-
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js')
+      .then(() => {
+        console.log('LIFEBOX PWA berjaya didaftarkan');
+      })
+      .catch(error => {
+        console.error('LIFEBOX PWA error:', error);
+      });
+  });
+}
+</script>
 </body>
   </html>
