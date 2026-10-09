@@ -1412,13 +1412,23 @@ function getFamilyData(){
 }
 
 
-function saveFamilyData(data){
+function saveFamilyData(data) {
+// Simpan data pada telefon
+localStorage.setItem(
+'lifeboxFamily',
+JSON.stringify(data)
+);
 
-  localStorage.setItem(
-    'lifeboxFamily',
-    JSON.stringify(data)
-  );
-
+// Simpan data ke Supabase
+if (typeof saveLifeboxCloud === 'function') {
+saveLifeboxCloud('family', data)
+.catch(function(error) {
+console.error(
+'LIFEBOX Family Cloud Error:',
+error
+);
+});
+}
 }
 
 
