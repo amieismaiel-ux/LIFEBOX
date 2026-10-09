@@ -1286,10 +1286,19 @@ async function handleLogin() {
   }
 
   try {
-    await signInLifebox(email, password);
+    const result = await signInLifebox(email, password);
+
+    if (!result) return;
+
+    await syncLifeboxData();
+
+    closeAuth();
+
+    alert('✅ Login berjaya! Data LIFEBOX telah diselaraskan.');
+
   } catch (error) {
-    alert('Ralat login: ' + (error.message || error));
-    console.error('LIFEBOX login error:', error);
+    alert('Ralat login/sync: ' + (error.message || error));
+    console.error('LIFEBOX sync error:', error);
   }
 }
 
@@ -4488,7 +4497,46 @@ async function loadLifeboxCloud(moduleName) {
 
   return data ? data.data : null;
 }
+/* ===== SYNC DATA LIFEBOX ===== */
 
+async function syncLifeboxData() {
+  const modules = [
+    { name: 'finance', key: 'lifeboxFinance' },
+    { name: 'family', key: 'lifeboxFamily' },
+    { name: 'vehicles', key: 'lifeboxVehicles' },
+    { name: 'documents', key: 'lifeboxDocuments' }
+  ];
+
+  for (const module of modules) {
+    const cloudData = await loadLifeboxCloud(module.name);
+
+    if (cloudData !== null) {
+      // Jika data cloud ada, muat turun ke telefon
+      localStorage.setItem(
+        module.key,
+        JSON.stringify(cloudData)
+      );
+    } else {
+      // Jika cloud belum ada data, simpan data telefon
+      const localData = JSON.parse(
+        localStorage.getItem(module.key) || '[]'
+      );
+
+      if (localData.length > 0) {
+        await saveLifeboxCloud(module.name, localData);
+      }
+    }
+  }
+
+  // Kemas kini paparan selepas penyelarasan
+  updateFinance();
+  updateFamilyCount();
+  updateVehicleCount();
+  updateDocumentCount();
+  updateAttention();
+}
+
+/* ===== END SYNC DATA LIFEBOX ===== */
 /* ===== END LIFEBOX CLOUD DATABASE ===== */
 
 // ===============================
