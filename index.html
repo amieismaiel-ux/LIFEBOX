@@ -1291,7 +1291,7 @@ async function handleLogin() {
     if (!result) return;
 
     await syncLifeboxData();
-
+    startLifeboxRealtime();
     closeAuth();
 
     alert('✅ Login berjaya! Data LIFEBOX telah diselaraskan.');
