@@ -806,10 +806,12 @@ body{
   const SUPABASE_URL = 'https://fntcrugrmelvszssjshq.supabase.co';
   const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_gX_bNRfkXOtlQjfv4GzPKw_ACFAzS2T';
 
-  const supabase = window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_PUBLISHABLE_KEY
-  );
+  const { createClient } = window.supabase;
+
+const supabaseClient = createClient(
+  SUPABASE_URL,
+  SUPABASE_PUBLISHABLE_KEY
+);
     </script>
 </head>
 
