@@ -2537,14 +2537,26 @@ function getFinanceData(){
 }
 
 
-function saveFinanceData(data){
 
-  localStorage.setItem(
-    'lifeboxFinance',
-    JSON.stringify(data)
-  );
+function saveFinanceData(data) {
+    // Simpan data pada telefon
+    localStorage.setItem(
+        'lifeboxFinance',
+        JSON.stringify(data)
+    );
 
+    // Simpan data ke Supabase
+    if (typeof saveLifeboxCloud === 'function') {
+        saveLifeboxCloud('finance', data)
+            .catch(function(error) {
+                console.error(
+                    'LIFEBOX Finance Cloud Error:',
+                    error
+                );
+            });
+    }
 }
+
 
 function getVehicleData() {
     return JSON.parse(
